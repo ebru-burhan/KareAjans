@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Djym26awYZPwqGFs3xf0VCyRcqtSGhK0k6ZwXOrsvRjYf6i3CZvaWshwyhruYhJ3NdyVtzAf+X8VlipmA1UwCQ==",
+  "dgSpecHash": "dfpfZUpfvmQzAHbiWil1tm3B1WzHftrHVJH2wmk+GxrwE9X2SnL2+KoMdsgqmGmMDbXwnj0ofgrMjvD3Li1AsA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ebrub\\Documents\\Projects\\BilgeAdam_Ebru_Kurs2\\MyProject\\KareAjansProject\\KareAjans.DataAccess\\KareAjans.DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjans.DataAccess\\KareAjans.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ebrub\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\ebrub\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",

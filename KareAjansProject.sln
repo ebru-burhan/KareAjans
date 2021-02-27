@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KareAjansUI", "KareAjansUI\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KareAjans.Entity", "KareAjansEntities\KareAjans.Entity.csproj", "{2AC04451-352D-469F-8709-6E657C28DEF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KareAjans.Model", "KareAjans.Model\KareAjans.Model.csproj", "{9F86CB2C-F990-41B7-8B56-C9D5A23786BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KareAjans.Model", "KareAjans.Model\KareAjans.Model.csproj", "{9F86CB2C-F990-41B7-8B56-C9D5A23786BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KareAjans.DataAccess", "KareAjans.DataAccess\KareAjans.DataAccess.csproj", "{B33868E8-7229-4BC0-BEFB-E0012385E77D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KareAjans.DataAccess", "KareAjans.DataAccess\KareAjans.DataAccess.csproj", "{B33868E8-7229-4BC0-BEFB-E0012385E77D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KareAjans.Core", "KareAjans.Core\KareAjans.Core.csproj", "{AE3E7D7D-33C0-4F1A-BD79-79A7618747C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B33868E8-7229-4BC0-BEFB-E0012385E77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B33868E8-7229-4BC0-BEFB-E0012385E77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B33868E8-7229-4BC0-BEFB-E0012385E77D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE3E7D7D-33C0-4F1A-BD79-79A7618747C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE3E7D7D-33C0-4F1A-BD79-79A7618747C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE3E7D7D-33C0-4F1A-BD79-79A7618747C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE3E7D7D-33C0-4F1A-BD79-79A7618747C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

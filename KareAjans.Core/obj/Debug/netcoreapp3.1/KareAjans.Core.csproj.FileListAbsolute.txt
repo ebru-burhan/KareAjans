@@ -1,0 +1,9 @@
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Core\bin\Debug\netcoreapp3.1\KareAjans.Core.deps.json
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Core\bin\Debug\netcoreapp3.1\KareAjans.Core.dll
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Core\bin\Debug\netcoreapp3.1\KareAjans.Core.pdb
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Core\obj\Debug\netcoreapp3.1\KareAjans.Core.csprojAssemblyReference.cache
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Core\obj\Debug\netcoreapp3.1\KareAjans.Core.AssemblyInfoInputs.cache
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Core\obj\Debug\netcoreapp3.1\KareAjans.Core.AssemblyInfo.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Core\obj\Debug\netcoreapp3.1\KareAjans.Core.csproj.CoreCompileInputs.cache
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Core\obj\Debug\netcoreapp3.1\KareAjans.Core.dll
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Core\obj\Debug\netcoreapp3.1\KareAjans.Core.pdb

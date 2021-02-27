@@ -1487,6 +1487,10 @@
       "KareAjans.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "3.1.12",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.12"
+        },
         "compile": {
           "bin/placeholder/KareAjans.Entity.dll": {}
         },
@@ -5707,11 +5711,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ebrub\\Documents\\Projects\\BilgeAdam_Ebru_Kurs2\\MyProject\\KareAjansProject\\KareAjans.DataAccess\\KareAjans.DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjans.DataAccess\\KareAjans.DataAccess.csproj",
       "projectName": "KareAjans.DataAccess",
-      "projectPath": "C:\\Users\\ebrub\\Documents\\Projects\\BilgeAdam_Ebru_Kurs2\\MyProject\\KareAjansProject\\KareAjans.DataAccess\\KareAjans.DataAccess.csproj",
+      "projectPath": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjans.DataAccess\\KareAjans.DataAccess.csproj",
       "packagesPath": "C:\\Users\\ebrub\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ebrub\\Documents\\Projects\\BilgeAdam_Ebru_Kurs2\\MyProject\\KareAjansProject\\KareAjans.DataAccess\\obj\\",
+      "outputPath": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjans.DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ebrub\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5728,8 +5732,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\ebrub\\Documents\\Projects\\BilgeAdam_Ebru_Kurs2\\MyProject\\KareAjansProject\\KareAjansEntities\\KareAjans.Entity.csproj": {
-              "projectPath": "C:\\Users\\ebrub\\Documents\\Projects\\BilgeAdam_Ebru_Kurs2\\MyProject\\KareAjansProject\\KareAjansEntities\\KareAjans.Entity.csproj"
+            "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjansEntities\\KareAjans.Entity.csproj": {
+              "projectPath": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjansEntities\\KareAjans.Entity.csproj"
             }
           }
         }
@@ -5774,7 +5778,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }
