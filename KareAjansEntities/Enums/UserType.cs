@@ -7,7 +7,9 @@ namespace KareAjans.Entity.Enums
     public enum UserType
     {
         
-        Administrator =1,
-        ModelEmployee = 2
+        Administrator = 1,
+        ModelEmployee = 2,
+        Accountant = 3,
+        ITManager = 4
     }
 }

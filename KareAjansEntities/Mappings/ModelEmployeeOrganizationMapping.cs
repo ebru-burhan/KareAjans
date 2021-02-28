@@ -11,8 +11,7 @@ namespace KareAjans.Entity.Mappings
         public void Configure(EntityTypeBuilder<ModelEmployeeOrganization> builder)
         {
             builder.ToTable("ModelEmployeeOrganizations");
-            builder.HasKey(x => x.ID);
-            builder.Property(x => x.ID).IsRequired();
+           
 
             builder
                 .HasKey(x => new { x.ModelEmployeeId, x.OrganizationId });

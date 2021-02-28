@@ -7,12 +7,13 @@ namespace KareAjans.Entity
 {
     public class Expense : BaseEntity
     {
+        public int ExpenseID { get; set; }
         public int ExpenseTypeId { get; set; }
-        public int ModelEmployeeOrganizationId { get; set; }
+        //public int ModelEmployeeOrganizationId { get; set; }
 
-
+        public decimal Amount { get; set; }
         //relations-------
         public virtual ExpenseType ExpenseType { get; set; }
-        public ModelEmployeeOrganization ModelEmployeeOrganization { get; set; }
+        public virtual ModelEmployeeOrganization ModelEmployeeOrganization { get; set; }
     }
 }

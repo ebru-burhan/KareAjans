@@ -7,6 +7,7 @@ namespace KareAjans.Entity
 {
     public class Picture : BaseEntity
     {
+        public int PictureID { get; set; }
         public int ModelEmployeeId { get; set; }
         public string Url { get; set; }
 

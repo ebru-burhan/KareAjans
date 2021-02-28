@@ -11,8 +11,6 @@ namespace KareAjans.Entity.Mappings
         public void Configure(EntityTypeBuilder<Picture> builder)
         {
             builder.ToTable("Pictures");
-            builder.HasKey(x => x.ID);
-            builder.Property(x => x.ID).IsRequired();
             builder.Property(x => x.Url).IsRequired();
             builder.Property(x => x.CreatedDate).IsRequired();
         }

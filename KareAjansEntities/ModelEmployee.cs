@@ -8,7 +8,9 @@ namespace KareAjans.Entity
 {
     public class ModelEmployee : BaseEntity
     {
+        public int ModelEmployeeID { get; set; }
         public int ProfessionalDegreeId { get; set; }
+        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
@@ -21,16 +23,18 @@ namespace KareAjans.Entity
         public EyeColor EyeColor { get; set; }
         public HairColor HairColor { get; set; }
         public Gender Gender { get; set; }
+        public BodySize BodySize { get; set; }
         public bool DrivingLicence { get; set; }
         public bool WorkingOutsideTheCity { get; set; }
         public string ForeignLanguage { get; set; }
         public string Speciality { get; set; }
 
-        // TODO: BodySize Enum nasıl çözülecek
-        //public Size Size { get; set; }
+
 
 
         //relations-------
+
+        public virtual User User { get; set; }
         public virtual ProfessionalDegree ProfessionalDegree { get; set; }
         public virtual ICollection<Picture> Pictures { get; set; }
 

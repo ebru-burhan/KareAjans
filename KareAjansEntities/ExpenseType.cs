@@ -7,6 +7,7 @@ namespace KareAjans.Entity
 {
     public class ExpenseType : BaseEntity
     {
+        public int ExpenseTypeID { get; set; }
         public string Title { get; set; }
         public decimal Amount { get; set; }
 

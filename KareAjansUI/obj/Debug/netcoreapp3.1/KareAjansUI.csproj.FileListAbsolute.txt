@@ -72,3 +72,4 @@ C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcore
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\KareAjansUI.RazorTargetAssemblyInfo.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\KareAjansUI.Views.pdb
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\KareAjansUI.csproj.CopyComplete
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll

@@ -6,7 +6,6 @@ namespace KareAjans.Entity.Abstracts
 {
     public interface IEntity
     {
-        int ID { get; set; }
         DateTime CreatedDate { get; set; }
 
     }

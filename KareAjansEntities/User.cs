@@ -8,7 +8,8 @@ namespace KareAjans.Entity
 {
     public class User : BaseEntity
     {
-        public int PermissonId { get; set; }
+        public int UserID { get; set; }
+        public int PermissionId { get; set; }
 
         [MaxLength(40, ErrorMessage ="Kullanıcının adı 40 karakterden fazla olamaz")]
         [MinLength(2, ErrorMessage ="Kullanıcının adı 2 karakterden az olamaz")]

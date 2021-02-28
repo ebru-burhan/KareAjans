@@ -11,8 +11,6 @@ namespace KareAjans.Entity.Mappings
         public void Configure(EntityTypeBuilder<ModelEmployee> builder)
         {
             builder.ToTable("ModelEmployees");
-            builder.HasKey(x => x.ID);
-            builder.Property(x => x.ID).IsRequired();
             builder.Property(x => x.FirstName).HasMaxLength(40).IsRequired();
             builder.Property(x => x.LastName).HasMaxLength(40).IsRequired();
             builder.Property(x => x.Address).HasMaxLength(400).IsRequired();
@@ -25,7 +23,9 @@ namespace KareAjans.Entity.Mappings
             builder.Property(x => x.EyeColor).IsRequired();
             builder.Property(x => x.HairColor).IsRequired();
             builder.Property(x => x.Gender).IsRequired();
-            //builder.Property(x => x.DrivingLicence).HasColumnType("bit").IsRequired();
+            builder.Property(x => x.BodySize).IsRequired();
+            builder.Property(x => x.ForeignLanguage).HasMaxLength(40);
+            builder.Property(x => x.Speciality).HasMaxLength(400);
         }
     }
 }

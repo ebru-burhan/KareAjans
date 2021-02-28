@@ -11,10 +11,7 @@ namespace KareAjans.Entity.Mappings
         public void Configure(EntityTypeBuilder<Comment> builder)
         {
             builder.ToTable("Comments");
-            builder.HasKey(x => x.ID);
-            builder.Property(x => x.ID).IsRequired();
             builder.Property(x => x.Message).HasMaxLength(400).IsRequired();
-            builder.Property(x => x.CreatedDate).IsRequired();
 
             //otomatik yapıyo gerek yok
             /*

@@ -11,10 +11,16 @@ namespace KareAjans.Entity.Mappings
         public void Configure(EntityTypeBuilder<Permission> builder)
         {
             builder.ToTable("Permissions");
-            builder.HasKey(x => x.ID);
-            builder.Property(x => x.ID).IsRequired();
             builder.Property(x => x.UserType).IsRequired();
             builder.Property(x => x.CreatedDate).IsRequired();
+
+            //seed == db oluşurken gerekli olan ilk datalar prodegree,user,expensetype,sitecontent , permission
+            builder.HasData(
+               new Permission { PermissionID = 1, UserType = Enums.UserType.Administrator, CreatedDate = DateTime.Now },
+               new Permission { PermissionID = 2, UserType = Enums.UserType.ModelEmployee, CreatedDate = DateTime.Now },
+               new Permission { PermissionID = 3, UserType = Enums.UserType.Accountant, CreatedDate = DateTime.Now },
+               new Permission { PermissionID = 4, UserType = Enums.UserType.ITManager, CreatedDate = DateTime.Now }
+             );
 
         }
     }

@@ -7,6 +7,7 @@ namespace KareAjans.Entity
 {
     public class Comment : BaseEntity
     {
+        public int CommentID { get; set; }
         public int ModelEmployeeId { get; set; }
         public string Message { get; set; }
 

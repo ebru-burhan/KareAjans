@@ -11,8 +11,6 @@ namespace KareAjans.Entity.Mappings
         public void Configure(EntityTypeBuilder<Organization> builder)
         {
             builder.ToTable("Organizations");
-            builder.HasKey(x => x.ID);
-            builder.Property(x => x.ID).IsRequired();
             builder.Property(x => x.OrganizationName).HasMaxLength(40).IsRequired();
             builder.Property(x => x.StartingDate).IsRequired();
             builder.Property(x => x.EndingDate).IsRequired();

@@ -23,12 +23,15 @@ namespace KareAjans.DataAccess
         public virtual DbSet<ExpenseType> ExpenseTypes { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Permission> Permissons { get; set; }
+        public virtual DbSet<ModelEmployeeOrganization> ModelEmployeeOrganizations { get; set; }
+        public virtual DbSet<Income> Incomes{ get; set; }
+        public virtual DbSet<SiteContent> SiteContents { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // TODO: diğer config classları silip dataAnnotation kullan ya da buraya ekle diğer mapping classalrı
-            modelBuilder.ApplyConfiguration(new ModelEmployeeOrganizationMapping());
+
             modelBuilder.ApplyConfiguration(new CommentMapping());
             modelBuilder.ApplyConfiguration(new ExpenseTypeMapping());
             modelBuilder.ApplyConfiguration(new ModelEmployeeMapping());
@@ -37,6 +40,10 @@ namespace KareAjans.DataAccess
             modelBuilder.ApplyConfiguration(new PictureMapping());
             modelBuilder.ApplyConfiguration(new ProfessionalDegreeMapping());
             modelBuilder.ApplyConfiguration(new UserMapping());
+            modelBuilder.ApplyConfiguration(new ExpenseMapping());
+            modelBuilder.ApplyConfiguration(new ModelEmployeeOrganizationMapping());
+            modelBuilder.ApplyConfiguration(new IncomeMapping());
+            modelBuilder.ApplyConfiguration(new SiteContentMapping());
         }
     }
 }
