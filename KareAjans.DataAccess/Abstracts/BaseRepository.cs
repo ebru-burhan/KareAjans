@@ -8,8 +8,10 @@ using System.Text;
 
 namespace KareAjans.DataAccess.Abstracts
 {
-    public class BaseRepository<T> : IRepository<T> where T : BaseEntity
+    public abstract class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
+        // TODO: BaseRepository Abstract yaptık bunun durumuna ilerde bak
+
         private readonly DbContext context;
         public BaseRepository(DbContext _context)
         {
@@ -36,18 +38,60 @@ namespace KareAjans.DataAccess.Abstracts
             context.SaveChanges();
         }
 
-        public T Get(Expression<Func<T, bool>> filter)
-        {
-            return context.Set<T>().FirstOrDefault(filter);
-        }
 
-        public List<T> GetAll(Expression<Func<T, bool>> filter = null)
+
+
+        //--------------------
+        public IQueryable<T> GetAll()
         {
-            return filter == null ?
-                    context.Set<T>().ToList() :
-                    context.Set<T>().Where(filter).ToList();
+            return Get();
         }
 
 
+        public IQueryable<T> Get(Expression<Func<T, bool>> filter = null, Expression<Func<T, object>> include = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, int? skip = null, int? take = null)
+        {
+            return GetQueryable(filter, include, orderBy, skip, take);
+        }
+
+
+
+        //--------IQueryable ile => modeller içinde Iqueryable
+        //GetQueryable => methodu ile eğer filter varsa include ediliyosa bi obje ya da bi sıralama ile istiyosa,,skip ve take de istiyrsa queryi bu iflerden geçirip verr method [skip(atlama) => 5 dedin 5 ten sonrasını getriyo ,, take(almak) 5 dedin 5 e kadar olanı alır]
+
+        // filter = null diyerek defaultu null diyoruz
+
+        protected virtual IQueryable<T> GetQueryable(Expression<Func<T, bool>> filter = null,
+                                                     Expression<Func<T, object>> include = null,
+                                                     Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+                                                     int? skip = null,
+                                                     int? take = null)
+        {
+            //istenilen çekildi şuan ve query atandı organization çektik diyelim
+            IQueryable<T> query = context.Set<T>();
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+            if (include != null)
+            {
+                query = query.Include(include);
+            }
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+            if (skip.HasValue)
+            {
+                query = query.Skip(skip.Value);
+            }
+            if (take.HasValue)
+            {
+                query = query.Take(take.Value);
+            }
+
+            return query;
+        }
+
+      
     }
 }
