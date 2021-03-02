@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KareAjans.Model.ProjectBaseDTO
+namespace KareAjans.Model
 {
     public class PermissionDTO
     {

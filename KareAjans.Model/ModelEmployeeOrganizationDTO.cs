@@ -4,15 +4,14 @@ using System.Text;
 
 namespace KareAjans.Model
 {
-    public class CommentDTO
+    public class ModelEmployeeOrganizationDTO
     {
-        public int ID { get; set; }
         public int ModelEmployeeId { get; set; }
-        public string Message { get; set; }
-
-
+        public int OrganizationId { get; set; }
 
         //relations-------
         public ModelEmployeeDTO ModelEmployee { get; set; }
+        public OrganizationDTO Organization { get; set; }
+        public List<ExpenseDTO> Expenses { get; set; }
     }
 }

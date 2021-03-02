@@ -1,4 +1,4 @@
-﻿using KareAjans.Model.ProjectBaseDTO;
+﻿using KareAjans.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +7,9 @@ namespace KareAjans.Business.Abstract
 {
     public interface IExpenseService : IService
     {
-        List<ExpenseDTO> GetComments();
-        void AddComment(ExpenseDTO dto);
-        void DeleteComment(ExpenseDTO dto);
-        void UpdateComment(ExpenseDTO dto);
+        List<ExpenseDTO> GetExpenses();
+        void AddExpense(ExpenseDTO dto);
+        void DeleteExpense(ExpenseDTO dto);
+        void UpdateExpense(ExpenseDTO dto);
     }
 }

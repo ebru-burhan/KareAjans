@@ -30,11 +30,39 @@ namespace KareAjansUI
 
             // Inject Repositories
             // private readonly olan proplara inject oluyor, Service/Manager kısmında kullanılıyor.
+            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IExpenseRepository, ExpenseRepository>();
+            services.AddScoped<IExpenseTypeRepository, ExpenseTypeRepository>();
+            services.AddScoped<IIncomeRepository, IncomeRepository>();
+            services.AddScoped<IModelEmployeeOrganizationRepository, ModelEmployeeOrganizationRepository>();
+            services.AddScoped<IModelEmployeeRepository, ModelEmployeeRepository>();
+            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            services.AddScoped<IPermissionRepository, PermissionRepository>();
+            services.AddScoped<IPictureRepository, PictureRepository>();
+            services.AddScoped<IProfessionalDegreeRepository, ProfessionalDegreeRepository>();
             services.AddScoped<ISiteContentRepository, SiteContentRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+
+
 
             // Inject Services
+
+            services.AddScoped<ICommentService, CommentManager>();
+            services.AddScoped<IExpenseService, ExpenseManager>();
+            services.AddScoped<IExpenseTypeService, ExpenseTypeManager>();
+            services.AddScoped<IIncomeService, IncomeManager>();
+            services.AddScoped<IModelEmployeeService, ModelEmployeeManager>();
+            services.AddScoped<IOrganizationService, OrganizationManager>();
+            services.AddScoped<IPermissionService, PermissionManager>();
+            services.AddScoped<IPictureService, PictureManager>();
+            services.AddScoped<IProfessionalDegreeService, ProfessionalDegreeManager>();
             services.AddScoped<ISiteContentService, SiteContentManager>();
+            services.AddScoped<IUserService, UserManager>();
+
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

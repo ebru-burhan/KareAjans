@@ -1,7 +1,7 @@
 ﻿using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
 using KareAjans.Entity;
-using KareAjans.Model.ProjectBaseDTO;
+using KareAjans.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;

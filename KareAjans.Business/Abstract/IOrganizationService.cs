@@ -1,4 +1,4 @@
-﻿using KareAjans.Model.ProjectBaseDTO;
+﻿using KareAjans.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +7,9 @@ namespace KareAjans.Business.Abstract
 {
     public interface IOrganizationService : IService
     {
-        List<OrganizationDTO> GetComments();
-        void AddComment(OrganizationDTO dto);
-        void DeleteComment(OrganizationDTO dto);
-        void UpdateComment(OrganizationDTO dto);
+        List<OrganizationDTO> GetOrganizations();
+        void AddOrganization(OrganizationDTO dto);
+        void DeleteOrganization(OrganizationDTO dto);
+        void UpdateOrganization(OrganizationDTO dto);
     }
 }

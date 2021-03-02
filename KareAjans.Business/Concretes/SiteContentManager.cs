@@ -11,16 +11,16 @@ namespace KareAjans.Business.Concretes
 {
     public class SiteContentManager : ISiteContentService
     {
-        private readonly ISiteContentRepository _siteContentRepo;
+        private readonly ISiteContentRepository _siteContentRepository;
 
-        public SiteContentManager(ISiteContentRepository siteContentRepo)
+        public SiteContentManager(ISiteContentRepository siteContentRepository)
         {
-            _siteContentRepo = siteContentRepo;
+            _siteContentRepository = siteContentRepository;
         }
 
         public List<SiteContentDTO> GetSiteContents()
         {
-            IQueryable<SiteContent> siteContents = _siteContentRepo.GetAll();
+            IQueryable<SiteContent> siteContents = _siteContentRepository.GetAll();
             List<SiteContentDTO> dtolist = new List<SiteContentDTO>();
 
             foreach (SiteContent item in siteContents)
@@ -32,17 +32,17 @@ namespace KareAjans.Business.Concretes
 
         public void AddSiteContent(SiteContentDTO dto)
         {
-            _siteContentRepo.Add(ConvertToEntity(dto));
+            _siteContentRepository.Add(ConvertToEntity(dto));
         }
 
         public void DeleteSiteContent(SiteContentDTO dto)
         {
-            _siteContentRepo.Delete(ConvertToEntity(dto));
+            _siteContentRepository.Delete(ConvertToEntity(dto));
         }
 
         public void UpdateSiteContent(SiteContentDTO dto)
         {
-            _siteContentRepo.Update(ConvertToEntity(dto));
+            _siteContentRepository.Update(ConvertToEntity(dto));
         }
 
 

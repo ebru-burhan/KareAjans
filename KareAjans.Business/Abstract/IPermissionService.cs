@@ -1,4 +1,4 @@
-﻿using KareAjans.Model.ProjectBaseDTO;
+﻿using KareAjans.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +7,9 @@ namespace KareAjans.Business.Abstract
 {
     public interface IPermissionService : IService
     {
-        List<PermissionDTO> GetComments();
-        void AddComment(PermissionDTO dto);
-        void DeleteComment(PermissionDTO dto);
-        void UpdateComment(PermissionDTO dto);
+        List<PermissionDTO> GetPermissions();
+        void AddPermission(PermissionDTO dto);
+        void DeletePermission(PermissionDTO dto);
+        void UpdatePermission(PermissionDTO dto);
     }
 }
