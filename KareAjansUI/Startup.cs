@@ -1,4 +1,8 @@
+﻿using KareAjans.Business.Abstract;
+using KareAjans.Business.Concretes;
 using KareAjans.DataAccess;
+using KareAjans.DataAccess.Abstracts;
+using KareAjans.DataAccess.Concretes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -19,7 +23,17 @@ namespace KareAjansUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<DataContext>();
+            //services.AddScoped<DataContext>(); eskisi
+
+            // Inject DataContext
+            services.AddDbContext<DataContext>();
+
+            // Inject Repositories
+            // private readonly olan proplara inject oluyor, Service/Manager kısmında kullanılıyor.
+            services.AddScoped<ISiteContentRepository, SiteContentRepository>();
+
+            // Inject Services
+            services.AddScoped<ISiteContentService, SiteContentManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

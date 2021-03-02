@@ -11,6 +11,6 @@ namespace KareAjans.Model.ProjectBaseDTO
 
 
         //relations-------
-        public virtual ExpenseTypeDTO ExpenseType { get; set; }
+        public ExpenseTypeDTO ExpenseType { get; set; }
     }
 }

@@ -14,6 +14,6 @@ namespace KareAjans.Model.ProjectBaseDTO
         public string Password { get; set; }
 
         //relations-------
-        public virtual PermissionDTO Permission { get; set; }
+        public PermissionDTO Permission { get; set; }
     }
 }

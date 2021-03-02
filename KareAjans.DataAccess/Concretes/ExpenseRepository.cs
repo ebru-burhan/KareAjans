@@ -10,7 +10,7 @@ namespace KareAjans.DataAccess.Concretes
     public class ExpenseRepository : BaseRepository<Expense> , IExpenseRepository
     {
         
-        public ExpenseRepository(DbContext _context) : base(_context)
+        public ExpenseRepository(DataContext _context) : base(_context)
         {
         }
     }

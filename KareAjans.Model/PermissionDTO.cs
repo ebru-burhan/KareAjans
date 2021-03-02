@@ -13,6 +13,6 @@ namespace KareAjans.Model.ProjectBaseDTO
 
 
         //relations-------
-        public virtual List<UserDTO> UserList { get; set; }
+        public List<UserDTO> UserList { get; set; }
     }
 }

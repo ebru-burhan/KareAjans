@@ -32,11 +32,11 @@ namespace KareAjans.Model.ProjectBaseDTO
 
 
         //relations-------
-        public virtual ProfessionalDegreeDTO ProfessionalDegree { get; set; }
-        public virtual List<PictureDTO> PictureList { get; set; }
+        public ProfessionalDegreeDTO ProfessionalDegree { get; set; }
+        public List<PictureDTO> PictureList { get; set; }
 
 
         //authorizeyapılacak adminler görücek yorum yazıcak mankenler görmicek yorum yazmıcak örn
-        public virtual ICollection<CommentDTO> CommentList { get; set; }
+        public List<CommentDTO> CommentList { get; set; }
     }
 }

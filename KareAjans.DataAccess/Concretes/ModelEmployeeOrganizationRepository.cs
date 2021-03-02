@@ -9,7 +9,7 @@ namespace KareAjans.DataAccess.Concretes
 {
     public class ModelEmployeeOrganizationRepository : BaseRepository<ModelEmployeeOrganization>, IModelEmployeeOrganizationRepository
     {
-        public ModelEmployeeOrganizationRepository(DbContext _context) : base(_context)
+        public ModelEmployeeOrganizationRepository(DataContext _context) : base(_context)
         {
         }
     }

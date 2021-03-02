@@ -12,6 +12,6 @@ namespace KareAjans.Model.ProjectBaseDTO
 
 
         //relations-------
-        public virtual ModelEmployeeDTO ModelEmployee { get; set; }
+        public ModelEmployeeDTO ModelEmployee { get; set; }
     }
 }

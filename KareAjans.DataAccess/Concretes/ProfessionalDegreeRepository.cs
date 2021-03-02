@@ -9,7 +9,7 @@ namespace KareAjans.DataAccess.Concretes
 {
     public class ProfessionalDegreeRepository : BaseRepository<ProfessionalDegree>, IProfessionalDegreeRepository
     {
-        public ProfessionalDegreeRepository(DbContext _context) : base(_context)
+        public ProfessionalDegreeRepository(DataContext _context) : base(_context)
         {
         }
     }

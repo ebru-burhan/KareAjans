@@ -12,8 +12,8 @@ namespace KareAjans.DataAccess.Abstracts
     {
         // TODO: BaseRepository Abstract yaptık bunun durumuna ilerde bak
 
-        private readonly DbContext context;
-        public BaseRepository(DbContext _context)
+        private readonly DataContext context;
+        public BaseRepository(DataContext _context)
         {
             context = _context;
         }

@@ -9,7 +9,7 @@ namespace KareAjans.DataAccess.Concretes
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public UserRepository(DbContext _context) : base(_context)
+        public UserRepository(DataContext _context) : base(_context)
         {
         }
     }

@@ -1,8 +1,10 @@
 ﻿using KareAjans.Entity;
+using KareAjans.Entity.Abstracts;
 using KareAjans.Entity.Mappings;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace KareAjans.DataAccess
@@ -44,6 +46,29 @@ namespace KareAjans.DataAccess
             modelBuilder.ApplyConfiguration(new ModelEmployeeOrganizationMapping());
             modelBuilder.ApplyConfiguration(new IncomeMapping());
             modelBuilder.ApplyConfiguration(new SiteContentMapping());
+        }
+
+        public override int SaveChanges()
+        {
+            // Yeni eklenecek entityleri getir
+            var entityObjects = ChangeTracker.Entries().Where(e => e.State == EntityState.Added);
+
+            // Her bir bulunan entity için
+            foreach (var entityObject in entityObjects)
+            {
+                // Entity'i CratedDate'e erişmek için IEntity'e cast et (çünkü her bir entity'nin IEntity'den türediğini biliyoruz)
+                var changedOrAddedItem = entityObject.Entity as IEntity;
+
+                // Olur da gelen entity IEntity'den türememişse, null olabilir. Bu yüzden null check yap.
+                if (changedOrAddedItem != null)
+                {
+                    // CratedDate'i şimdiye eşitle
+                    changedOrAddedItem.CreatedDate = DateTime.UtcNow;
+                }
+            }
+
+            // Save changes'i çağır.
+            return base.SaveChanges();
         }
     }
 }

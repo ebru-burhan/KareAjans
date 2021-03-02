@@ -9,7 +9,7 @@ namespace KareAjans.DataAccess.Concretes
 {
     public class PictureRepository : BaseRepository<Picture>, IPictureRepository
     {
-        public PictureRepository(DbContext _context) : base(_context)
+        public PictureRepository(DataContext _context) : base(_context)
         {
         }
     }

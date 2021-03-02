@@ -9,7 +9,7 @@ namespace KareAjans.DataAccess.Concretes
 {
     public class IncomeRepository : BaseRepository<Income>, IIncomeRepository
     {
-        public IncomeRepository(DbContext _context) : base(_context)
+        public IncomeRepository(DataContext _context) : base(_context)
         {
         }
     }

@@ -14,7 +14,7 @@ namespace KareAjans.DataAccess.Concretes
         //base e contexti geçtik
         private readonly DbContext context;
 
-        public OrganizationRepository(DbContext _context) : base(_context)
+        public OrganizationRepository(DataContext _context) : base(_context)
         {
             context = _context;
         }

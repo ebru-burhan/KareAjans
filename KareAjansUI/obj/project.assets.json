@@ -1484,6 +1484,20 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "KareAjans.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "KareAjans.DataAccess": "1.0.0",
+          "KareAjans.Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/KareAjans.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/KareAjans.Business.dll": {}
+        }
+      },
       "KareAjans.DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -1511,6 +1525,19 @@
         },
         "runtime": {
           "bin/placeholder/KareAjans.Entity.dll": {}
+        }
+      },
+      "KareAjans.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "KareAjans.Entity": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/KareAjans.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/KareAjans.Model.dll": {}
         }
       }
     }
@@ -5706,6 +5733,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "KareAjans.Business/1.0.0": {
+      "type": "project",
+      "path": "../KareAjans.Business/KareAjans.Business.csproj",
+      "msbuildProject": "../KareAjans.Business/KareAjans.Business.csproj"
+    },
     "KareAjans.DataAccess/1.0.0": {
       "type": "project",
       "path": "../KareAjans.DataAccess/KareAjans.DataAccess.csproj",
@@ -5715,10 +5747,16 @@
       "type": "project",
       "path": "../KareAjansEntities/KareAjans.Entity.csproj",
       "msbuildProject": "../KareAjansEntities/KareAjans.Entity.csproj"
+    },
+    "KareAjans.Model/1.0.0": {
+      "type": "project",
+      "path": "../KareAjans.Model/KareAjans.Model.csproj",
+      "msbuildProject": "../KareAjans.Model/KareAjans.Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "KareAjans.Business >= 1.0.0",
       "KareAjans.DataAccess >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 3.1.12"
     ]
@@ -5750,6 +5788,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+            "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjans.Business\\KareAjans.Business.csproj": {
+              "projectPath": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjans.Business\\KareAjans.Business.csproj"
+            },
             "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjans.DataAccess\\KareAjans.DataAccess.csproj": {
               "projectPath": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjans.DataAccess\\KareAjans.DataAccess.csproj"
             }

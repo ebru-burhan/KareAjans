@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KareAjans.Business\KareAjans.Business.csproj" />
     <ProjectReference Include="..\KareAjans.DataAccess\KareAjans.DataAccess.csproj" />
   </ItemGroup>
 

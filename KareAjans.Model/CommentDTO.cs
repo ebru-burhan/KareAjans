@@ -9,12 +9,10 @@ namespace KareAjans.Model.ProjectBaseDTO
         public int ID { get; set; }
         public int ModelEmployeeId { get; set; }
         public string Message { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
 
 
 
         //relations-------
-        public virtual ModelEmployeeDTO ModelEmployee { get; set; }
+        public ModelEmployeeDTO ModelEmployee { get; set; }
     }
 }

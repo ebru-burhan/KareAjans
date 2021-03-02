@@ -9,7 +9,7 @@ namespace KareAjans.DataAccess.Concretes
 {
     public class SiteContentRepository : BaseRepository<SiteContent>, ISiteContentRepository
     {
-        public SiteContentRepository(DbContext _context) : base(_context)
+        public SiteContentRepository(DataContext _context) : base(_context)
         {
         }
     }

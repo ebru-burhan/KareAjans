@@ -9,7 +9,7 @@ namespace KareAjans.DataAccess.Concretes
 {
     public class PermissionRepository : BaseRepository<Permission>, IPermissionRepository
     {
-        public PermissionRepository(DbContext _context) : base(_context)
+        public PermissionRepository(DataContext _context) : base(_context)
         {
         }
     }
