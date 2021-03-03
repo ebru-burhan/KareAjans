@@ -14,7 +14,6 @@ namespace KareAjans.Entity
 
 
         //relations-------
-        //generic için Icollection
         public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using KareAjans.Business.Abstract;
+﻿using AutoMapper;
+using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
 using KareAjans.Entity;
 using KareAjans.Model;
@@ -12,10 +13,12 @@ namespace KareAjans.Business.Concretes
     public class SiteContentManager : ISiteContentService
     {
         private readonly ISiteContentRepository _siteContentRepository;
+        private readonly IMapper _mapper;
 
-        public SiteContentManager(ISiteContentRepository siteContentRepository)
+        public SiteContentManager(ISiteContentRepository siteContentRepository, IMapper mapper)
         {
             _siteContentRepository = siteContentRepository;
+            _mapper = mapper;
         }
 
         public List<SiteContentDTO> GetSiteContents()
@@ -25,7 +28,9 @@ namespace KareAjans.Business.Concretes
 
             foreach (SiteContent item in siteContents)
             {
-                dtolist.Add(ConvertToDto(item));
+                //dtolist.Add(ConvertToDto(item));
+                dtolist.Add(_mapper.Map<SiteContentDTO>(item));
+                
             }
             return dtolist;
         }
@@ -52,7 +57,7 @@ namespace KareAjans.Business.Concretes
         {
             SiteContentDTO dto = new SiteContentDTO()
             {
-                ID = siteContent.SiteContentID,
+                SiteContentID = siteContent.SiteContentID,
                 SiteContentType = siteContent.SiteContentType,
                 Text = siteContent.Text
             };
@@ -64,7 +69,7 @@ namespace KareAjans.Business.Concretes
         {
             SiteContent entity = new SiteContent()
             {
-                SiteContentID = dto.ID,
+                SiteContentID = dto.SiteContentID,
                 SiteContentType = dto.SiteContentType,
                 Text = dto.Text
             };

@@ -7,7 +7,7 @@ namespace KareAjans.Model
 {
     public class IncomeDTO
     {
-        public int ID { get; set; }
+        public int IncomeID { get; set; }
         public int OrganizationId { get; set; }
         public decimal Amount { get; set; }
 

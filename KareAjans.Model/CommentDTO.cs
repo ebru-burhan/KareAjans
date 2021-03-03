@@ -6,7 +6,7 @@ namespace KareAjans.Model
 {
     public class CommentDTO
     {
-        public int ID { get; set; }
+        public int CommentID { get; set; }
         public int ModelEmployeeId { get; set; }
         public string Message { get; set; }
 

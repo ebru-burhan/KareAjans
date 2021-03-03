@@ -6,7 +6,7 @@ namespace KareAjans.Model
 {
     public class UserDTO
     {
-        public int ID { get; set; }
+        public int UserID { get; set; }
         public int PermissonId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

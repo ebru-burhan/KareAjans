@@ -6,13 +6,14 @@ namespace KareAjans.Model
 {
     public class ProfessionalDegreeDTO
     {
-        public int ID { get; set; }
+        public int ProfessionalDegreeID { get; set; }
         public string Title { get; set; }
         public decimal DailyWage { get; set; }
+        public byte DailyPercentage { get; set; }
 
 
 
         //relations-------
-        public List<ModelEmployeeDTO> ModelEmployeeList { get; set; }
+        public List<ModelEmployeeDTO> ModelEmployees { get; set; }
     }
 }

@@ -6,12 +6,12 @@ namespace KareAjans.Model
 {
     public class ExpenseTypeDTO
     {
-        public int ID { get; set; }
+        public int ExpenseTypeID { get; set; }
         public string Title { get; set; }
         public decimal Amount { get; set; }
 
 
         //relations-------
-        public List<ExpenseDTO> ExpenseList { get; set; }
+        public List<ExpenseDTO> Expenses { get; set; }
     }
 }

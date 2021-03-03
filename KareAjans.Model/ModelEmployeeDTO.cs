@@ -8,8 +8,9 @@ namespace KareAjans.Model
 {
     public class ModelEmployeeDTO
     {
-        public int ID { get; set; }
+        public int ModelEmployeeID { get; set; }
         public int ProfessionalDegreeId { get; set; }
+        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
@@ -22,6 +23,7 @@ namespace KareAjans.Model
         public EyeColor EyeColor { get; set; }
         public HairColor HairColor { get; set; }
         public Gender Gender { get; set; }
+        public BodySize BodySize { get; set; }
         public bool DrivingLicence { get; set; }
         public bool WorkingOutsideTheCity { get; set; }
         public string ForeignLanguage { get; set; }
@@ -32,11 +34,15 @@ namespace KareAjans.Model
 
 
         //relations-------
+
+        public UserDTO User { get; set; }
         public ProfessionalDegreeDTO ProfessionalDegree { get; set; }
-        public List<PictureDTO> PictureList { get; set; }
+        public List<PictureDTO> Pictures { get; set; }
 
 
         //authorizeyapılacak adminler görücek yorum yazıcak mankenler görmicek yorum yazmıcak örn
-        public List<CommentDTO> CommentList { get; set; }
+        public List<CommentDTO> Comments { get; set; }
+
+        public List<ModelEmployeeOrganizationDTO> ModelEmployeeOrganizations { get; set; }
     }
 }

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\KareAjans.DataAccess\KareAjans.DataAccess.csproj" />
     <ProjectReference Include="..\KareAjans.Model\KareAjans.Model.csproj" />
   </ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using KareAjans.Business.Abstract;
 using KareAjans.Business.Concretes;
+using KareAjans.Business.Mapper;
 using KareAjans.DataAccess;
 using KareAjans.DataAccess.Abstracts;
 using KareAjans.DataAccess.Concretes;
@@ -59,6 +60,10 @@ namespace KareAjansUI
             services.AddScoped<IProfessionalDegreeService, ProfessionalDegreeManager>();
             services.AddScoped<ISiteContentService, SiteContentManager>();
             services.AddScoped<IUserService, UserManager>();
+
+
+            //version 2 ve üzerinde mappingProfile ı göndermek zorundayız
+            services.AddAutoMapper(typeof(MappingProfile));
 
         }
 

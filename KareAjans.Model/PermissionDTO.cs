@@ -8,11 +8,11 @@ namespace KareAjans.Model
 {
     public class PermissionDTO
     {
-        public int ID { get; set; }
+        public int PermissionID { get; set; }
         public UserType UserType { get; set; }
 
 
         //relations-------
-        public List<UserDTO> UserList { get; set; }
+        public List<UserDTO> Users { get; set; }
     }
 }
