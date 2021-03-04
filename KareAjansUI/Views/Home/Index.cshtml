@@ -1,5 +1,34 @@
-﻿@*
+﻿@model List<KareAjans.Model.SiteContentDTO>
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "_Layout";
 }
+
+
+
+<div class=" = col-md-12">
+    <div class="col-md-1">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>SiteContentType</th>
+                    <th>Text</th>
+                    <th colspan="2"><a asp-action="AddSiteContent" asp-controller="Home" class="btn btn-default">Add SiteContent</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var siteContent in Model)
+                {
+                <tr>
+                    <td>@siteContent.Text</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+

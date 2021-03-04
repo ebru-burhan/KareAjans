@@ -29,6 +29,7 @@ namespace KareAjansUI
             // Inject DataContext
             services.AddDbContext<DataContext>();
 
+            #region Inject Repositories
             // Inject Repositories
             // private readonly olan proplara inject oluyor, Service/Manager kısmında kullanılıyor.
             services.AddScoped<ICommentRepository, CommentRepository>();
@@ -43,10 +44,10 @@ namespace KareAjansUI
             services.AddScoped<IProfessionalDegreeRepository, ProfessionalDegreeRepository>();
             services.AddScoped<ISiteContentRepository, SiteContentRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            #endregion
 
 
-
-
+            #region Inject Services
             // Inject Services
 
             services.AddScoped<ICommentService, CommentManager>();
@@ -60,10 +61,12 @@ namespace KareAjansUI
             services.AddScoped<IProfessionalDegreeService, ProfessionalDegreeManager>();
             services.AddScoped<ISiteContentService, SiteContentManager>();
             services.AddScoped<IUserService, UserManager>();
-
+            #endregion
 
             //version 2 ve üzerinde mappingProfile ı göndermek zorundayız
             services.AddAutoMapper(typeof(MappingProfile));
+
+
 
         }
 
@@ -84,6 +87,8 @@ namespace KareAjansUI
             {
                 endpoints.MapControllerRoute("Default", "{controller=Home}/{action=Index}/{id?}");
             });
+
+
 
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
