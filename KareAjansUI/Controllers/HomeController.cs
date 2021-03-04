@@ -15,10 +15,31 @@ namespace KareAjansUI.Controllers
     {
         //private IRepository<ModelEmployee> repository;
         private readonly ISiteContentService _siteContentService;
+        private readonly ICommentService _commentService;
+        private readonly IExpenseService _expenseService;
+        private readonly IExpenseTypeService _expenseTypeService;
+        private readonly IIncomeService _incomeService;
+        private readonly IModelEmployeeService _modelEmployeeService;
+        private readonly IOrganizationService _organizationService;
+        private readonly IPermissionService _permissionService;
+        private readonly IPictureService _pictureService;
+        private readonly IProfessionalDegreeService _professionalDegreeService;
+        private readonly IUserService _userService;
 
-        public HomeController(ISiteContentService siteContentService)
+        public HomeController(ISiteContentService siteContentService, ICommentService commentService, IExpenseService expenseService , IExpenseTypeService expenseTypeService, IIncomeService incomeService, IModelEmployeeService modelEmployeeService, IOrganizationService organizationService, IPermissionService permissionService, 
+            IPictureService pictureService, IProfessionalDegreeService professionalDegreeService, IUserService userService)
         {
             _siteContentService = siteContentService;
+            _commentService = commentService;
+            _expenseService = expenseService;
+            _expenseTypeService = expenseTypeService;
+            _incomeService = incomeService;
+            _modelEmployeeService = modelEmployeeService;
+            _organizationService = organizationService;
+            _permissionService = permissionService;
+            _pictureService = pictureService;
+            _professionalDegreeService = professionalDegreeService;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -51,7 +72,17 @@ namespace KareAjansUI.Controllers
 
             //var list = repo.GetAll();
 
-            var list = _siteContentService.GetSiteContents();
+            var list1 = _siteContentService.GetSiteContents();
+            var list2 = _commentService.GetComments();
+            var list3 = _expenseService.GetExpenses();
+            var list4 = _expenseTypeService.GetExpenseTypes();
+            var list5 = _incomeService.GetIncomes();
+            var list6 = _modelEmployeeService.GetModelEmployees();
+            var list7 = _organizationService.GetOrganizations();
+            var list8 = _permissionService.GetPermissions();
+            var list9 = _pictureService.GetPictures();
+            var list10 = _professionalDegreeService.GetProfessionalDegrees();
+            var list11 = _userService.GetUsers();
 
             return View();
         }

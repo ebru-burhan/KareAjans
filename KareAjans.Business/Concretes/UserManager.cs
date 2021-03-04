@@ -1,5 +1,7 @@
-﻿using KareAjans.Business.Abstract;
+﻿using AutoMapper;
+using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
+using KareAjans.Entity;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
@@ -10,31 +12,34 @@ namespace KareAjans.Business.Concretes
     public class UserManager : IUserService
     {
         private readonly IUserRepository _userRepository;
-        public UserManager(IUserRepository userRepository)
+        private readonly IMapper _mapper;
+        public UserManager(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
 
 
         public List<UserDTO> GetUsers()
         {
-            throw new NotImplementedException();
+            var users = _userRepository.GetAll();
+            return _mapper.Map<List<UserDTO>>(users);
         }
 
         public void AddUser(UserDTO dto)
         {
-            throw new NotImplementedException();
+            _userRepository.Add(_mapper.Map<User>(dto));
         }
 
         public void DeleteUser(UserDTO dto)
         {
-            throw new NotImplementedException();
+            _userRepository.Delete(_mapper.Map<User>(dto));
         }
 
         public void UpdateUser(UserDTO dto)
         {
-            throw new NotImplementedException();
+            _userRepository.Update(_mapper.Map<User>(dto));
         }
     }
 }

@@ -1,8 +1,11 @@
-﻿using KareAjans.Business.Abstract;
+﻿using AutoMapper;
+using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
+using KareAjans.Entity;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace KareAjans.Business.Concretes
@@ -10,31 +13,34 @@ namespace KareAjans.Business.Concretes
     public class ExpenseTypeManager : IExpenseTypeService
     {
         private readonly IExpenseTypeRepository _expenseTypeRepository;
-        public ExpenseTypeManager(IExpenseTypeRepository expenseTypeRepository)
+        private readonly IMapper _mapper;
+        public ExpenseTypeManager(IExpenseTypeRepository expenseTypeRepository, IMapper mapper)
         {
             _expenseTypeRepository = expenseTypeRepository;
+            _mapper = mapper;
         }
 
 
 
         public List<ExpenseTypeDTO> GetExpenseTypes()
         {
-            throw new NotImplementedException();
+            var expenseTypes = _expenseTypeRepository.GetAll();
+            return _mapper.Map<List<ExpenseTypeDTO>>(expenseTypes);
         }
 
         public void AddExpenseType(ExpenseTypeDTO dto)
         {
-            throw new NotImplementedException();
+            _expenseTypeRepository.Add(_mapper.Map<ExpenseType>(dto));
         }
 
         public void DeleteExpenseType(ExpenseTypeDTO dto)
         {
-            throw new NotImplementedException();
+            _expenseTypeRepository.Delete(_mapper.Map<ExpenseType>(dto));
         }
 
         public void UpdateExpenseType(ExpenseTypeDTO dto)
         {
-            throw new NotImplementedException();
+            _expenseTypeRepository.Update(_mapper.Map<ExpenseType>(dto));
         }
     }
 }

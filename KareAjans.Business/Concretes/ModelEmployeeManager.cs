@@ -1,8 +1,11 @@
-﻿using KareAjans.Business.Abstract;
+﻿using AutoMapper;
+using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
+using KareAjans.Entity;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace KareAjans.Business.Concretes
@@ -10,30 +13,33 @@ namespace KareAjans.Business.Concretes
     public class ModelEmployeeManager : IModelEmployeeService
     {
         private readonly IModelEmployeeRepository _modelEmployeeRepository;
-        public ModelEmployeeManager(IModelEmployeeRepository modelEmployeeRepository)
+        private readonly IMapper _mapper;
+        public ModelEmployeeManager(IModelEmployeeRepository modelEmployeeRepository , IMapper mapper)
         {
             _modelEmployeeRepository = modelEmployeeRepository;
+            _mapper = mapper;
         }
 
 
         public List<ModelEmployeeDTO> GetModelEmployees()
         {
-            throw new NotImplementedException();
+            var modelEmployees = _modelEmployeeRepository.GetAll();
+            return _mapper.Map<List<ModelEmployeeDTO>>(modelEmployees);
         }
 
         public void AddModelEmployee(ModelEmployeeDTO dto)
         {
-            throw new NotImplementedException();
+            _modelEmployeeRepository.Add(_mapper.Map<ModelEmployee>(dto));
         }
 
         public void DeleteModelEmployee(ModelEmployeeDTO dto)
         {
-            throw new NotImplementedException();
+            _modelEmployeeRepository.Delete(_mapper.Map<ModelEmployee>(dto));
         }
 
         public void UpdateModelEmployee(ModelEmployeeDTO dto)
         {
-            throw new NotImplementedException();
+            _modelEmployeeRepository.Update(_mapper.Map<ModelEmployee>(dto));
         }
     }
 }

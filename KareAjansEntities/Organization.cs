@@ -15,5 +15,6 @@ namespace KareAjans.Entity
 
         // relations---------
         public virtual ICollection<ModelEmployeeOrganization> ModelEmployeeOrganizations { get; set; }
+        public virtual ICollection<Income> Incomes { get; set; }
     }
 }

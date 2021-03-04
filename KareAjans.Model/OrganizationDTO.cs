@@ -13,5 +13,6 @@ namespace KareAjans.Model
         public bool IsLocal { get; set; }
 
         public List<ModelEmployeeOrganizationDTO> ModelEmployeeOrganizations { get; set; }
+        public  List<IncomeDTO> Incomes { get; set; }
     }
 }

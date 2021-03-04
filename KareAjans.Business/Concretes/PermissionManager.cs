@@ -1,8 +1,11 @@
-﻿using KareAjans.Business.Abstract;
+﻿using AutoMapper;
+using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
+using KareAjans.Entity;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace KareAjans.Business.Concretes
@@ -10,9 +13,11 @@ namespace KareAjans.Business.Concretes
     public class PermissionManager : IPermissionService
     {
         private readonly IPermissionRepository _permissionRepository;
-        public PermissionManager(IPermissionRepository permissionRepository)
+        private readonly IMapper _mapper;
+        public PermissionManager(IPermissionRepository permissionRepository, IMapper mapper)
         {
             _permissionRepository = permissionRepository;
+            _mapper = mapper;
         }
 
 
@@ -20,22 +25,23 @@ namespace KareAjans.Business.Concretes
 
         public List<PermissionDTO> GetPermissions()
         {
-            throw new NotImplementedException();
+            var permissions = _permissionRepository.GetAll();
+            return _mapper.Map<List<PermissionDTO>>(permissions);
         }
 
         public void AddPermission(PermissionDTO dto)
         {
-            throw new NotImplementedException();
+            _permissionRepository.Add(_mapper.Map<Permission>(dto));
         }
 
         public void DeletePermission(PermissionDTO dto)
         {
-            throw new NotImplementedException();
+            _permissionRepository.Delete(_mapper.Map<Permission>(dto));
         }
 
         public void UpdatePermission(PermissionDTO dto)
         {
-            throw new NotImplementedException();
+            _permissionRepository.Update(_mapper.Map<Permission>(dto));
         }
     }
 }

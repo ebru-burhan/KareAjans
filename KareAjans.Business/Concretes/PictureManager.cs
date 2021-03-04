@@ -1,8 +1,11 @@
-﻿using KareAjans.Business.Abstract;
+﻿using AutoMapper;
+using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
+using KareAjans.Entity;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace KareAjans.Business.Concretes
@@ -10,31 +13,36 @@ namespace KareAjans.Business.Concretes
     public class PictureManager : IPictureService
     {
         private readonly IPictureRepository _pictureRepository;
-        public PictureManager(IPictureRepository pictureRepository)
+        private readonly IMapper _mapper;
+        public PictureManager(IPictureRepository pictureRepository, IMapper mapper)
         {
             _pictureRepository = pictureRepository;
+            _mapper = mapper;
         }
 
 
 
         public List<PictureDTO> GetPictures()
         {
-            throw new NotImplementedException();
+            var pictures = _pictureRepository.GetAll();
+            return _mapper.Map<List<PictureDTO>>(pictures);
         }
 
         public void AddPicture(PictureDTO dto)
         {
-            throw new NotImplementedException();
+            _pictureRepository.Add(_mapper.Map<Picture>(dto));
         }
 
         public void DeletePicture(PictureDTO dto)
         {
-            throw new NotImplementedException();
+            _pictureRepository.Delete(_mapper.Map<Picture>(dto));
         }
 
+
+        // TODO: gerekmeyen crudlar
         public void UpdatePicture(PictureDTO dto)
         {
-            throw new NotImplementedException();
+            _pictureRepository.Update(_mapper.Map<Picture>(dto));
         }
     }
 }

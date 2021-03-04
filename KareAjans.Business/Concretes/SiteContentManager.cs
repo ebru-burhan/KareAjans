@@ -23,61 +23,24 @@ namespace KareAjans.Business.Concretes
 
         public List<SiteContentDTO> GetSiteContents()
         {
-            IQueryable<SiteContent> siteContents = _siteContentRepository.GetAll();
-            List<SiteContentDTO> dtolist = new List<SiteContentDTO>();
-
-            foreach (SiteContent item in siteContents)
-            {
-                //dtolist.Add(ConvertToDto(item));
-                dtolist.Add(_mapper.Map<SiteContentDTO>(item));
-                
-            }
-            return dtolist;
+            var siteContents = _siteContentRepository.GetAll();
+            return _mapper.Map<List<SiteContentDTO>>(siteContents);
         }
 
         public void AddSiteContent(SiteContentDTO dto)
         {
-            _siteContentRepository.Add(ConvertToEntity(dto));
+            _siteContentRepository.Add(_mapper.Map<SiteContent>(dto));
         }
 
         public void DeleteSiteContent(SiteContentDTO dto)
         {
-            _siteContentRepository.Delete(ConvertToEntity(dto));
+            _siteContentRepository.Delete(_mapper.Map<SiteContent>(dto));
         }
 
         public void UpdateSiteContent(SiteContentDTO dto)
         {
-            _siteContentRepository.Update(ConvertToEntity(dto));
+            _siteContentRepository.Update(_mapper.Map<SiteContent>(dto));
         }
 
-
-        #region Private
-        //--------------dto dan entity ve enttyden dto çevrme methodlar----------------------
-        private SiteContentDTO ConvertToDto(SiteContent siteContent)
-        {
-            SiteContentDTO dto = new SiteContentDTO()
-            {
-                SiteContentID = siteContent.SiteContentID,
-                SiteContentType = siteContent.SiteContentType,
-                Text = siteContent.Text
-            };
-
-            return dto;
-        }
-
-        private SiteContent ConvertToEntity(SiteContentDTO dto)
-        {
-            SiteContent entity = new SiteContent()
-            {
-                SiteContentID = dto.SiteContentID,
-                SiteContentType = dto.SiteContentType,
-                Text = dto.Text
-            };
-
-            return entity;
-        }
-
-       
-        #endregion
     }
 }

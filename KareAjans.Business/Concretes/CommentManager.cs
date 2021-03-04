@@ -1,9 +1,11 @@
-﻿using KareAjans.Business.Abstract;
+﻿using AutoMapper;
+using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
 using KareAjans.Entity;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace KareAjans.Business.Concretes
@@ -11,57 +13,34 @@ namespace KareAjans.Business.Concretes
     public class CommentManager : ICommentService
     {
         private readonly ICommentRepository _commentRepository;
-        public CommentManager(ICommentRepository commentRepository)
+        private readonly IMapper _mapper;
+        public CommentManager(ICommentRepository commentRepository , IMapper mapper)
         {
             _commentRepository = commentRepository;
+            _mapper = mapper;
         }
 
 
         public List<CommentDTO> GetComments()
         {
-            throw new NotImplementedException();
+            var comments = _commentRepository.GetAll();
+            return _mapper.Map<List<CommentDTO>>(comments);
         }
 
         public void AddComment(CommentDTO dto)
         {
-            throw new NotImplementedException();
+            _commentRepository.Add(_mapper.Map<Comment>(dto));
         }
 
         public void DeleteComment(CommentDTO dto)
         {
-            throw new NotImplementedException();
+            _commentRepository.Delete(_mapper.Map<Comment>(dto));
         }
-
 
 
         public void UpdateComment(CommentDTO dto)
         {
-            throw new NotImplementedException();
-        }
-
-
-
-        //--------------dto dan entity ve enttyden dto çevrme methodlar----------------------
-        private CommentDTO ConvertToDto(Comment comment)
-        {
-            CommentDTO dto = new CommentDTO()
-            {
-                Message = comment.Message,
-                // TODO:Modelleri nası mapleyeceeezzzzz automapper ama howwwwwww
-                //ModelEmployee = comment.ModelEmployee 
-            };
-
-            return dto;
-        }
-
-        private Comment ConvertToEntity(CommentDTO dto)
-        {
-            Comment entity = new Comment()
-            {
-               
-            };
-
-            return entity;
+            _commentRepository.Update(_mapper.Map<Comment>(dto));
         }
 
     }

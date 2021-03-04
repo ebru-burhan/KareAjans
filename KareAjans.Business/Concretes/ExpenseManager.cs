@@ -1,8 +1,11 @@
-﻿using KareAjans.Business.Abstract;
+﻿using AutoMapper;
+using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
+using KareAjans.Entity;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace KareAjans.Business.Concretes
@@ -11,31 +14,34 @@ namespace KareAjans.Business.Concretes
     {
 
         private readonly IExpenseRepository _expenseRepository;
-        public ExpenseManager(IExpenseRepository expenseRepository)
+        private readonly IMapper _mapper;
+        public ExpenseManager(IExpenseRepository expenseRepository , IMapper mapper)
         {
             _expenseRepository = expenseRepository;
+            _mapper = mapper;
         }
 
 
 
         public List<ExpenseDTO> GetExpenses()
         {
-            throw new NotImplementedException();
+            var expenses =  _expenseRepository.GetAll();
+            return _mapper.Map<List<ExpenseDTO>>(expenses);
         }
 
         public void AddExpense(ExpenseDTO dto)
         {
-            throw new NotImplementedException();
+            _expenseRepository.Add(_mapper.Map<Expense>(dto));
         }
 
         public void DeleteExpense(ExpenseDTO dto)
         {
-            throw new NotImplementedException();
+            _expenseRepository.Delete(_mapper.Map<Expense>(dto));
         }
 
         public void UpdateExpense(ExpenseDTO dto)
         {
-            throw new NotImplementedException();
+            _expenseRepository.Update(_mapper.Map<Expense>(dto));
         }
     }
 }

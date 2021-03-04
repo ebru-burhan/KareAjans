@@ -25,7 +25,7 @@ namespace KareAjans.DataAccess.Abstracts
             return entity;
         }
 
-        public void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             context.Set<T>().Remove(entity);
             context.SaveChanges();
