@@ -2,6 +2,7 @@
 using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
 using KareAjans.Entity;
+using KareAjans.Entity.Enums;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
@@ -27,19 +28,16 @@ namespace KareAjans.Business.Concretes
             return _mapper.Map<List<SiteContentDTO>>(siteContents);
         }
 
-        public void AddSiteContent(SiteContentDTO dto)
-        {
-            _siteContentRepository.Add(_mapper.Map<SiteContent>(dto));
-        }
-
-        public void DeleteSiteContent(SiteContentDTO dto)
-        {
-            _siteContentRepository.Delete(_mapper.Map<SiteContent>(dto));
-        }
-
         public void UpdateSiteContent(SiteContentDTO dto)
         {
             _siteContentRepository.Update(_mapper.Map<SiteContent>(dto));
+        }
+
+
+        public SiteContentDTO GetSiteContentByType(SiteContentType type)
+        {
+            var siteContent = _siteContentRepository.Get(x => x.SiteContentType == type).FirstOrDefault();
+            return _mapper.Map<SiteContentDTO>(siteContent);
         }
 
     }

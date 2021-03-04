@@ -18,7 +18,7 @@ namespace KareAjans.DataAccess.Abstracts
             context = _context;
         }
 
-        public T Add(T entity)
+        public virtual T Add(T entity)
         {
             context.Set<T>().Add(entity);
             context.SaveChanges();
@@ -30,7 +30,7 @@ namespace KareAjans.DataAccess.Abstracts
             context.Set<T>().Remove(entity);
             context.SaveChanges();
         }
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             // TODO: attach çalışmasını kontrol et
             context.Set<T>().Attach(entity);

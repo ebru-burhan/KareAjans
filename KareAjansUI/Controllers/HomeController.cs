@@ -3,14 +3,15 @@ using KareAjans.DataAccess;
 using KareAjans.DataAccess.Abstracts;
 using KareAjans.DataAccess.Concretes;
 using KareAjans.Entity;
-using KareAjansUI.ViewModels;
+using KareAjans.Entity.Enums;
+using KareAjans.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KareAjansUI.Controllers
+namespace KareAjans.UI.Controllers
 {
     public class HomeController : Controller
     {
@@ -52,14 +53,15 @@ namespace KareAjansUI.Controllers
 
         public IActionResult Index()
         {
-            /*
-            var dtolist =_siteContentService.GetSiteContents();
+
             HomePageViewModel model = new HomePageViewModel()
             {
-                AboutText = dtolist.Where(x => x.Sit)
-            }
-            */
-            return View();
+                AboutText = _siteContentService.GetSiteContentByType(SiteContentType.About).Text,
+                ReferencesText = _siteContentService.GetSiteContentByType(SiteContentType.References).Text
+            };
+
+            return View(model);
         }
     }
 }
+

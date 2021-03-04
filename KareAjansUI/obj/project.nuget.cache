@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iDutwruHPA/IdWSSxdL7lhL+aduE0zLbZW6BZQBjirtXDLzp85AhXEcFXy098FifWTuoLx0nfgm+nLBJQyc7fQ==",
+  "dgSpecHash": "F6OQWatm5feRs+Uo6DIDwo4ZcVV0pdwzYd6Be8nkJC5anCr8oFFH+1hVYRkjGqeb7JIAfQF4H7WAg7h+W655QQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjansUI\\KareAjansUI.csproj",
+  "projectFilePath": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjansUI\\KareAjans.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ebrub\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\ebrub\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

@@ -5836,9 +5836,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjansUI\\KareAjansUI.csproj",
-      "projectName": "KareAjansUI",
-      "projectPath": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjansUI\\KareAjansUI.csproj",
+      "projectUniqueName": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjansUI\\KareAjans.UI.csproj",
+      "projectName": "KareAjans.UI",
+      "projectPath": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjansUI\\KareAjans.UI.csproj",
       "packagesPath": "C:\\Users\\ebrub\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ebrub\\Documents\\Projects\\KareAjansProject\\KareAjansUI\\obj\\",
       "projectStyle": "PackageReference",

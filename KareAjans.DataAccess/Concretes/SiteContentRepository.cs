@@ -12,5 +12,15 @@ namespace KareAjans.DataAccess.Concretes
         public SiteContentRepository(DataContext _context) : base(_context)
         {
         }
+
+        public override SiteContent Add(SiteContent entity)
+        {
+            throw new NotImplementedException("Geliştirici hatası. SiteContentRepository'de ekleme işlemi yapılamaz.");
+        }
+
+        public override void Delete(SiteContent entity)
+        {
+            throw new NotImplementedException("Geliştirici hatası. SiteContentRepository'de silme işlemi yapılamaz.");
+        }      
     }
 }

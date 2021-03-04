@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KareAjansUI.ViewModels
+namespace KareAjans.UI.ViewModels
 {
     public class ModelEmployeeViewModel
     {
