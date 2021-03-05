@@ -4,6 +4,7 @@ using KareAjans.DataAccess.Abstracts;
 using KareAjans.DataAccess.Concretes;
 using KareAjans.Entity;
 using KareAjans.Entity.Enums;
+using KareAjans.Model;
 using KareAjans.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -53,14 +54,31 @@ namespace KareAjans.UI.Controllers
 
         public IActionResult Index()
         {
+            var modelEmployeeDTOList = _modelEmployeeService.GetModelEmployees();
 
-            HomePageViewModel model = new HomePageViewModel()
+            List<ModelEmployeeViewModel> modelList = new List<ModelEmployeeViewModel>();
+            foreach (var item in modelEmployeeDTOList)
+            {
+                ModelEmployeeViewModel model = new ModelEmployeeViewModel()
+                {
+                    FirstName = item.FirstName,
+                    LastName = item.LastName,
+                    Age = item.Age,
+                    PictureUrl = item.Pictures.FirstOrDefault().Url
+                };
+
+                modelList.Add(model);
+            }
+
+
+            HomePageViewModel HomePageModel = new HomePageViewModel()
             {
                 AboutText = _siteContentService.GetSiteContentByType(SiteContentType.About).Text,
-                ReferencesText = _siteContentService.GetSiteContentByType(SiteContentType.References).Text
+                ReferencesText = _siteContentService.GetSiteContentByType(SiteContentType.References).Text,
+                ModelEmployees = modelList
             };
 
-            return View(model);
+            return View(HomePageModel);
         }
     }
 }
