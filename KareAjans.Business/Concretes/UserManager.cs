@@ -5,6 +5,7 @@ using KareAjans.Entity;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace KareAjans.Business.Concretes
@@ -41,5 +42,20 @@ namespace KareAjans.Business.Concretes
         {
             _userRepository.Update(_mapper.Map<User>(dto));
         }
+
+
+        public UserDTO CheckUser(string email, string password)
+        {
+            var user = _userRepository.Get(x => x.Email == email && x.Password == password).FirstOrDefault();
+            if (user != null)
+            {
+                return _mapper.Map<UserDTO>(user);
+            }
+            return null;
+
+        }
+
+        
+        
     }
 }

@@ -11,5 +11,7 @@ namespace KareAjans.Business.Abstract
         void AddUser(UserDTO dto);
         void DeleteUser(UserDTO dto);
         void UpdateUser(UserDTO dto);
+       UserDTO CheckUser(string email, string password);
+
     }
 }
