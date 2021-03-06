@@ -23,7 +23,7 @@ namespace KareAjans.Business.Concretes
 
         public List<ModelEmployeeDTO> GetModelEmployees()
         {
-            var modelEmployees = _modelEmployeeRepository.GetAll();
+            var modelEmployees = _modelEmployeeRepository.GetIncluded(x => x.Pictures ,x=> x.ProfessionalDegree);
             return _mapper.Map<List<ModelEmployeeDTO>>(modelEmployees);
         }
 
@@ -40,6 +40,18 @@ namespace KareAjans.Business.Concretes
         public void UpdateModelEmployee(ModelEmployeeDTO dto)
         {
             _modelEmployeeRepository.Update(_mapper.Map<ModelEmployee>(dto));
+        }
+
+        public ModelEmployeeDTO GetModelEmployee(int id)
+        {
+           var modelEmployee = _modelEmployeeRepository.Get(x => x.ModelEmployeeID == id).FirstOrDefault();
+            return _mapper.Map<ModelEmployeeDTO>(modelEmployee);
+        }
+
+        public ModelEmployeeDTO GetModelEmployeeByUser(UserDTO userDto)
+        {
+           var modelEmployee = _modelEmployeeRepository.Get(x => x.UserId == userDto.UserID).FirstOrDefault();
+            return _mapper.Map<ModelEmployeeDTO>(modelEmployee);
         }
     }
 }

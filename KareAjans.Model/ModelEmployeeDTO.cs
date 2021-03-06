@@ -16,7 +16,7 @@ namespace KareAjans.Model
         public string Address { get; set; }
         public string PhoneNo1 { get; set; }
         public string PhoneNo2 { get; set; }
-        public byte Age { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public byte Weight { get; set; }
         public byte Height { get; set; }
         public ShoeSize ShoeSize { get; set; }
@@ -29,8 +29,6 @@ namespace KareAjans.Model
         public string ForeignLanguage { get; set; }
         public string Speciality { get; set; }
 
-        //enum vardı size
-        //public Size Size { get; set; }
 
 
         //relations-------

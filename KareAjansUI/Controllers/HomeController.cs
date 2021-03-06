@@ -63,7 +63,7 @@ namespace KareAjans.UI.Controllers
                 {
                     FirstName = item.FirstName,
                     LastName = item.LastName,
-                    Age = item.Age,
+                    DateOfBirth = item.DateOfBirth,
                     PictureUrl = item.Pictures.FirstOrDefault().Url
                 };
 

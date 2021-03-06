@@ -18,5 +18,7 @@ namespace KareAjans.DataAccess.Abstracts
                 Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
                 int? skip = null,
                 int? take = null);
+
+        IQueryable<T> GetIncluded(params Expression<Func<T, object>>[] includes);
     }
 }

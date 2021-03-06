@@ -16,7 +16,7 @@ namespace KareAjans.Entity
         public string Address { get; set; }
         public string PhoneNo1 { get; set; }
         public string PhoneNo2 { get; set; }
-        public byte Age { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public byte Weight { get; set; }
         public byte Height { get; set; }
         public ShoeSize ShoeSize { get; set; }

@@ -16,7 +16,7 @@ namespace KareAjans.Entity.Mappings
             builder.Property(x => x.Address).HasMaxLength(400).IsRequired();
             builder.Property(x => x.PhoneNo1).HasMaxLength(11).IsRequired();
             builder.Property(x => x.PhoneNo2).HasMaxLength(11).IsRequired();
-            builder.Property(x => x.Age).HasColumnType("tinyint").IsRequired();
+            builder.Property(x => x.DateOfBirth).IsRequired();
             builder.Property(x => x.Weight).HasColumnType("tinyint").IsRequired();
             builder.Property(x => x.Height).HasColumnType("tinyint").IsRequired();
             builder.Property(x => x.ShoeSize).IsRequired();

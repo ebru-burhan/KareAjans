@@ -6,8 +6,8 @@ using System.Text;
 namespace KareAjans.Entity.Abstracts
 {
     public abstract class BaseEntity : IEntity
-    {
-        [Required]
+        {
+            [Required]
         public DateTime CreatedDate { get; set; }
     }
 }

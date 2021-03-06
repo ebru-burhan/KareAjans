@@ -67,6 +67,14 @@ namespace KareAjans.UI
             services.AddAutoMapper(typeof(MappingProfile));
 
 
+            services.AddSession(options => 
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+
 
         }
 
@@ -82,10 +90,11 @@ namespace KareAjans.UI
 
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("Default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("Default", "{controller=Account}/{action=Login}/{id?}");
             });
 
 
