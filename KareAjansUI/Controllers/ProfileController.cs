@@ -39,5 +39,26 @@ namespace KareAjans.UI.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult IndexTest()
+        {
+            // Session'dan User'ı almaya çalıştık
+            UserDTO userDto = HttpContext.Session.GetObject<UserDTO>("user");
+
+            // Eğer Session'da user varsa
+            if (userDto != null)
+            {
+                ModelEmployeeDTO modelEmployeeDto = _modelEmployeeService.GetModelEmployeeByUser(userDto);
+                return View(modelEmployeeDto);
+            }
+            else
+            {
+                // Hata gönder ve bi yere yönlendir
+            }
+
+            return View();
+        }
+
+
     }
 }

@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace KareAjans.UI.Controllers
 {
-    public class AccountController : Controller
+    public class LoginController : Controller
     {
         private readonly IUserService _userService;
-        public AccountController(IUserService userService)
+        public LoginController(IUserService userService)
         {
             _userService = userService;
         }
@@ -32,6 +32,7 @@ namespace KareAjans.UI.Controllers
 
             if (userDto != null)
             {
+                //user ı sessiona koyduk profile a aktarcaz
                 HttpContext.Session.SetObject("user", userDto);
             }
             else

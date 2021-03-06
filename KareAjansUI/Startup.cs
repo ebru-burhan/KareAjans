@@ -29,6 +29,8 @@ namespace KareAjans.UI
             // Inject DataContext
             services.AddDbContext<DataContext>();
 
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
             #region Inject Repositories
             // Inject Repositories
             // private readonly olan proplara inject oluyor, Service/Manager kısmında kullanılıyor.
