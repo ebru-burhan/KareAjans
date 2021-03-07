@@ -13,5 +13,8 @@ namespace KareAjans.Business.Abstract
         void UpdateUser(UserDTO dto);
        UserDTO CheckUser(string email, string password);
 
+        List<UserDTO> GetUsersWithPermission();
+        UserDTO GetUserById(int id);
+
     }
 }

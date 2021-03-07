@@ -55,7 +55,18 @@ namespace KareAjans.Business.Concretes
 
         }
 
-        
-        
+
+        public List<UserDTO> GetUsersWithPermission()
+        {
+            var users = _userRepository.GetIncluded(x => x.Permission);
+            return _mapper.Map<List<UserDTO>>(users);
+        }
+
+        public UserDTO GetUserById(int id)
+        {
+            var user = _userRepository.Get(x => x.UserID == id).FirstOrDefault();
+
+            return _mapper.Map<UserDTO>(user);
+        }
     }
 }
