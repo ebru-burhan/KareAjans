@@ -27,6 +27,7 @@ namespace KareAjans.DataAccess.Abstracts
 
         public virtual void Delete(T entity)
         {
+            context.Entry(entity).State = EntityState.Modified;
             context.Set<T>().Remove(entity);
             context.SaveChanges();
         }
@@ -100,7 +101,8 @@ namespace KareAjans.DataAccess.Abstracts
                 query = query.Take(take.Value);
             }
 
-            return query;
+            //EF değişklikleri kontrol etmesin delete ettirmedi veriyi tutuyo hayırdır diyo
+            return query.AsNoTracking();
         }
 
       

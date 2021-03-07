@@ -12,7 +12,7 @@ namespace KareAjans.Business.Abstract
         void AddModelEmployee(ModelEmployeeDTO dto);
         void DeleteModelEmployee(ModelEmployeeDTO dto);
         void UpdateModelEmployee(ModelEmployeeDTO dto);
-        ModelEmployeeDTO GetModelEmployee(int id);
+        ModelEmployeeDTO GetModelEmployeeById(int id);
         ModelEmployeeDTO GetModelEmployeeByUser(UserDTO userDto);
     }
 }

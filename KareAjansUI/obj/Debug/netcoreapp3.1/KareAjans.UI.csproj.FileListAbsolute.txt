@@ -84,7 +84,6 @@ C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcore
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\KareAjans.UI.pdb
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\KareAjans.UI.genruntimeconfig.cache
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TemplateLayout.cshtml.g.cs
-C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
@@ -433,3 +432,7 @@ C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\bin\Debug\netcore
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\KareAjans.UI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Login\Login.cshtml.g.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Organization\Index.cshtml.g.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Organization\Add.cshtml.g.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Organization\Update.cshtml.g.cs

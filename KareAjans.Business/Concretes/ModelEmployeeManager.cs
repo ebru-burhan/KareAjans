@@ -42,7 +42,7 @@ namespace KareAjans.Business.Concretes
             _modelEmployeeRepository.Update(_mapper.Map<ModelEmployee>(dto));
         }
 
-        public ModelEmployeeDTO GetModelEmployee(int id)
+        public ModelEmployeeDTO GetModelEmployeeById(int id)
         {
            var modelEmployee = _modelEmployeeRepository.Get(x => x.ModelEmployeeID == id).FirstOrDefault();
             return _mapper.Map<ModelEmployeeDTO>(modelEmployee);
@@ -50,7 +50,7 @@ namespace KareAjans.Business.Concretes
 
         public ModelEmployeeDTO GetModelEmployeeByUser(UserDTO userDto)
         {
-           var modelEmployee = _modelEmployeeRepository.Get(x => x.UserId == userDto.UserID).FirstOrDefault();
+           var modelEmployee = _modelEmployeeRepository.Get(x => x.UserId == userDto.UserID, x => x.Pictures).FirstOrDefault();
             return _mapper.Map<ModelEmployeeDTO>(modelEmployee);
         }
     }

@@ -12,6 +12,8 @@ namespace KareAjans.Model
         public DateTime EndingDate { get; set; }
         public bool IsLocal { get; set; }
 
+        public decimal TotalIncome { get; set; }
+
         public List<ModelEmployeeOrganizationDTO> ModelEmployeeOrganizations { get; set; }
         public  List<IncomeDTO> Incomes { get; set; }
     }

@@ -9,7 +9,7 @@ namespace KareAjans.DataAccess.Abstracts
     public interface IOrganizationRepository : IRepository<Organization>
     {
         // service de to list ile alıcaz listi
-        List<Organization> GetOrganizations(Expression<Func<Organization , bool>> filter = null);
+        ///List<Organization> GetOrganizations(Expression<Func<Organization , bool>> filter = null);
 
     }
 

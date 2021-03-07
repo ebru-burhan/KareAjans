@@ -1,0 +1,46 @@
+﻿@model List<KareAjans.Model.OrganizationDTO>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_TemplateLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Organizasyon Adı</th>
+                    <th>Başlangıç Tarihi</th>
+                    <th>Bitiş Tarihi</th>
+                    <th>Şehir İçi Mi?</th>
+                    <th>Toplam Gelir</th>
+                    <th colspan="2"> <a asp-action="Add" asp-controller="Organization" class="btn btn-outline-success">Organizasyon Ekle</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dto in Model)
+                {
+                    <tr>
+                        <td>@dto.OrganizationName</td>
+                        <td>@dto.StartingDate</td>
+                        <td>@dto.EndingDate</td>
+                        <td>@dto.IsLocal</td>
+                        <td>@dto.TotalIncome</td>
+                        <td><a asp-action="Update" asp-controller="Organization" asp-route-id="@dto.OrganizationID" class="btn  btn-outline-primary">Düzenle</a></td>
+                        <td><a asp-action="Delete" asp-controller="Organization" asp-route-id="@dto.OrganizationID" class="btn btn-outline-danger">Sil</a></td>
+                        <td><a asp-action="Detail" asp-controller="Organization" asp-route-id="@dto.OrganizationID" class="btn  btn-outline-orange">Detay</a></td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

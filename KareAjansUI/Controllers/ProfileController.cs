@@ -60,5 +60,13 @@ namespace KareAjans.UI.Controllers
         }
 
 
+        [HttpPost]
+        public IActionResult IndexTest(ModelEmployeeDTO dto)
+        {
+            _modelEmployeeService.UpdateModelEmployee(dto);
+            return View();
+        }
+
+
     }
 }

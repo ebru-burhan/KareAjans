@@ -42,5 +42,39 @@ namespace KareAjans.Business.Concretes
         {
             _organizationRepository.Update(_mapper.Map<Organization>(dto));
         }
+
+        public List<OrganizationDTO> GetOrganizationsWithIncomes()
+        {
+            var organizations = _organizationRepository.GetIncluded(x => x.Incomes);
+
+            List<OrganizationDTO> organizationDtoList = new List<OrganizationDTO>();
+            //dtoda prop ekledik dbye gitmicek olan işlemleri yaptık uı da göstermek için
+            //maplerken de yapılabiliyomuş ama daha sonra araştır?
+
+            foreach (var organization in organizations)
+            {
+                decimal _totalIncome = 0;
+
+                foreach (var income in organization.Incomes)
+                {
+                    _totalIncome += income.Amount;
+                }
+
+                var mappedOrganization = _mapper.Map<OrganizationDTO>(organization);
+                
+                mappedOrganization.TotalIncome = _totalIncome;
+
+                organizationDtoList.Add(mappedOrganization);
+            }
+
+            return organizationDtoList;
+        }
+
+        public OrganizationDTO GetOrganizationById(int id)
+        {
+            var organization =  _organizationRepository.Get(x => x.OrganizationID == id).FirstOrDefault();
+
+            return _mapper.Map<OrganizationDTO>(organization);
+        }
     }
 }

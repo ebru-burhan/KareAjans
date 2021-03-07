@@ -40,7 +40,7 @@ namespace KareAjans.UI.Controllers
                 // Sayfaya hata göstert
             }
        
-            return View();
+            return RedirectToAction("IndexTest", "Profile");
         }
 
      
