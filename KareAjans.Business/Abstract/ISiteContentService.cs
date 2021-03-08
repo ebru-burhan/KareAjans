@@ -11,9 +11,11 @@ namespace KareAjans.Business.Abstract
     {
         List<SiteContentDTO> GetSiteContents();
         void UpdateSiteContent(SiteContentDTO dto);
+        void UpdateSiteContents(List<SiteContentDTO> dtolist);
 
 
         //----------
         SiteContentDTO GetSiteContentByType(SiteContentType type);
+
     }
 }

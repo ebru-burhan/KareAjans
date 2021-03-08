@@ -40,5 +40,11 @@ namespace KareAjans.Business.Concretes
             return _mapper.Map<SiteContentDTO>(siteContent);
         }
 
+
+        //gelen about ve referances i toplu update yapmak fikri hayırlısı araştır
+        public void UpdateSiteContents(List<SiteContentDTO> dtolist)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
