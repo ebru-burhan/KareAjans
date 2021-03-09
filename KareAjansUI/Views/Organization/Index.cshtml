@@ -34,9 +34,10 @@
                         <td>@dto.EndingDate</td>
                         <td>@dto.IsLocal</td>
                         <td>@dto.TotalIncome</td>
-                        <td><a asp-action="Update" asp-controller="Organization" asp-route-id="@dto.OrganizationID" class="btn  btn-outline-primary">Düzenle</a></td>
-                        <td><a asp-action="Delete" asp-controller="Organization" asp-route-id="@dto.OrganizationID" class="btn btn-outline-danger">Sil</a></td>
-                        <td><a asp-action="Detail" asp-controller="Organization" asp-route-id="@dto.OrganizationID" class="btn  btn-outline-orange">Detay</a></td>
+                        <td><a asp-action="Update" asp-controller="Organization" asp-route-id="@dto.OrganizationID" class="btn  btn-outline-primary">Düzenle</a>
+                            <a asp-action="Delete" asp-controller="Organization" asp-route-id="@dto.OrganizationID" class="btn btn-outline-danger">Sil</a>  
+                            <a asp-action="Detail" asp-controller="Organization" asp-route-id="@dto.OrganizationID" class="btn  btn-outline-orange">Detay</a>
+                        </td>
 
                     </tr>
                 }

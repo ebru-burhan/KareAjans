@@ -441,3 +441,6 @@ C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcore
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\User\Update.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\SiteContent\Update.cshtml.g.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Income\Index.cshtml.g.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Income\Add.cshtml.g.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Income\Detail.cshtml.g.cs

@@ -69,10 +69,33 @@ namespace KareAjans.Business.Concretes
 
             return organizationDtoList;
         }
-
+        /*
         public OrganizationDTO GetOrganizationById(int id)
         {
             var organization =  _organizationRepository.Get(x => x.OrganizationID == id).FirstOrDefault();
+
+            return _mapper.Map<OrganizationDTO>(organization);
+        }
+
+        public OrganizationDTO GetOrganizationByIdwithIncomes(int id)
+        {
+            var organization = _organizationRepository.Get(x => x.OrganizationID == id , x => x.Incomes).FirstOrDefault();
+
+            return _mapper.Map<OrganizationDTO>(organization);
+        }
+        */
+
+        public OrganizationDTO GetOrganizationById(int id, bool incomeIncluded = false)
+        {
+            Organization organization = null;
+            if (incomeIncluded)
+            {
+                organization = _organizationRepository.Get(x => x.OrganizationID == id, x => x.Incomes).FirstOrDefault();
+            }
+            else
+            {
+                organization = _organizationRepository.Get(x => x.OrganizationID == id).FirstOrDefault();
+            }
 
             return _mapper.Map<OrganizationDTO>(organization);
         }

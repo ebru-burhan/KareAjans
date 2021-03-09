@@ -11,6 +11,8 @@ namespace KareAjans.Model
         public int OrganizationId { get; set; }
         public decimal Amount { get; set; }
 
+        public DateTime CreatedDate { get; set; }
+
         public OrganizationDTO Organization { get; set; }
     }
 }

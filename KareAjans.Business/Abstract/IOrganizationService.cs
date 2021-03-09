@@ -12,7 +12,7 @@ namespace KareAjans.Business.Abstract
         void DeleteOrganization(OrganizationDTO dto);
         void UpdateOrganization(OrganizationDTO dto);
 
-        OrganizationDTO GetOrganizationById(int id);
+        OrganizationDTO GetOrganizationById(int id, bool incomeIncluded = false);
 
         List<OrganizationDTO> GetOrganizationsWithIncomes();
 

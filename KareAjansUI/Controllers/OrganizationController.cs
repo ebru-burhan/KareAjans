@@ -20,7 +20,7 @@ namespace KareAjans.UI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var dtoList = _organizationService.GetOrganizations();
+            var dtoList = _organizationService.GetOrganizationsWithIncomes();
 
             return View(dtoList);
         }
@@ -59,6 +59,7 @@ namespace KareAjans.UI.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
+
             OrganizationDTO dto =_organizationService.GetOrganizationById(id);
             _organizationService.DeleteOrganization(dto);
 

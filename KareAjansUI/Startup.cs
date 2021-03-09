@@ -96,7 +96,7 @@ namespace KareAjans.UI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("Default", "{controller=SiteContent}/{action=Update}/{id?}");
+                endpoints.MapControllerRoute("Default", "{controller=Income}/{action=index}/{id?}");
             });
 
 
