@@ -11,5 +11,6 @@ namespace KareAjans.Business.Abstract
         void AddIncome(IncomeDTO dto);
         void DeleteIncome(IncomeDTO dto);
         void UpdateIncome(IncomeDTO dto);
+        IncomeDTO GetIncomeById(int id, bool isOrganizationIncluded = false);
     }
 }

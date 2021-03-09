@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace KareAjans.UI.ViewModels
 {
-    public class IncomeViewModel
+    public class IncomeUpdateViewModel
     {
         public IncomeDTO Income { get; set; }
-        public List<OrganizationDTO> Organizations { get; set; }
+        public OrganizationDTO Organization { get; set; }
     }
 }

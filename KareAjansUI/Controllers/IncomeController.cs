@@ -30,7 +30,7 @@ namespace KareAjans.UI.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            IncomeViewModel model = new IncomeViewModel()
+            IncomeAddViewModel model = new IncomeAddViewModel()
             {
                 Income = new IncomeDTO(),
                 Organizations = _organizationService.GetOrganizations()
@@ -40,7 +40,7 @@ namespace KareAjans.UI.Controllers
 
 
         [HttpPost]
-        public IActionResult Add(IncomeViewModel model)
+        public IActionResult Add(IncomeAddViewModel model)
         {
             _incomeService.AddIncome(model.Income);
             
@@ -54,7 +54,38 @@ namespace KareAjans.UI.Controllers
         {
            var organizationDto = _organizationService.GetOrganizationById(id,true);
            List<IncomeDTO> incomeDtoList = organizationDto.Incomes;
+
             return View(incomeDtoList);
+
+
+        }
+
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var incomeDto = _incomeService.GetIncomeById(id, true);
+            return View(incomeDto);
+        }
+
+        [HttpPost]
+        public IActionResult Update(IncomeDTO dto)
+        {
+            _incomeService.UpdateIncome(dto);
+
+            // TODO: update den sonra createdate gelmiyo mapple sonra
+
+            return RedirectToAction(nameof(Detail), new { id = dto.OrganizationId });
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var dto = _incomeService.GetIncomeById(id);
+            _incomeService.DeleteIncome(dto);
+
+            //sildikten sonra dtonun idsine erişebildik çünkü silinen entity dto değil
+            return RedirectToAction(nameof(Detail), new { id = dto.OrganizationId });
         }
     }
 }

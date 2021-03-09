@@ -1,0 +1,34 @@
+﻿@model KareAjans.Model.IncomeDTO
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Gelir Düzenle</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form class="form-horizontal" asp-action="Update" asp-controller="Income" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="IncomeID"/>
+            <input type="hidden" asp-for="OrganizationId"/>
+
+                <label asp-for="Organization.OrganizationName" class="col-sm-3 text-right control-label col-form-label"></label>
+
+          <div class="form-group row">
+                <label asp-for="Amount" class="col-sm-3 text-right control-label col-form-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+
+            <div class="border-top">
+                <div class="form-group row">
+                    <input type="submit" value="Düzenle" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

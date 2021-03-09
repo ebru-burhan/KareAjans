@@ -43,5 +43,20 @@ namespace KareAjans.Business.Concretes
         {
             _incomeRepository.Update(_mapper.Map<Income>(dto));
         }
+
+        public IncomeDTO GetIncomeById(int id, bool isOrganizationIncluded = false)
+        {
+            Income income = null;
+            if (isOrganizationIncluded)
+            {
+                income = _incomeRepository.Get(x => x.IncomeID == id, x => x.Organization).FirstOrDefault();
+            }
+            else
+            {
+                income = _incomeRepository.Get(x => x.IncomeID == id).FirstOrDefault();
+            }
+            return _mapper.Map<IncomeDTO>(income);
+
+        }
     }
 }

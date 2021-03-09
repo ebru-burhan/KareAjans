@@ -19,7 +19,7 @@
                 <tr>
                     <th>Organizasyon Adı</th>
                     <th>Toplam Gelir</th>
-                    <th colspan="2"> <a asp-action="Add" asp-controller="Income" class="btn btn-outline-success">Gelir Ekle</a></th>
+                    <th colspan="2">  <a asp-action="Add" asp-controller="Income" class="btn btn-outline-success">Gelir Ekle</a> </th>
                 </tr>
             </thead>
             <tbody>
@@ -29,8 +29,9 @@
                         <td>@dto.OrganizationName</td>
                         <td>@dto.TotalIncome</td>
                         <td>
-                          
+
                             <a asp-action="Detail" asp-controller="Income" asp-route-id="@dto.OrganizationID" class="btn  btn-outline-orange">Detay</a>
+
                         </td>
 
                     </tr>
