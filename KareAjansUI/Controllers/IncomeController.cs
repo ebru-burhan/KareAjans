@@ -71,6 +71,7 @@ namespace KareAjans.UI.Controllers
         [HttpPost]
         public IActionResult Update(IncomeDTO dto)
         {
+
             _incomeService.UpdateIncome(dto);
 
             // TODO: update den sonra createdate gelmiyo mapple sonra

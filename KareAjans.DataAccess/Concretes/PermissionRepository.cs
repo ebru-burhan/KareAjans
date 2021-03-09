@@ -12,5 +12,21 @@ namespace KareAjans.DataAccess.Concretes
         public PermissionRepository(DataContext _context) : base(_context)
         {
         }
+
+
+        public override Permission Add(Permission entity)
+        {
+            throw new NotImplementedException("Geliştirici hatası. PermissionRepository'de ekleme işlemi yapılamaz.");
+        }
+
+        public override void Update(Permission entity)
+        {
+            throw new NotImplementedException("Geliştirici hatası. PermissionRepository'de güncelleme işlemi yapılamaz.");
+        }
+
+        public override void Delete(Permission entity)
+        {
+            throw new NotImplementedException("Geliştirici hatası. PermissionRepository'de silme işlemi yapılamaz.");
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace KareAjans.Business.Abstract
         void AddExpense(ExpenseDTO dto);
         void DeleteExpense(ExpenseDTO dto);
         void UpdateExpense(ExpenseDTO dto);
+
+        List<ExpenseDTO> GetExpenseWithExpenseType();
     }
 }

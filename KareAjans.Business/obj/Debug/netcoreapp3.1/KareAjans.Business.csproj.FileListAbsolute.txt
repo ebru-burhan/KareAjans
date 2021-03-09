@@ -1,0 +1,16 @@
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\bin\Debug\netcoreapp3.1\KareAjans.Business.deps.json
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\bin\Debug\netcoreapp3.1\KareAjans.Business.dll
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\bin\Debug\netcoreapp3.1\KareAjans.Business.pdb
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\bin\Debug\netcoreapp3.1\KareAjans.DataAccess.dll
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\bin\Debug\netcoreapp3.1\KareAjans.Entity.dll
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\bin\Debug\netcoreapp3.1\KareAjans.Model.dll
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\bin\Debug\netcoreapp3.1\KareAjans.DataAccess.pdb
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\bin\Debug\netcoreapp3.1\KareAjans.Model.pdb
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\bin\Debug\netcoreapp3.1\KareAjans.Entity.pdb
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\obj\Debug\netcoreapp3.1\KareAjans.Business.csprojAssemblyReference.cache
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\obj\Debug\netcoreapp3.1\KareAjans.Business.AssemblyInfoInputs.cache
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\obj\Debug\netcoreapp3.1\KareAjans.Business.AssemblyInfo.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\obj\Debug\netcoreapp3.1\KareAjans.Business.csproj.CoreCompileInputs.cache
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\obj\Debug\netcoreapp3.1\KareAjans.Business.csproj.CopyComplete
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\obj\Debug\netcoreapp3.1\KareAjans.Business.dll
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjans.Business\obj\Debug\netcoreapp3.1\KareAjans.Business.pdb
