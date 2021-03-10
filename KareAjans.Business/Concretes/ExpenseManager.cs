@@ -25,7 +25,7 @@ namespace KareAjans.Business.Concretes
 
         public List<ExpenseDTO> GetExpenses()
         {
-            var expenses =  _expenseRepository.GetAll();
+            var expenses = _expenseRepository.GetAll();
             return _mapper.Map<List<ExpenseDTO>>(expenses);
         }
 
@@ -46,7 +46,7 @@ namespace KareAjans.Business.Concretes
 
         public List<ExpenseDTO> GetExpenseWithExpenseType()
         {
-          IQueryable<Expense> expenses =  _expenseRepository.GetIncluded(x => x.ExpenseType);
+            IQueryable<Expense> expenses = _expenseRepository.GetIncluded(x => x.ExpenseType);
             return _mapper.Map<List<ExpenseDTO>>(expenses);
         }
     }

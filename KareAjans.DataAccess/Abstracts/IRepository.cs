@@ -13,12 +13,12 @@ namespace KareAjans.DataAccess.Abstracts
         void Update(T entity);
         void Delete(T entity);
         IQueryable<T> GetAll();
+        IQueryable<T> GetIncluded(params Expression<Func<T, object>>[] includes);
         IQueryable<T> Get(Expression<Func<T, bool>> filter = null,
                 Expression<Func<T, object>> include = null,
                 Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
                 int? skip = null,
                 int? take = null);
-
-        IQueryable<T> GetIncluded(params Expression<Func<T, object>>[] includes);
+       
     }
 }

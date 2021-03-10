@@ -18,6 +18,7 @@ namespace KareAjans.DataAccess.Abstracts
             context = _context;
         }
 
+        //virtual çünkü     bazılarını add delete update yapmak istemediğimz için
         public virtual T Add(T entity)
         {
             context.Set<T>().Add(entity);
@@ -38,8 +39,6 @@ namespace KareAjans.DataAccess.Abstracts
             context.Entry(entity).State = EntityState.Modified;
             context.SaveChanges();
         }
-
-
 
 
         //--------------------
@@ -65,12 +64,6 @@ namespace KareAjans.DataAccess.Abstracts
             return GetQueryable(filter, include, orderBy, skip, take);
         }
 
-
-
-        //--------IQueryable ile => modeller içinde Iqueryable
-        //GetQueryable => methodu ile eğer filter varsa include ediliyosa bi obje ya da bi sıralama ile istiyosa,,skip ve take de istiyrsa queryi bu iflerden geçirip verr method [skip(atlama) => 5 dedin 5 ten sonrasını getriyo ,, take(almak) 5 dedin 5 e kadar olanı alır]
-
-        // filter = null diyerek defaultu null diyoruz
 
         protected virtual IQueryable<T> GetQueryable(Expression<Func<T, bool>> filter = null,
                                                      Expression<Func<T, object>> include = null,
@@ -105,6 +98,6 @@ namespace KareAjans.DataAccess.Abstracts
             return query.AsNoTracking();
         }
 
-      
+
     }
 }

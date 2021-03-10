@@ -7,6 +7,6 @@ namespace KareAjans.Business.Abstract
 {
     public interface IAccountingService : IService
     {
-        List<AccountingDTO> GetAccountingWithIncludes();
+        AccountingDTO GetAccountingByOrganization(int id);
     }
 }

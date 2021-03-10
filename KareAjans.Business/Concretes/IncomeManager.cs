@@ -42,7 +42,7 @@ namespace KareAjans.Business.Concretes
         public void UpdateIncome(IncomeDTO dto)
         {
 
-            Income income = _incomeRepository.Get(x =>  x.IncomeID == dto.IncomeID).FirstOrDefault();
+            Income income = _incomeRepository.Get(x => x.IncomeID == dto.IncomeID).FirstOrDefault();
             dto.CreatedDate = income.CreatedDate;
 
             _incomeRepository.Update(_mapper.Map<Income>(dto));

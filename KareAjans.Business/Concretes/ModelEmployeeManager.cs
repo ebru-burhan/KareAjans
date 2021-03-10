@@ -23,7 +23,7 @@ namespace KareAjans.Business.Concretes
 
         public List<ModelEmployeeDTO> GetModelEmployees()
         {
-            var modelEmployees = _modelEmployeeRepository.GetIncluded(x => x.Pictures ,x=> x.ProfessionalDegree);
+            var modelEmployees = _modelEmployeeRepository.GetIncluded(x => x.Pictures, x => x.ProfessionalDegree);
             return _mapper.Map<List<ModelEmployeeDTO>>(modelEmployees);
         }
 

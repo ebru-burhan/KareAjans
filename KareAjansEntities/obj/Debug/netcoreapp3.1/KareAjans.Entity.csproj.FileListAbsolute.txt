@@ -9,3 +9,4 @@ C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansEntities\obj\Debug\n
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansEntities\obj\Debug\netcoreapp3.1\KareAjans.Entity.dll
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansEntities\obj\Debug\netcoreapp3.1\KareAjans.Entity.pdb
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansEntities\obj\Debug\netcoreapp3.1\KareAjans.Entity.genruntimeconfig.cache
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansEntities\obj\Debug\netcoreapp3.1\KareAjans.Entity.csprojAssemblyReference.cache
