@@ -41,7 +41,7 @@ namespace KareAjans.Business.Concretes
         }
 
 
-        //gelen about ve referances i toplu update yapmak fikri hayırlısı araştır
+        // TODO :gelen about ve referances i toplu update yapmak fikri hayırlısı araştır
         public void UpdateSiteContents(List<SiteContentDTO> dtolist)
         {
             throw new NotImplementedException();

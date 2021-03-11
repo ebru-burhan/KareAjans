@@ -10,7 +10,9 @@ namespace KareAjans.Model
         public string ProfessionalDegreeTitle { get; set; }
         public int NumberOfDays { get; set; }
         public bool IsLocal { get; set; }
-        public decimal Wage { get; set; }
-        public decimal Spent { get; set; }
+        public decimal Salary { get; set; }
+        public decimal FoodExpense { get; set; }
+        public decimal AccommodationExpense { get; set; }
+        public decimal ExpenseTotal { get; set; }
     }
 }

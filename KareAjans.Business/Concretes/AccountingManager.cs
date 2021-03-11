@@ -2,6 +2,7 @@
 using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
 using KareAjans.Entity;
+using KareAjans.Entity.Enums;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
@@ -14,16 +15,18 @@ namespace KareAjans.Business.Concretes
     {
         private readonly IOrganizationService _organizationService;
         private readonly IExpenseService _expenseService;
+        private readonly IExpenseTypeService _expenseTypeService;
         private readonly IModelEmployeeService _modelEmployeeService;
         private readonly IModelEmployeeOrganizationRepository _modelEmployeeOrganizationRepository;
         private readonly IMapper _mapper;
 
-        public AccountingManager(IOrganizationService organizationService, IExpenseService expenseService, IModelEmployeeService modelEmployeeService,
+        public AccountingManager(IOrganizationService organizationService, IExpenseService expenseService, IModelEmployeeService modelEmployeeService, IExpenseTypeService expenseTypeService,
             IModelEmployeeOrganizationRepository modelEmployeeOrganizationRepository,
             IMapper mapper)
-        {           
+        {
             _organizationService = organizationService;
             _expenseService = expenseService;
+            _expenseTypeService = expenseTypeService;
             _modelEmployeeService = modelEmployeeService;
 
             _modelEmployeeOrganizationRepository = modelEmployeeOrganizationRepository;
@@ -32,54 +35,97 @@ namespace KareAjans.Business.Concretes
 
         public AccountingDTO GetAccountingByOrganization(int id)
         {
-
-            /*
-            //mankenin maaşına erişeblrz yemek knaklama giderleri ekleyebilirz
-            List<ExpenseDTO> expenseDtoList = _expenseService.GetExpenseWithExpenseType();
-            */
-
-
-            //totalIncome erişiliyor, başlama bitişe erişilir ordan gün saysı, Lokal mı erişilir
-            //bu methoda mdelemployee organization eklersek include oalrak  hangi organizasyon da hangi manken erişilr yada başka method oluştr??
-            // List<OrganizationDTO> organizationDtoList = _organizationService.GetOrganizationsWithIncomes();
-
-
             //id sine göre organizaitoDto yu income ile getirdik
             // TODO: modelemployeeorganiztionu include et
             OrganizationDTO organizationDTO = _organizationService.GetOrganizationById(id, true);
             TimeSpan organizationTimeSpan = organizationDTO.EndingDate - organizationDTO.StartingDate;
-            
 
-           IQueryable<ModelEmployeeOrganization> modelEmployeOrganizations = _modelEmployeeOrganizationRepository.Get(x => x.OrganizationId == id, x => x.ModelEmployee);
+            decimal incomeTotal = organizationDTO.TotalIncome;
+
+            IQueryable<ModelEmployeeOrganization> modelEmployeOrganizations = _modelEmployeeOrganizationRepository.Get(x => x.OrganizationId == id, x => x.ModelEmployee);
+
+
 
             //foreachle herbir meo içindeki mankenlri liste koyduk bir organizasyondaki mankenler listesi
-            List<ModelEmployeeDTO> modelEmployeeDtoList = new List<ModelEmployeeDTO>();
-            
-            
+            List<AccountingItemDTO> accountingItemList = new List<AccountingItemDTO>();
+
+
+
+            var foodDto = _expenseTypeService.GetExpenseTypeByType(ExpenseTypeEnum.Food);
+            var accommodationDto = _expenseTypeService.GetExpenseTypeByType(ExpenseTypeEnum.Accommodation);
+
+
+            // TODO: bir organizasyonda organizaitonexpensetotal => organizasyondaki manken sayısı * expensetotal 
+           
 
             foreach (var modeleEmployeeOrganization in modelEmployeOrganizations)
             {
-                //id li modelEMployeleri getirt model employeeden dtoya çevir dtoliste ver
-                // modeleEmployeeOrganization.ModelEmployeeId 
-                var modelEmployee = _modelEmployeeService.GetModelEmployeeById(modeleEmployeeOrganization.ModelEmployeeId);
+                var modelEmployeeDto = _modelEmployeeService.GetModelEmployeeById(modeleEmployeeOrganization.ModelEmployeeId, true);
 
-                modelEmployeeDtoList.Add(_mapper.Map<ModelEmployeeDTO>(modelEmployee));
+
+                decimal foodExpense = 0;
+                decimal accommodationExpense = 0;
+
+
+                if (organizationDTO.IsLocal)
+                {
+                    foodExpense = (foodDto.Amount * organizationTimeSpan.Days);
+                }
+                else
+                {
+                    foodExpense = 2 * foodDto.Amount * organizationTimeSpan.Days;
+                    accommodationExpense = accommodationDto.Amount * organizationTimeSpan.Days;
+                }
+
+                if (modelEmployeeDto.ProfessionalDegree.DailyWage != 0 )
+                {
+                    //kategori1 veya kategori 2 olablr
+                }
+                else
+                {
+                    //kategori3 olabilir
+                }
+
+                //bir mankenin bir organizasyonda harcadığı toplam para
+                decimal expenseTotal = foodExpense + accommodationExpense;
+
+               
+                AccountingItemDTO accountingItemDto = new AccountingItemDTO()
+                {
+                    ModelEmployeeName = modelEmployeeDto.FirstName + " " + modelEmployeeDto.LastName,
+                    IsLocal = organizationDTO.IsLocal,
+                    NumberOfDays = organizationTimeSpan.Days,
+                    ProfessionalDegreeTitle = modelEmployeeDto.ProfessionalDegree.Title,
+                    FoodExpense = foodExpense,
+                    AccommodationExpense = accommodationExpense,
+                    ExpenseTotal = expenseTotal,
+                };
+                accountingItemList.Add(accountingItemDto);
+
             }
 
 
+            decimal expensesTotal = 0;
+            decimal salariesTotal = 0;
+            foreach (var item in accountingItemList)
+            {
+                expensesTotal += item.ExpenseTotal;
+                salariesTotal += item.Salary;
+
+            }
+
+            decimal generalExpenseTotal = expensesTotal + salariesTotal;
+
             AccountingDTO accountingDto = new AccountingDTO()
             {
-
+                Items = accountingItemList,
+                ExpensesTotal = expensesTotal,
+                SalariesTotal = salariesTotal,
+                GeneralExpensesTotal = generalExpenseTotal,
+                IncomeTotal = incomeTotal,
+                Profit = incomeTotal - generalExpenseTotal
             };
 
-            List<AccountingItemDTO> AccountingItemList = new List<AccountingItemDTO>();
-            AccountingItemDTO AccountingItemDto = new AccountingItemDTO()
-            {
-                ModelEmployeeName = "",
-                IsLocal = organizationDTO.IsLocal,
-                NumberOfDays = organizationTimeSpan.Days
-
-            };
 
             return accountingDto;
         }

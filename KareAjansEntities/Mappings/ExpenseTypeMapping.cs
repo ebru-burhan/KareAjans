@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KareAjans.Entity.Enums;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,9 @@ namespace KareAjans.Entity.Mappings
 
             //seed == db oluşurken gerekli olan ilk datalar prodegree,user,expensetype,sitecontent , permission
             builder.HasData(
-                new ExpenseType { ExpenseTypeID = 1,Title = "Yemek", Amount = 10, CreatedDate = DateTime.Now },
-                new ExpenseType { ExpenseTypeID = 2,Title = "Konaklama", Amount = 40, CreatedDate = DateTime.Now },
-                new ExpenseType { ExpenseTypeID = 3,Title = "Maas", Amount = 0, CreatedDate = DateTime.Now }
+                new ExpenseType { ExpenseTypeID = (int)ExpenseTypeEnum.Food, Title = "Yemek", Amount = 10, CreatedDate = DateTime.Now },
+                new ExpenseType { ExpenseTypeID = (int)ExpenseTypeEnum.Accommodation, Title = "Konaklama", Amount = 40, CreatedDate = DateTime.Now },
+                new ExpenseType { ExpenseTypeID = (int)ExpenseTypeEnum.Salary, Title = "Maas", Amount = 0, CreatedDate = DateTime.Now }
               );
 
         }

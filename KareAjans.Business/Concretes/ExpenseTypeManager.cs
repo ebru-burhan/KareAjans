@@ -2,6 +2,7 @@
 using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
 using KareAjans.Entity;
+using KareAjans.Entity.Enums;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
@@ -28,19 +29,16 @@ namespace KareAjans.Business.Concretes
             return _mapper.Map<List<ExpenseTypeDTO>>(expenseTypes);
         }
 
-        public void AddExpenseType(ExpenseTypeDTO dto)
-        {
-            _expenseTypeRepository.Add(_mapper.Map<ExpenseType>(dto));
-        }
-
-        public void DeleteExpenseType(ExpenseTypeDTO dto)
-        {
-            _expenseTypeRepository.Delete(_mapper.Map<ExpenseType>(dto));
-        }
 
         public void UpdateExpenseType(ExpenseTypeDTO dto)
         {
             _expenseTypeRepository.Update(_mapper.Map<ExpenseType>(dto));
+        }
+
+        public ExpenseTypeDTO GetExpenseTypeByType(ExpenseTypeEnum type)
+        {
+            var expenseType = _expenseTypeRepository.Get(x => x.ExpenseTypeID == (int)type).FirstOrDefault();
+            return _mapper.Map<ExpenseTypeDTO>(expenseType);
         }
     }
 }

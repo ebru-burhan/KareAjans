@@ -6,10 +6,12 @@ namespace KareAjans.Model
 {
     public class AccountingDTO
     {
-        public decimal Profit { get; set; }
-        public decimal PayableFinalTotal { get; set; }
-        public decimal WageTotal { get; set; }
-        public decimal SpentTotal { get; set; }
+
+        public decimal IncomeTotal { get; set; }
+        public decimal Profit { get; set; } //kar
+        public decimal GeneralExpensesTotal { get; set; } //2900 genel toplam
+        public decimal SalariesTotal { get; set; }  //2700
+        public decimal ExpensesTotal { get; set; } //200 
         public List<AccountingItemDTO> Items { get; set; }
     }
 }

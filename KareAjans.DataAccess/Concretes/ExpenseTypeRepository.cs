@@ -12,5 +12,15 @@ namespace KareAjans.DataAccess.Concretes
         public ExpenseTypeRepository(DataContext _context) : base(_context)
         {
         }
+
+        public override ExpenseType Add(ExpenseType entity)
+        {
+            throw new NotImplementedException("Geliştici hatası. ExpenseTypeRepository'de ekleme işlemi yapılamaz.");
+        }
+
+        public override void Delete(ExpenseType entity)
+        {
+            throw new NotImplementedException("Geliştici hatası. ExpenseTypeRepository'de silme işlemi yapılamaz.");
+        }
     }
 }

@@ -42,9 +42,21 @@ namespace KareAjans.Business.Concretes
             _modelEmployeeRepository.Update(_mapper.Map<ModelEmployee>(dto));
         }
 
-        public ModelEmployeeDTO GetModelEmployeeById(int id)
+        // TODO: IRepoda includes da filter eklesek? includes u kullandığın heryerde değiştirmen gerek openclosed aykırı araştır
+        public ModelEmployeeDTO GetModelEmployeeById(int id, bool professionalDegreeIncluded = false)
         {
-           var modelEmployee = _modelEmployeeRepository.Get(x => x.ModelEmployeeID == id).FirstOrDefault();
+            ModelEmployee modelEmployee = null;
+            if (professionalDegreeIncluded)
+            {
+                 modelEmployee = _modelEmployeeRepository.Get(x => x.ModelEmployeeID == id , x => x.ProfessionalDegree).FirstOrDefault();
+            }
+            else
+            {
+                modelEmployee = _modelEmployeeRepository.Get(x => x.ModelEmployeeID == id).FirstOrDefault();
+            }
+
+
+          
             return _mapper.Map<ModelEmployeeDTO>(modelEmployee);
         }
 

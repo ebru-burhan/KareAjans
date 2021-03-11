@@ -31,7 +31,6 @@ namespace KareAjans.Model
         public string Speciality { get; set; }
 
 
-
         //relations-------
 
         public UserDTO User { get; set; }
