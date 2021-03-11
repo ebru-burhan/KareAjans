@@ -1,0 +1,53 @@
+﻿@model KareAjans.Model.AccountingDTO
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Manken Adı</th>
+            <th>Kategori</th>
+            <th>Gün</th>
+            <th>Konaklama</th>
+            <th>Yemek</th>
+            <th>Konum</th>
+            <th>Ödenecek</th>
+            <th>Harcama</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>@item.ModelEmployeeName</td>
+                <td>@item.ProfessionalDegreeTitle</td>
+                <td>@item.NumberOfDays</td>
+                <td>@String.Format("{0:C2}", @item.AccommodationExpense)</td>
+                <td>@String.Format("{0:C2}", @item.FoodExpense)</td>
+                <td>@(item.IsLocal ? "Ş. İçi" : "Ş. Dışı")</td>
+                <td>@String.Format("{0:C2}", @item.Salary)</td>
+                <td>@String.Format("{0:C2}", @item.ExpenseTotal)</td>
+            </tr>
+        }
+
+        <tr>
+            <td colspan="6" align="right"><b>Toplam</b></td>
+            <td>@String.Format("{0:C2}", @Model.SalariesTotal)</td>
+            <td>@String.Format("{0:C2}", @Model.ExpensesTotal)</td>
+        </tr>
+        <tr>
+            <td colspan="6" align="right"><b>Genel toplam</b></td>
+            <td colspan="2" align="center">@String.Format("{0:C2}", @Model.GeneralExpensesTotal)</td>
+        </tr>
+        <tr>
+            <td colspan="6" align="right"><b>Kar</b></td>
+            <td colspan="2" align="center">@String.Format("{0:C2}", @Model.Profit)</td>           
+        </tr>
+    </tbody>
+</table>

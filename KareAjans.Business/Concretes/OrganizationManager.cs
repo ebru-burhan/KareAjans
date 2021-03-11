@@ -91,13 +91,25 @@ namespace KareAjans.Business.Concretes
             if (incomeIncluded)
             {
                 organization = _organizationRepository.Get(x => x.OrganizationID == id, x => x.Incomes).FirstOrDefault();
+                //accounting de total income için 
+                decimal _totalIncome = 0;
+
+                foreach (var income in organization.Incomes)
+                {
+                    _totalIncome += income.Amount;
+                }
+
+                var mappedOrganization = _mapper.Map<OrganizationDTO>(organization);
+                mappedOrganization.TotalIncome = _totalIncome;
+                return mappedOrganization;
             }
             else
             {
                 organization = _organizationRepository.Get(x => x.OrganizationID == id).FirstOrDefault();
+                return _mapper.Map<OrganizationDTO>(organization);
             }
 
-            return _mapper.Map<OrganizationDTO>(organization);
+            
         }
     }
 }

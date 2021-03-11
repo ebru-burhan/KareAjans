@@ -63,6 +63,7 @@ namespace KareAjans.UI
             services.AddScoped<IProfessionalDegreeService, ProfessionalDegreeManager>();
             services.AddScoped<ISiteContentService, SiteContentManager>();
             services.AddScoped<IUserService, UserManager>();
+            services.AddScoped<IAccountingService, AccountingManager>();
             #endregion
 
             //version 2 ve üzerinde mappingProfile ı göndermek zorundayız
@@ -96,7 +97,7 @@ namespace KareAjans.UI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("Default", "{controller=Income}/{action=index}/{id?}");
+                endpoints.MapControllerRoute("Default", "{controller=Accounting}/{action=index}/{id?}");
             });
 
 

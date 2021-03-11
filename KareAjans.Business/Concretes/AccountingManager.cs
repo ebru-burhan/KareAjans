@@ -18,10 +18,11 @@ namespace KareAjans.Business.Concretes
         private readonly IExpenseTypeService _expenseTypeService;
         private readonly IModelEmployeeService _modelEmployeeService;
         private readonly IModelEmployeeOrganizationRepository _modelEmployeeOrganizationRepository;
+        private readonly IModelEmployeeRepository _modelEmployeeRepository;
         private readonly IMapper _mapper;
 
         public AccountingManager(IOrganizationService organizationService, IExpenseService expenseService, IModelEmployeeService modelEmployeeService, IExpenseTypeService expenseTypeService,
-            IModelEmployeeOrganizationRepository modelEmployeeOrganizationRepository,
+            IModelEmployeeOrganizationRepository modelEmployeeOrganizationRepository, IModelEmployeeRepository modelEmployeeRepository,
             IMapper mapper)
         {
             _organizationService = organizationService;
@@ -30,37 +31,34 @@ namespace KareAjans.Business.Concretes
             _modelEmployeeService = modelEmployeeService;
 
             _modelEmployeeOrganizationRepository = modelEmployeeOrganizationRepository;
+            _modelEmployeeRepository = modelEmployeeRepository;
             _mapper = mapper;
         }
 
         public AccountingDTO GetAccountingByOrganization(int id)
         {
-            //id sine göre organizaitoDto yu income ile getirdik
-            // TODO: modelemployeeorganiztionu include et
             OrganizationDTO organizationDTO = _organizationService.GetOrganizationById(id, true);
             TimeSpan organizationTimeSpan = organizationDTO.EndingDate - organizationDTO.StartingDate;
 
             decimal incomeTotal = organizationDTO.TotalIncome;
 
-            IQueryable<ModelEmployeeOrganization> modelEmployeOrganizations = _modelEmployeeOrganizationRepository.Get(x => x.OrganizationId == id, x => x.ModelEmployee);
-
-
+            List<ModelEmployeeOrganization> modelEmployeOrganizations = _modelEmployeeOrganizationRepository.GetFilteredIncluded(x => x.OrganizationId == id, x => x.ModelEmployee, x => x.ModelEmployee.ProfessionalDegree).ToList();
+            //IQuaryable geliyo fakat bağlantıları açık tutuyo ve mforeach içinde modelEmployee ile iiş yapamadık soyut sadece kullanıma hazır, firstOrdefault ile çekiyoz, kullanıyoz
+            //tolist ile somutlaştırıyoz kullanıma hazır oluyo
 
             //foreachle herbir meo içindeki mankenlri liste koyduk bir organizasyondaki mankenler listesi
             List<AccountingItemDTO> accountingItemList = new List<AccountingItemDTO>();
 
 
-
             var foodDto = _expenseTypeService.GetExpenseTypeByType(ExpenseTypeEnum.Food);
             var accommodationDto = _expenseTypeService.GetExpenseTypeByType(ExpenseTypeEnum.Accommodation);
 
-
-            // TODO: bir organizasyonda organizaitonexpensetotal => organizasyondaki manken sayısı * expensetotal 
-           
+            //organizasyonda yüzdeli olan modelEmployeelerin sayısı
+            int percentageModelEmployeeCount = modelEmployeOrganizations.Where(x => x.ModelEmployee.ProfessionalDegree.DailyWage == 0).Count();
 
             foreach (var modeleEmployeeOrganization in modelEmployeOrganizations)
             {
-                var modelEmployeeDto = _modelEmployeeService.GetModelEmployeeById(modeleEmployeeOrganization.ModelEmployeeId, true);
+                var modelEmployee = modeleEmployeeOrganization.ModelEmployee;
 
 
                 decimal foodExpense = 0;
@@ -77,13 +75,17 @@ namespace KareAjans.Business.Concretes
                     accommodationExpense = accommodationDto.Amount * organizationTimeSpan.Days;
                 }
 
-                if (modelEmployeeDto.ProfessionalDegree.DailyWage != 0 )
+                decimal salary = 0;
+                if (modelEmployee.ProfessionalDegree.DailyWage != 0 )
                 {
                     //kategori1 veya kategori 2 olablr
+                    salary = modelEmployee.ProfessionalDegree.DailyWage * organizationTimeSpan.Days;
                 }
                 else
                 {
-                    //kategori3 olabilir
+                    //kategori3 olabilir income ın %20 sini kategori3 mankenler paylaşcak
+                    salary = ((incomeTotal * modelEmployee.ProfessionalDegree.DailyPercentage) / 100) / percentageModelEmployeeCount;
+
                 }
 
                 //bir mankenin bir organizasyonda harcadığı toplam para
@@ -92,13 +94,14 @@ namespace KareAjans.Business.Concretes
                
                 AccountingItemDTO accountingItemDto = new AccountingItemDTO()
                 {
-                    ModelEmployeeName = modelEmployeeDto.FirstName + " " + modelEmployeeDto.LastName,
+                    ModelEmployeeName = modelEmployee.FirstName + " " + modelEmployee.LastName,
                     IsLocal = organizationDTO.IsLocal,
                     NumberOfDays = organizationTimeSpan.Days,
-                    ProfessionalDegreeTitle = modelEmployeeDto.ProfessionalDegree.Title,
+                    ProfessionalDegreeTitle = modelEmployee.ProfessionalDegree.Title,
                     FoodExpense = foodExpense,
                     AccommodationExpense = accommodationExpense,
                     ExpenseTotal = expenseTotal,
+                    Salary = salary
                 };
                 accountingItemList.Add(accountingItemDto);
 
