@@ -65,5 +65,17 @@ namespace KareAjans.Business.Concretes
            var modelEmployee = _modelEmployeeRepository.Get(x => x.UserId == userDto.UserID, x => x.Pictures).FirstOrDefault();
             return _mapper.Map<ModelEmployeeDTO>(modelEmployee);
         }
+
+        public List<ModelEmployeeDTO> GetModelEmployeesWithIncludes()
+        {
+            var modelEmployees = _modelEmployeeRepository.GetIncluded(x => x.Pictures, x => x.ProfessionalDegree, x => x.User, x => x.User.Permission, x => x.Comments);
+            return _mapper.Map<List<ModelEmployeeDTO>>(modelEmployees);
+        }
+
+        public ModelEmployeeDTO GetModelEmployeeByIdWithIncluded(int id)
+        {
+            var modelEmployee = _modelEmployeeRepository.GetFilteredIncluded(x => x.ModelEmployeeID == id , x => x.Pictures, x => x.ProfessionalDegree, x => x.User, x => x.User.Permission, x => x.Comments).FirstOrDefault();
+            return _mapper.Map<ModelEmployeeDTO>(modelEmployee);
+        }
     }
 }

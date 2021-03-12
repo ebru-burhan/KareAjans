@@ -11,5 +11,6 @@ namespace KareAjans.Business.Abstract
         void AddPicture(PictureDTO dto);
         void DeletePicture(PictureDTO dto);
         void UpdatePicture(PictureDTO dto);
+        List<PictureDTO> GetPicturesById(int id);
     }
 }

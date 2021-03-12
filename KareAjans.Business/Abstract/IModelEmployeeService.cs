@@ -14,5 +14,8 @@ namespace KareAjans.Business.Abstract
         void UpdateModelEmployee(ModelEmployeeDTO dto);
         ModelEmployeeDTO GetModelEmployeeById(int id, bool professionalDegreeIncluded = false);
         ModelEmployeeDTO GetModelEmployeeByUser(UserDTO userDto);
+        List<ModelEmployeeDTO> GetModelEmployeesWithIncludes();
+        ModelEmployeeDTO GetModelEmployeeByIdWithIncluded(int id);
+
     }
 }

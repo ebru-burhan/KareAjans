@@ -44,5 +44,11 @@ namespace KareAjans.Business.Concretes
         {
             _pictureRepository.Update(_mapper.Map<Picture>(dto));
         }
+
+        public List<PictureDTO> GetPicturesById(int id)
+        {
+            var pictures = _pictureRepository.GetFilteredIncluded(x => x.ModelEmployeeId == id, x => x.ModelEmployee);
+            return _mapper.Map<List<PictureDTO>>(pictures);
+        }
     }
 }

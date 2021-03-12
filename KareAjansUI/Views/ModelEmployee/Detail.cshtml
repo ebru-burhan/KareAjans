@@ -1,0 +1,206 @@
+﻿@model KareAjans.UI.ViewModels.ModelEmployeeDetailViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+        <div class="card-body">
+            <h4 class="card-title">@Model.FirstName @Model.LastName</h4>
+            <div class="row">
+                <div class="col-md-6">
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">İsim:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.FirstName
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Soyisim:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.LastName
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Yaş:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.Age
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Cinsiyet:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.Gender
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Professiyonellik Derecesi:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.Title
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Kilo:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.Weight
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Boy:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.Height
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Ayakkabı No:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.ShoeSize
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Göz Rengi:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.EyeColor
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Saç Rengi:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.HairColor
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Beden:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.BodySize
+                        </div>
+                    </div>
+                </div>
+
+                <!--burda ayrılıyyyoooorrrrr-->
+                <div class="col-md-6">
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Doğum Tarihi:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.DateOfBirth
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Email:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.Email
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Adres:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.Address
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Tel No 1:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.PhoneNo1
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Tel No 2:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.PhoneNo2
+                        </div>
+                    </div>
+
+                    <div class="form-group row">                        
+                        <label class="col-sm-3 text-right control-label col-form-label"> Ehliyet Var:</label>
+                        <div class="col-md-9 col-form-label">
+                                @(Model.DrivingLicence == true ? "Evet" : "Hayır") 
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Şehir Dışı Çalışabilir:</label>
+                        <div class="col-md-9 col-form-label">                             
+                                @(Model.WorkingOutsideTheCity == true ? "Evet" : "Hayır")
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Yabancı Dil:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.ForeignLanguage
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Diğer Özellikler:</label>
+                        <div class="col-md-9 col-form-label">
+                            @Model.Speciality
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    @*<div class="row" style="margin-top:20px;">
+
+        @if (Model.Pictures.Count == 0)
+        {
+            <p>Fotograf yok</p>
+        }
+        else
+        {
+
+            foreach (var picture in Model.Pictures)
+            {
+                <div class="col col-md-4" style="margin-bottom:20px">
+                    <div class="card">
+                        <img src="@picture.Url" class="card-img-top" style="height:300px;object-fit: cover;" alt="...">
+                        <div class="card-body">
+                            <a asp-action="DeletePicture" asp-controller="Profile" asp-route-id="@picture.PictureID" class="btn btn-xs btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>*@
+
+</div>

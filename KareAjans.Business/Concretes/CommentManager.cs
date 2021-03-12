@@ -43,5 +43,10 @@ namespace KareAjans.Business.Concretes
             _commentRepository.Update(_mapper.Map<Comment>(dto));
         }
 
+        public List<CommentDTO> GetCommentsById(int id)
+        {
+            var comments = _commentRepository.GetFilteredIncluded(x => x.ModelEmployeeId == id , x => x.ModelEmployee);
+            return _mapper.Map<List<CommentDTO>>(comments);
+        }
     }
 }

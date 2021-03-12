@@ -11,5 +11,6 @@ namespace KareAjans.Business.Abstract
         void AddComment(CommentDTO dto);
         void DeleteComment(CommentDTO dto);
         void UpdateComment(CommentDTO dto);
+        List<CommentDTO> GetCommentsById(int id);
     }
 }
