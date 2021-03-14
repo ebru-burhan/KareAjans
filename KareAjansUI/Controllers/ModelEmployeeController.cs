@@ -1,4 +1,5 @@
 ﻿using KareAjans.Business.Abstract;
+using KareAjans.Model;
 using KareAjans.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,10 +12,13 @@ namespace KareAjans.UI.Controllers
     public class ModelEmployeeController : Controller
     {
         private readonly IModelEmployeeService _modelEmployeeService;
+        private readonly IProfessionalDegreeService _professionalDegreeService;
+       
 
-        public ModelEmployeeController(IModelEmployeeService modelEmployeeService)
+        public ModelEmployeeController(IModelEmployeeService modelEmployeeService, IProfessionalDegreeService professionalDegreeService)
         {
             _modelEmployeeService = modelEmployeeService;
+            _professionalDegreeService = professionalDegreeService;
         }
 
         [HttpGet]
@@ -26,7 +30,7 @@ namespace KareAjans.UI.Controllers
             foreach (var item in modelEmployees)
             {
                 int age = DateTime.Today.Year - item.DateOfBirth.Year;
-                // TODO: Age validation
+
                 ModelEmployeeViewModel model = new ModelEmployeeViewModel()
                 {
                     ModelEmployeeID = item.ModelEmployeeID,
@@ -47,7 +51,7 @@ namespace KareAjans.UI.Controllers
             var dto = _modelEmployeeService.GetModelEmployeeByIdWithIncluded(id);
 
             int age = DateTime.Today.Year - dto.DateOfBirth.Year;
-            // TODO: Age validation
+
             ModelEmployeeDetailViewModel modelDetail = new ModelEmployeeDetailViewModel()
             {
                 FirstName = dto.FirstName,
@@ -77,6 +81,60 @@ namespace KareAjans.UI.Controllers
             };
 
             return View(modelDetail);
+        }
+
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            ModelEmployeeAddViewModel model = new ModelEmployeeAddViewModel()
+            {
+                ModelEmployee = new ModelEmployeeDTO(),
+                ProfessionelDegrees = _professionalDegreeService.GetProfessionalDegrees()
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Add(ModelEmployeeAddViewModel model)
+        {
+            UserDTO userDto = new UserDTO()
+            {
+                FirstName = model.ModelEmployee.FirstName,
+                LastName = model.ModelEmployee.LastName,
+                Email = model.Email,
+                Password = model.Password
+            };
+
+            _modelEmployeeService.AddModelEmployee(model.ModelEmployee, userDto);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+
+            ModelEmployeeAddViewModel model = new ModelEmployeeAddViewModel()
+            {
+                ModelEmployee = _modelEmployeeService.GetModelEmployeeById(id),
+                ProfessionelDegrees = _professionalDegreeService.GetProfessionalDegrees()
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Update(ModelEmployeeAddViewModel model)
+        {
+            _modelEmployeeService.UpdateModelEmployee(model.ModelEmployee);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            
+            _modelEmployeeService.DeleteModelEmployee(_modelEmployeeService.GetModelEmployeeById(id));
+            return RedirectToAction(nameof(Index));
         }
     }
 }

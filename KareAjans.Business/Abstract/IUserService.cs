@@ -8,7 +8,7 @@ namespace KareAjans.Business.Abstract
     public interface IUserService : IService
     {
         List<UserDTO> GetUsers();
-        void AddUser(UserDTO dto);
+        UserDTO AddUser(UserDTO dto);
         void DeleteUser(UserDTO dto);
         void UpdateUser(UserDTO dto);
        UserDTO CheckUser(string email, string password);

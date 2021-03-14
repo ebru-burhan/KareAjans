@@ -449,3 +449,5 @@ C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcore
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Accounting\Detail.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\ModelEmployee\Index.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\ModelEmployee\Detail.cshtml.g.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\ModelEmployee\Add.cshtml.g.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\ModelEmployee\Update.cshtml.g.cs

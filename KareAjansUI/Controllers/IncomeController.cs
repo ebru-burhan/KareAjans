@@ -74,8 +74,6 @@ namespace KareAjans.UI.Controllers
 
             _incomeService.UpdateIncome(dto);
 
-            // TODO: update den sonra createdate gelmiyo mapple sonra
-
             return RedirectToAction(nameof(Detail), new { id = dto.OrganizationId });
         }
 

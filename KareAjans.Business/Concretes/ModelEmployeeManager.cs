@@ -2,6 +2,7 @@
 using KareAjans.Business.Abstract;
 using KareAjans.DataAccess.Abstracts;
 using KareAjans.Entity;
+using KareAjans.Entity.Enums;
 using KareAjans.Model;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,13 @@ namespace KareAjans.Business.Concretes
     public class ModelEmployeeManager : IModelEmployeeService
     {
         private readonly IModelEmployeeRepository _modelEmployeeRepository;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
-        public ModelEmployeeManager(IModelEmployeeRepository modelEmployeeRepository , IMapper mapper)
+        public ModelEmployeeManager(IModelEmployeeRepository modelEmployeeRepository , IUserService userService,
+            IMapper mapper)
         {
             _modelEmployeeRepository = modelEmployeeRepository;
+            _userService = userService;
             _mapper = mapper;
         }
 
@@ -27,13 +31,18 @@ namespace KareAjans.Business.Concretes
             return _mapper.Map<List<ModelEmployeeDTO>>(modelEmployees);
         }
 
-        public void AddModelEmployee(ModelEmployeeDTO dto)
+        public void AddModelEmployee(ModelEmployeeDTO dto, UserDTO userDto)
         {
+            userDto.PermissionId = (int)UserType.ModelEmployee;
+            UserDTO addedUserDto = _userService.AddUser(userDto);
+            dto.UserId = addedUserDto.UserID;
+
             _modelEmployeeRepository.Add(_mapper.Map<ModelEmployee>(dto));
         }
 
         public void DeleteModelEmployee(ModelEmployeeDTO dto)
         {
+            _userService.DeleteUser(_userService.GetUserById(dto.UserId));
             _modelEmployeeRepository.Delete(_mapper.Map<ModelEmployee>(dto));
         }
 
@@ -42,7 +51,6 @@ namespace KareAjans.Business.Concretes
             _modelEmployeeRepository.Update(_mapper.Map<ModelEmployee>(dto));
         }
 
-        // TODO: IRepoda includes da filter eklesek? includes u kullandığın heryerde değiştirmen gerek openclosed aykırı araştır
         public ModelEmployeeDTO GetModelEmployeeById(int id, bool professionalDegreeIncluded = false)
         {
             ModelEmployee modelEmployee = null;

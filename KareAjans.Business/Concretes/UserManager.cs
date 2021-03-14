@@ -28,9 +28,10 @@ namespace KareAjans.Business.Concretes
             return _mapper.Map<List<UserDTO>>(users);
         }
 
-        public void AddUser(UserDTO dto)
+        public UserDTO AddUser(UserDTO dto)
         {
-            _userRepository.Add(_mapper.Map<User>(dto));
+            User addedUser = _userRepository.Add(_mapper.Map<User>(dto));
+            return _mapper.Map<UserDTO>(addedUser);
         }
 
         public void DeleteUser(UserDTO dto)

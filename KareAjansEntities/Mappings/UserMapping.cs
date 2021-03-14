@@ -21,7 +21,6 @@ namespace KareAjans.Entity.Mappings
             builder.HasData(
                 new User { UserID = 1, FirstName = "Ebru", LastName = "Burhan", Email = "ebru@gmail.com", Password = "123",PermissionId = 1, CreatedDate = DateTime.Now }
               );
-            //userda permisson var onu eklemek zorunda mıyım ısrequired byk ihtimal
             // TODO: createdDAte silinebilir
             // TODO: passwordde min lenght koy
         }

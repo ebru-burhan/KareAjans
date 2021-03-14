@@ -8,7 +8,6 @@ namespace KareAjans.Entity
 {
     public class Permission : BaseEntity
     {
-        // TODO: tablonun gerekli olup olmadığına ilerlerken bak gerekmezse usertype ı usera koy yapcak bişi yok dinamik olmasın istenmiyo sonuçta
         public int PermissionID { get; set; }
         public UserType UserType { get; set; }
 

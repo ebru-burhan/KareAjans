@@ -29,6 +29,7 @@ namespace KareAjans.UI.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            // TODO: modelEMployee eklenirken user ı otomatik oluşturduk permission da modelemployee yi kullanıcıya gösterme sonra bak  listeden kaldırmam lazm!! en son bak
             UserPermissionsViewModel model = new UserPermissionsViewModel()
             {
                 User = new UserDTO(),
