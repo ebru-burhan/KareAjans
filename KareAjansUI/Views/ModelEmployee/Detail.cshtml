@@ -179,7 +179,7 @@
         </div>
 
 
-    @*<div class="row" style="margin-top:20px;">
+    <div class="row" style="margin-top:20px;">
 
         @if (Model.Pictures.Count == 0)
         {
@@ -192,7 +192,7 @@
             {
                 <div class="col col-md-4" style="margin-bottom:20px">
                     <div class="card">
-                        <img src="@picture.Url" class="card-img-top" style="height:300px;object-fit: cover;" alt="...">
+                        <img src="~/images/@picture.Url" class="card-img-top" style="height:300px;object-fit: cover;" alt="...">
                         <div class="card-body">
                             <a asp-action="DeletePicture" asp-controller="Profile" asp-route-id="@picture.PictureID" class="btn btn-xs btn-danger">Delete</a>
                         </div>
@@ -201,6 +201,6 @@
             }
         }
 
-    </div>*@
+    </div>
 
 </div>

@@ -9,7 +9,7 @@
 }
 
 <div class="card">
-    <form class="form-horizontal" asp-action="Add" asp-controller="ModelEmployee" method="post">
+    <form class="form-horizontal" asp-action="Add" asp-controller="ModelEmployee" method="post" enctype="multipart/form-data">
 
         <div class="card-body">
             <h4 class="card-title">Manken Ekle</h4>
@@ -126,7 +126,6 @@
                         <label asp-for="ModelEmployee.ShoeSize" class="col-sm-3 text-right control-label col-form-label"></label>
                         <div class="col-md-9">
                             <select asp-for="ModelEmployee.ShoeSize" class="select2 form-control custom-select" style="width: 100%; height:36px;" asp-items="Html.GetEnumSelectList<ShoeSize>()">
-                                
                             </select>
                         </div>
 
@@ -136,7 +135,7 @@
                         <label asp-for="ModelEmployee.EyeColor" class="col-sm-3 text-right control-label col-form-label"></label>
                         <div class="col-md-9">
                             <select asp-for="ModelEmployee.EyeColor" class="select2 form-control custom-select" style="width: 100%; height:36px;" asp-items="Html.GetEnumSelectList<EyeColor>()">
-                            </select>      
+                            </select>
                         </div>
 
                     </div>
@@ -199,6 +198,14 @@
             </div>
         </div>
 
+        <div class="row" style="margin-top:20px;">
+            <div class="form-group">
+                <label asp-for="Picture" class="control-label"></label>
+                <input asp-for="Picture" type="file" class="form-control" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+        </div>
+
         <div class="border-top">
             <div class="form-group row">
                 <div class="card-body">
@@ -208,30 +215,4 @@
         </div>
 
     </form>
-
-
-    @*<div class="row" style="margin-top:20px;">
-
-        @if (Model.Pictures.Count == 0)
-        {
-            <p>Fotograf yok</p>
-        }
-        else
-        {
-
-            foreach (var picture in Model.Pictures)
-            {
-                <div class="col col-md-4" style="margin-bottom:20px">
-                    <div class="card">
-                        <img src="@picture.Url" class="card-img-top" style="height:300px;object-fit: cover;" alt="...">
-                        <div class="card-body">
-                            <a asp-action="DeletePicture" asp-controller="Profile" asp-route-id="@picture.PictureID" class="btn btn-xs btn-danger">Delete</a>
-                        </div>
-                    </div>
-                </div>
-            }
-        }
-
-    </div>*@
-
 </div>

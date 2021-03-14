@@ -15,12 +15,14 @@ namespace KareAjans.Business.Concretes
     {
         private readonly IModelEmployeeRepository _modelEmployeeRepository;
         private readonly IUserService _userService;
+        private readonly IPictureService _pictureService;
         private readonly IMapper _mapper;
-        public ModelEmployeeManager(IModelEmployeeRepository modelEmployeeRepository , IUserService userService,
+        public ModelEmployeeManager(IModelEmployeeRepository modelEmployeeRepository , IUserService userService, IPictureService pictureService,
             IMapper mapper)
         {
             _modelEmployeeRepository = modelEmployeeRepository;
             _userService = userService;
+            _pictureService = pictureService;
             _mapper = mapper;
         }
 
@@ -31,13 +33,16 @@ namespace KareAjans.Business.Concretes
             return _mapper.Map<List<ModelEmployeeDTO>>(modelEmployees);
         }
 
-        public void AddModelEmployee(ModelEmployeeDTO dto, UserDTO userDto)
+        public void AddModelEmployee(ModelEmployeeDTO dto, UserDTO userDto, PictureDTO pictureDTO)
         {
             userDto.PermissionId = (int)UserType.ModelEmployee;
             UserDTO addedUserDto = _userService.AddUser(userDto);
             dto.UserId = addedUserDto.UserID;
+            ModelEmployee modelEmployee = _modelEmployeeRepository.Add(_mapper.Map<ModelEmployee>(dto));
 
-            _modelEmployeeRepository.Add(_mapper.Map<ModelEmployee>(dto));
+            pictureDTO.ModelEmployeeId = modelEmployee.ModelEmployeeID;
+            _pictureService.AddPicture(pictureDTO);
+           
         }
 
         public void DeleteModelEmployee(ModelEmployeeDTO dto)

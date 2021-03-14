@@ -1,9 +1,12 @@
 ﻿using KareAjans.Business.Abstract;
 using KareAjans.Model;
 using KareAjans.UI.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,14 +14,21 @@ namespace KareAjans.UI.Controllers
 {
     public class ModelEmployeeController : Controller
     {
+   
         private readonly IModelEmployeeService _modelEmployeeService;
         private readonly IProfessionalDegreeService _professionalDegreeService;
-       
 
-        public ModelEmployeeController(IModelEmployeeService modelEmployeeService, IProfessionalDegreeService professionalDegreeService)
+        //resim yükleme
+        private readonly IWebHostEnvironment _env;
+        private string directory;
+
+        public ModelEmployeeController(IModelEmployeeService modelEmployeeService, IProfessionalDegreeService professionalDegreeService, IWebHostEnvironment env)
         {
             _modelEmployeeService = modelEmployeeService;
             _professionalDegreeService = professionalDegreeService;
+            _env = env;
+            //nereye kaydolacağı yüklemenin = yoda commenti
+            directory = _env.WebRootPath + "/images/";
         }
 
         [HttpGet]
@@ -98,6 +108,14 @@ namespace KareAjans.UI.Controllers
         [HttpPost]
         public IActionResult Add(ModelEmployeeAddViewModel model)
         {
+            var picturePath = "image_" + Guid.NewGuid().ToString() + ".png";
+
+            using (var fileStream = new FileStream(Path.Combine(directory, picturePath), FileMode.Create, FileAccess.Write))
+            {
+                model.Picture.CopyTo(fileStream);
+            }
+
+
             UserDTO userDto = new UserDTO()
             {
                 FirstName = model.ModelEmployee.FirstName,
@@ -106,7 +124,17 @@ namespace KareAjans.UI.Controllers
                 Password = model.Password
             };
 
-            _modelEmployeeService.AddModelEmployee(model.ModelEmployee, userDto);
+
+            PictureDTO pictureDto = new PictureDTO()
+            {
+                Url = picturePath
+            };
+
+
+            _modelEmployeeService.AddModelEmployee(model.ModelEmployee, userDto, pictureDto);
+
+
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -136,5 +164,6 @@ namespace KareAjans.UI.Controllers
             _modelEmployeeService.DeleteModelEmployee(_modelEmployeeService.GetModelEmployeeById(id));
             return RedirectToAction(nameof(Index));
         }
+
     }
 }
