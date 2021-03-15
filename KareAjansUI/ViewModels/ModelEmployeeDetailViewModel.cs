@@ -1,4 +1,5 @@
 ﻿using KareAjans.Model;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +30,14 @@ namespace KareAjans.UI.ViewModels
         public string ForeignLanguage { get; set; }
         public string Speciality { get; set; }
 
-
+        //listeleme için
         public List<CommentDTO> Comments { get; set; }
         public List<PictureDTO> Pictures { get; set; }
+
+        //ekleme işlemi için
+        public CommentDTO Comment { get; set; }
+        public IFormFile Picture { get; set; }
+
 
 
         /*

@@ -8,199 +8,298 @@
 }
 
 <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">@Model.FirstName @Model.LastName</h4>
-            <div class="row">
-                <div class="col-md-6">
+    <div class="card-body">
+        <h4 class="card-title">@Model.FirstName @Model.LastName</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
 
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">İsim:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.FirstName
-                        </div>
-
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">İsim:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.FirstName
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Soyisim:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.LastName
-                        </div>
+                </div>
 
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Soyisim:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.LastName
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Yaş:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.Age
-                        </div>
+                </div>
 
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Yaş:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.Age
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Cinsiyet:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.Gender
-                        </div>
+                </div>
 
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Cinsiyet:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.Gender
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Professiyonellik Derecesi:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.Title
-                        </div>
+                </div>
 
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Professiyonellik Derecesi:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.Title
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Kilo:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.Weight
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Boy:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.Height
-                        </div>
-
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Ayakkabı No:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.ShoeSize
-                        </div>
-                    </div>
-
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Göz Rengi:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.EyeColor
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Saç Rengi:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.HairColor
-                        </div>
-                    </div>
-
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Beden:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.BodySize
-                        </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Kilo:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.Weight
                     </div>
                 </div>
 
-                <!--burda ayrılıyyyoooorrrrr-->
-                <div class="col-md-6">
-
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Doğum Tarihi:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.DateOfBirth
-                        </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Boy:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.Height
                     </div>
 
+                </div>
 
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Email:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.Email
-                        </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Ayakkabı No:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.ShoeSize
                     </div>
+                </div>
 
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Adres:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.Address
-                        </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Göz Rengi:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.EyeColor
                     </div>
+                </div>
 
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Tel No 1:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.PhoneNo1
-                        </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Saç Rengi:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.HairColor
                     </div>
+                </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Tel No 2:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.PhoneNo2
-                        </div>
-                    </div>
 
-                    <div class="form-group row">                        
-                        <label class="col-sm-3 text-right control-label col-form-label"> Ehliyet Var:</label>
-                        <div class="col-md-9 col-form-label">
-                                @(Model.DrivingLicence == true ? "Evet" : "Hayır") 
-
-                        </div>
-
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Şehir Dışı Çalışabilir:</label>
-                        <div class="col-md-9 col-form-label">                             
-                                @(Model.WorkingOutsideTheCity == true ? "Evet" : "Hayır")
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Yabancı Dil:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.ForeignLanguage
-                        </div>
-
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Diğer Özellikler:</label>
-                        <div class="col-md-9 col-form-label">
-                            @Model.Speciality
-                        </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Beden:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.BodySize
                     </div>
                 </div>
             </div>
 
-        </div>
+            <!--burda ayrılıyyyoooorrrrr-->
+            <div class="col-md-6">
 
 
-    <div class="row" style="margin-top:20px;">
-
-        @if (Model.Pictures.Count == 0)
-        {
-            <p>Fotograf yok</p>
-        }
-        else
-        {
-
-            foreach (var picture in Model.Pictures)
-            {
-                <div class="col col-md-4" style="margin-bottom:20px">
-                    <div class="card">
-                        <img src="~/images/@picture.Url" class="card-img-top" style="height:300px;object-fit: cover;" alt="...">
-                        <div class="card-body">
-                            <a asp-action="DeletePicture" asp-controller="Profile" asp-route-id="@picture.PictureID" class="btn btn-xs btn-danger">Delete</a>
-                        </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Doğum Tarihi:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.DateOfBirth
                     </div>
                 </div>
-            }
-        }
+
+
+
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Email:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.Email
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Adres:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.Address
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Tel No 1:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.PhoneNo1
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Tel No 2:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.PhoneNo2
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label"> Ehliyet Var:</label>
+                    <div class="col-md-9 col-form-label">
+                        @(Model.DrivingLicence == true ? "Evet" : "Hayır")
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Şehir Dışı Çalışabilir:</label>
+                    <div class="col-md-9 col-form-label">
+                        @(Model.WorkingOutsideTheCity == true ? "Evet" : "Hayır")
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Yabancı Dil:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.ForeignLanguage
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Diğer Özellikler:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.Speciality
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
 </div>
+
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Fotoğraflar</h4>
+                
+
+                <hr />
+                <div class="row el-element-overlay">
+                    @if (Model.Pictures.Count == 0)
+                    {
+                        <p>Fotograf yok</p>
+                    }
+                    else
+                    {
+
+                        @foreach (var picture in Model.Pictures)
+                        {
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="el-card-item">
+                                        <div class="el-card-avatar el-overlay-1">
+                                            <img src="~/images/@picture.Url" alt="Manken Fotoğrafı" />
+                                            <div class="el-overlay">
+                                                <ul class="list-style-none el-info">
+                                                    <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" href="~/images/@picture.Url"><i class="mdi mdi-magnify-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="el-card-content">
+                                            <a asp-action="DeletePicture" asp-controller="ModelEmployee" asp-route-id="@picture.PictureID" onclick="javascript: return ConfirmDelete()" class="btn btn-danger">Sil</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+                </div>
+                <form class="form-horizontal" asp-action="AddPicture" asp-controller="ModelEmployee" method="post" enctype="multipart/form-data">
+                    <!-- resim yükleme -->
+                    <input type="hidden" asp-for="ModelEmployeeID" />
+                    <div class="row" style="margin-top:20px;">
+                        <div class="form-group">
+                            <label asp-for="Picture" class="control-label"></label>
+                            <input asp-for="Picture" type="file" class="form-control" />
+                            <span asp-validation-for="Picture" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="border-top">
+                        <div class="form-group row">
+                            <div class="card-body">
+                                <input type="submit" value="Ekle" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+
+
+
+            <div class="card-body">
+
+                <h4 class="card-title m-b-0">Yorumlar</h4>
+
+
+                <hr />
+
+                <div class="comment-widgets scrollable">
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <div class="d-flex flex-row comment-row m-t-0">
+                            <div class="comment-text w-100">
+                                <h6 class="font-medium">James Anderson</h6>
+                                <span class="m-b-15 d-block">@comment.Message </span>
+                                <div class="comment-footer">
+                                    <span class="text-muted float-right">@comment.CreatedDate</span>
+                                    <a asp-action="DeleteComment" asp-controller="ModelEmployee" asp-route-id="@comment.CommentID" onclick="javascript: return ConfirmDelete()" class="btn btn-sm btn-danger">Sil</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <form class="form-horizontal" asp-action="AddComment" asp-controller="ModelEmployee" method="post">
+                    <input type="hidden" asp-for="ModelEmployeeID" />
+                    <!--yorum ekleme textarea -->
+                    <div class="form-group row">
+                        <div class="col-md-9">
+                            <input asp-for="Comment.Message" class="form-control" />
+                            <span asp-validation-for="Comment.Message" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-info">Ekle</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+

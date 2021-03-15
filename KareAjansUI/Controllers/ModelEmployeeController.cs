@@ -17,15 +17,21 @@ namespace KareAjans.UI.Controllers
    
         private readonly IModelEmployeeService _modelEmployeeService;
         private readonly IProfessionalDegreeService _professionalDegreeService;
+        private readonly ICommentService _commentService;
+        private readonly IPictureService _pictureService;
 
         //resim yükleme
         private readonly IWebHostEnvironment _env;
         private string directory;
 
-        public ModelEmployeeController(IModelEmployeeService modelEmployeeService, IProfessionalDegreeService professionalDegreeService, IWebHostEnvironment env)
+        public ModelEmployeeController(IModelEmployeeService modelEmployeeService, IProfessionalDegreeService professionalDegreeService, ICommentService commentService, IPictureService pictureService,
+            IWebHostEnvironment env)
         {
             _modelEmployeeService = modelEmployeeService;
             _professionalDegreeService = professionalDegreeService;
+            _commentService = commentService;
+            _pictureService = pictureService;
+
             _env = env;
             //nereye kaydolacağı yüklemenin = yoda commenti
             directory = _env.WebRootPath + "/images/";
@@ -64,6 +70,7 @@ namespace KareAjans.UI.Controllers
 
             ModelEmployeeDetailViewModel modelDetail = new ModelEmployeeDetailViewModel()
             {
+                ModelEmployeeID = id,
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 Age = age,
@@ -87,13 +94,15 @@ namespace KareAjans.UI.Controllers
                 ForeignLanguage = dto.ForeignLanguage,
                 Speciality = dto.Speciality,
                 Comments = dto.Comments,
-                Pictures = dto.Pictures
+                Pictures = dto.Pictures,
+                Comment = new CommentDTO()
+                
             };
 
             return View(modelDetail);
         }
 
-
+        #region ModelEmployeeAddUpdateDelete
         [HttpGet]
         public IActionResult Add()
         {
@@ -115,7 +124,6 @@ namespace KareAjans.UI.Controllers
                 model.Picture.CopyTo(fileStream);
             }
 
-
             UserDTO userDto = new UserDTO()
             {
                 FirstName = model.ModelEmployee.FirstName,
@@ -124,16 +132,12 @@ namespace KareAjans.UI.Controllers
                 Password = model.Password
             };
 
-
             PictureDTO pictureDto = new PictureDTO()
             {
                 Url = picturePath
             };
 
-
             _modelEmployeeService.AddModelEmployee(model.ModelEmployee, userDto, pictureDto);
-
-
 
             return RedirectToAction(nameof(Index));
         }
@@ -164,6 +168,52 @@ namespace KareAjans.UI.Controllers
             _modelEmployeeService.DeleteModelEmployee(_modelEmployeeService.GetModelEmployeeById(id));
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
+
+        [HttpPost]
+        public IActionResult AddComment(ModelEmployeeDetailViewModel model)
+        {
+            CommentDTO addedComment = model.Comment;
+            addedComment.ModelEmployeeId = model.ModelEmployeeID;
+            _commentService.AddComment(addedComment);
+
+            return RedirectToAction(nameof(Detail), new { id = model.ModelEmployeeID });
+        }
+
+        [HttpGet]
+        public IActionResult DeleteComment(int id)
+        {
+            var dto = _commentService.GetCommentById(id);
+            _commentService.DeleteComment(dto);
+            return RedirectToAction(nameof(Detail), new { id = dto.ModelEmployeeId });
+        }
+
+        [HttpPost]
+        public IActionResult AddPicture(ModelEmployeeDetailViewModel model)
+        {
+            var picturePath = "image_" + Guid.NewGuid().ToString() + ".png";
+
+            using (var fileStream = new FileStream(Path.Combine(directory, picturePath), FileMode.Create, FileAccess.Write))
+            {
+                model.Picture.CopyTo(fileStream);
+            }
+
+            PictureDTO addedPicture = new PictureDTO()
+            {
+                ModelEmployeeId = model.ModelEmployeeID,
+                Url = picturePath
+            };
+            _pictureService.AddPicture(addedPicture);
+            return RedirectToAction(nameof(Detail), new { id = model.ModelEmployeeID });
+        }
+
+        [HttpGet]
+        public IActionResult DeletePicture(int id)
+        {
+            var dto = _pictureService.GetPictureById(id);
+            _pictureService.DeletePicture(dto);
+            return RedirectToAction(nameof(Detail), new { id = dto.ModelEmployeeId });
+        }
     }
 }
