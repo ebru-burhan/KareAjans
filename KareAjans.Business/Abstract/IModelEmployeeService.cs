@@ -17,5 +17,8 @@ namespace KareAjans.Business.Abstract
         List<ModelEmployeeDTO> GetModelEmployeesWithIncludes();
         ModelEmployeeDTO GetModelEmployeeByIdWithIncluded(int id);
 
+
+        List<ModelEmployeeDTO> GetModelEmployeesSearch(string firstName, string lastName);
+
     }
 }

@@ -215,5 +215,16 @@ namespace KareAjans.UI.Controllers
             _pictureService.DeletePicture(dto);
             return RedirectToAction(nameof(Detail), new { id = dto.ModelEmployeeId });
         }
+
+
+        [HttpGet]
+        public IActionResult Search(string firstName, string lastName)
+        {
+
+           var dtolist = _modelEmployeeService.GetModelEmployeesSearch(firstName, lastName);
+           
+            return View(dtolist);
+        }
+
     }
 }
