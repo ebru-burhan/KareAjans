@@ -22,6 +22,6 @@ namespace KareAjans.Entity
         public string Password { get; set; }
 
         //relations-------
-        public virtual Permission Permission { get; set; }
+        public Permission Permission { get; set; }
     }
 }

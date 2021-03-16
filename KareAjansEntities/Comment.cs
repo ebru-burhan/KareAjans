@@ -14,6 +14,6 @@ namespace KareAjans.Entity
 
 
         //relations-------
-        public virtual ModelEmployee ModelEmployee { get; set; }
+        public ModelEmployee ModelEmployee { get; set; }
     }
 }

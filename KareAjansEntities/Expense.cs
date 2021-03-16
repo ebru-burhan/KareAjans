@@ -13,7 +13,7 @@ namespace KareAjans.Entity
 
         public decimal Amount { get; set; }
         //relations-------
-        public virtual ExpenseType ExpenseType { get; set; }
-        public virtual ModelEmployeeOrganization ModelEmployeeOrganization { get; set; }
+        public ExpenseType ExpenseType { get; set; }
+        public ModelEmployeeOrganization ModelEmployeeOrganization { get; set; }
     }
 }

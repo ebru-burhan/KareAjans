@@ -12,7 +12,7 @@ namespace KareAjans.Entity
         public decimal Amount { get; set; }
 
         //relations------------
-        public virtual Organization Organization { get; set; }
+        public Organization Organization { get; set; }
 
     }
 }

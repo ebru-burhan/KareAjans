@@ -13,6 +13,6 @@ namespace KareAjans.Entity
 
 
         //relations-------
-        public virtual ICollection<Expense> Expenses { get; set; }
+        public ICollection<Expense> Expenses { get; set; }
     }
 }

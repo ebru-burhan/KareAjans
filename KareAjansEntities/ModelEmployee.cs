@@ -34,16 +34,16 @@ namespace KareAjans.Entity
 
         //relations-------
 
-        public virtual User User { get; set; }
-        public virtual ProfessionalDegree ProfessionalDegree { get; set; }
-        public virtual ICollection<Picture> Pictures { get; set; }
+        public User User { get; set; }
+        public ProfessionalDegree ProfessionalDegree { get; set; }
+        public ICollection<Picture> Pictures { get; set; }
 
 
         //authorizeyapılacak adminler görücek yorum yazıcak mankenler görmicek yorum yazmıcak örn
-        public virtual ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; }
 
         // TODO: override oncreating yapcaz onconfig yapılan yerde  hasone foregign ilişkisini göstercen
-        public virtual ICollection<ModelEmployeeOrganization> ModelEmployeeOrganizations { get; set; }
+        public ICollection<ModelEmployeeOrganization> ModelEmployeeOrganizations { get; set; }
 
 
     }

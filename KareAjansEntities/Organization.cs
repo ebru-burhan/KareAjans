@@ -14,7 +14,7 @@ namespace KareAjans.Entity
         public bool IsLocal { get; set; }
 
         // relations---------
-        public virtual ICollection<ModelEmployeeOrganization> ModelEmployeeOrganizations { get; set; }
-        public virtual ICollection<Income> Incomes { get; set; }
+        public ICollection<ModelEmployeeOrganization> ModelEmployeeOrganizations { get; set; }
+        public ICollection<Income> Incomes { get; set; }
     }
 }
