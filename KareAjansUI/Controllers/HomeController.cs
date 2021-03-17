@@ -16,40 +16,16 @@ namespace KareAjans.UI.Controllers
 {
     public class HomeController : Controller
     {
-        //private IRepository<ModelEmployee> repository;
+
         private readonly ISiteContentService _siteContentService;
         private readonly IModelEmployeeService _modelEmployeeService;
-        /*
-        private readonly ICommentService _commentService;
-        private readonly IExpenseService _expenseService;
-        private readonly IExpenseTypeService _expenseTypeService;
-        private readonly IIncomeService _incomeService;
-        
-        private readonly IOrganizationService _organizationService;
-        private readonly IPermissionService _permissionService;
-        private readonly IPictureService _pictureService;
-        private readonly IProfessionalDegreeService _professionalDegreeService;
-        private readonly IUserService _userService;
-        */
 
-        public HomeController(ISiteContentService siteContentService, IModelEmployeeService modelEmployeeService/*
-            ICommentService commentService, IExpenseService expenseService , IExpenseTypeService expenseTypeService, IIncomeService incomeService,  IOrganizationService organizationService, IPermissionService permissionService, 
-            IPictureService pictureService, IProfessionalDegreeService professionalDegreeService, IUserService userService*/)
+
+        public HomeController(ISiteContentService siteContentService, IModelEmployeeService modelEmployeeService)
         {
             _siteContentService = siteContentService;
             _modelEmployeeService = modelEmployeeService;
-            /*
-            _commentService = commentService;
-            _expenseService = expenseService;
-            _expenseTypeService = expenseTypeService;
-            _incomeService = incomeService;
-            
-            _organizationService = organizationService;
-            _permissionService = permissionService;
-            _pictureService = pictureService;
-            _professionalDegreeService = professionalDegreeService;
-            _userService = userService;
-            */
+
         }
 
         public IActionResult Index()
@@ -59,12 +35,17 @@ namespace KareAjans.UI.Controllers
             List<ModelEmployeeViewModel> modelList = new List<ModelEmployeeViewModel>();
             foreach (var item in modelEmployeeDTOList)
             {
+                var picture = item.Pictures.FirstOrDefault() == null ? String.Empty : item.Pictures.FirstOrDefault().Url;
+
+                int age = DateTime.Today.Year - item.DateOfBirth.Year;
+
                 ModelEmployeeViewModel model = new ModelEmployeeViewModel()
                 {
                     FirstName = item.FirstName,
                     LastName = item.LastName,
                     DateOfBirth = item.DateOfBirth,
-                    PictureUrl = item.Pictures.FirstOrDefault().Url
+                    PictureUrl = picture,
+                    Age = age
                 };
 
                 modelList.Add(model);

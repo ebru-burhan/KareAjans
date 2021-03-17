@@ -38,11 +38,5 @@ namespace KareAjans.UI.ViewModels
         public CommentDTO Comment { get; set; }
         public IFormFile Picture { get; set; }
 
-
-        /*
-        //manken adı aratıp hangi organizasyonlarda çalışmış çalışıyo
-        //arama da kullanılcak dursun şimdilk
-        public string[] Organizations { get; set; }
-        */
     }
 }

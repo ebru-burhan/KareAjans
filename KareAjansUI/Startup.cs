@@ -4,6 +4,8 @@ using KareAjans.Business.Mapper;
 using KareAjans.DataAccess;
 using KareAjans.DataAccess.Abstracts;
 using KareAjans.DataAccess.Concretes;
+using KareAjans.Entity.Enums;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace KareAjans.UI
@@ -77,11 +80,40 @@ namespace KareAjans.UI
                 options.Cookie.IsEssential = true;
             });
 
+            // Razor cdan sessiona erişmek istedik
+            // https://stackoverflow.com/questions/46921275/access-session-variable-in-razor-view-net-core-2
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                //options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
+            //yetki tipleri belirlemek gerek
+            
+            services.AddAuthorization(config =>
+            {
+                config.AddPolicy(UserType.Administrator.ToString(), policyBuilder =>
+                policyBuilder.RequireClaim(ClaimTypes.Role, UserType.Administrator.ToString()));
 
+                config.AddPolicy(UserType.Accountant.ToString(), policyBuilder =>
+                policyBuilder.RequireClaim(ClaimTypes.Role, UserType.Accountant.ToString()));
+
+                config.AddPolicy(UserType.ModelEmployee.ToString(), policyBuilder =>
+                policyBuilder.RequireClaim(ClaimTypes.Role, UserType.ModelEmployee.ToString()));
+            });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/Login/Login";
+                options.LogoutPath = "/Login/Logout";
+                //options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.AccessDeniedPath = "/Login/Login";
+            });
+
+            services.AddDistributedMemoryCache();
         }
-
-
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -94,13 +126,13 @@ namespace KareAjans.UI
             app.UseStaticFiles();
             app.UseRouting();
             app.UseSession();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("Default", "{controller=Accounting}/{action=index}/{id?}");
+                endpoints.MapControllerRoute("Default", "{controller=Home}/{action=index}/{id?}");
             });
-
-
 
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {

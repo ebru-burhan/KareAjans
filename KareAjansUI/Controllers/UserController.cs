@@ -1,5 +1,7 @@
 ﻿using KareAjans.Business.Abstract;
+using KareAjans.Entity.Enums;
 using KareAjans.Model;
+using KareAjans.UI.Attributes.AuthorizeAttributes;
 using KareAjans.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace KareAjans.UI.Controllers
 {
+    [UserTypeBasedAuthorize(UserType.Administrator)]
+
     public class UserController : Controller
     {
         private readonly IUserService _userService;

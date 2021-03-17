@@ -13,10 +13,13 @@ namespace KareAjans.Business.Concretes
     public class OrganizationManager : IOrganizationService
     {
         private readonly IOrganizationRepository _organizationRepository;
+        private readonly IModelEmployeeOrganizationRepository _modelEmployeeOrganizationRepository;
         private readonly IMapper _mapper;
-        public OrganizationManager(IOrganizationRepository organizationRepository, IMapper mapper)
+        public OrganizationManager(IOrganizationRepository organizationRepository, IModelEmployeeOrganizationRepository modelEmployeeOrganizationRepository,
+            IMapper mapper)
         {
             _organizationRepository = organizationRepository;
+            _modelEmployeeOrganizationRepository = modelEmployeeOrganizationRepository;
             _mapper = mapper;
         }
 
@@ -53,16 +56,11 @@ namespace KareAjans.Business.Concretes
 
             foreach (var organization in organizations)
             {
-                decimal _totalIncome = 0;
-
-                foreach (var income in organization.Incomes)
-                {
-                    _totalIncome += income.Amount;
-                }
+                
 
                 var mappedOrganization = _mapper.Map<OrganizationDTO>(organization);
                 
-                mappedOrganization.TotalIncome = _totalIncome;
+                mappedOrganization.TotalIncome = CalculateTotalIncome(organization);
 
                 organizationDtoList.Add(mappedOrganization);
             }
@@ -92,15 +90,10 @@ namespace KareAjans.Business.Concretes
             {
                 organization = _organizationRepository.Get(x => x.OrganizationID == id, x => x.Incomes).FirstOrDefault();
                 //accounting de total income için 
-                decimal _totalIncome = 0;
 
-                foreach (var income in organization.Incomes)
-                {
-                    _totalIncome += income.Amount;
-                }
-
+                
                 var mappedOrganization = _mapper.Map<OrganizationDTO>(organization);
-                mappedOrganization.TotalIncome = _totalIncome;
+                mappedOrganization.TotalIncome = CalculateTotalIncome(organization);
                 return mappedOrganization;
             }
             else
@@ -111,5 +104,36 @@ namespace KareAjans.Business.Concretes
 
             
         }
+
+        public OrganizationDTO GetOrganizationWithModelEmployees(int id)
+        {
+            var organization = _organizationRepository.GetFilteredIncluded(x => x.OrganizationID == id, x => x.Incomes).FirstOrDefault();
+            var modelEmpOrgList =_modelEmployeeOrganizationRepository.GetFilteredIncluded(x => x.OrganizationId == id, x => x.ModelEmployee).ToList();
+
+            var mappedOrganization = _mapper.Map<OrganizationDTO>(organization);
+            mappedOrganization.TotalIncome = CalculateTotalIncome(organization);
+
+            var mappedEmpOrgList = _mapper.Map<List<ModelEmployeeOrganizationDTO>>(modelEmpOrgList);
+            mappedOrganization.ModelEmployeeOrganizations = mappedEmpOrgList;
+
+            return mappedOrganization;
+        }
+
+
+
+
+
+        private decimal CalculateTotalIncome(Organization organization)
+        {
+            decimal _totalIncome = 0;
+
+            foreach (var income in organization.Incomes)
+            {
+                _totalIncome += income.Amount;
+            }
+
+            return _totalIncome;
+        }
+
     }
 }

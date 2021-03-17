@@ -1,4 +1,6 @@
 ﻿using KareAjans.Business.Abstract;
+using KareAjans.Entity.Enums;
+using KareAjans.UI.Attributes.AuthorizeAttributes;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace KareAjans.UI.Controllers
 {
+    [UserTypeBasedAuthorize(UserType.Administrator)]
+    [UserTypeBasedAuthorize(UserType.Accountant)]
     public class AccountingController : Controller
     {
         private readonly IAccountingService _accountingService;

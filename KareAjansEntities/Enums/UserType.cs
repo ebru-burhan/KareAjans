@@ -10,6 +10,5 @@ namespace KareAjans.Entity.Enums
         Administrator = 1,
         ModelEmployee = 2,
         Accountant = 3,
-        ITManager = 4
     }
 }

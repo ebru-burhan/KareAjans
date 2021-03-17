@@ -427,7 +427,6 @@ C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcore
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Organization\Index.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Organization\Update.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Profile\Index.cshtml.g.cs
-C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Profile\IndexTest.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TemplateLayout.cshtml.g.cs
@@ -452,3 +451,6 @@ C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcore
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\ModelEmployee\Add.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\ModelEmployee\Update.cshtml.g.cs
 C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\ModelEmployee\Search.cshtml.g.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Organization\Detail.cshtml.g.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PicturePartial.cshtml.g.cs
+C:\Users\ebrub\Documents\Projects\KareAjansProject\KareAjansUI\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs

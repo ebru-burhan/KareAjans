@@ -15,14 +15,19 @@ namespace KareAjans.Business.Concretes
     public class ModelEmployeeManager : IModelEmployeeService
     {
         private readonly IModelEmployeeRepository _modelEmployeeRepository;
+        private readonly IModelEmployeeOrganizationRepository _modelEmployeeOrganizationRepository;
+
         private readonly IUserService _userService;
         private readonly IPictureService _pictureService;
         private readonly IOrganizationService _organizationService;
         private readonly IMapper _mapper;
-        public ModelEmployeeManager(IModelEmployeeRepository modelEmployeeRepository , IUserService userService, IPictureService pictureService, IOrganizationService organizationService,
+        public ModelEmployeeManager(IModelEmployeeRepository modelEmployeeRepository , IModelEmployeeOrganizationRepository modelEmployeeOrganizationRepository,
+            IUserService userService, IPictureService pictureService, IOrganizationService organizationService,
             IMapper mapper)
         {
             _modelEmployeeRepository = modelEmployeeRepository;
+            _modelEmployeeOrganizationRepository = modelEmployeeOrganizationRepository;
+
             _userService = userService;
             _pictureService = pictureService;
             _organizationService = organizationService;
@@ -70,9 +75,7 @@ namespace KareAjans.Business.Concretes
             {
                 modelEmployee = _modelEmployeeRepository.Get(x => x.ModelEmployeeID == id).FirstOrDefault();
             }
-
-
-          
+     
             return _mapper.Map<ModelEmployeeDTO>(modelEmployee);
         }
 
@@ -165,8 +168,9 @@ namespace KareAjans.Business.Concretes
                 modelEmployees = modelEmployees.Where(x => x.DrivingLicence == hasDrivingLicence);
             }
 
-            if (isWorkingOutsideTheCity != null)
-            {
+            //sadece organizaitonId olmadığında dikkate alıcaz çünkü arama da organizaiton un localliği ile arama çakışıyo çelişiyo
+            if (isWorkingOutsideTheCity != null && organizationId == 0)
+            {              
                 modelEmployees = modelEmployees.Where(x => x.WorkingOutsideTheCity == isWorkingOutsideTheCity);
             }
 
@@ -176,8 +180,13 @@ namespace KareAjans.Business.Concretes
             if (organizationId != 0)
             {
                 var organizationSelected = _organizationService.GetOrganizationById(organizationId);
-
+                //.Where(x => x.WorkingOutsideTheCity == organizationSelected.IsLocal)
                 modelEmployees = modelEmployees.Include(x => x.ModelEmployeeOrganizations).ThenInclude(x => x.Organization);
+
+                if (organizationSelected.IsLocal == false)
+                {
+                    modelEmployees = modelEmployees.Where(x => x.WorkingOutsideTheCity == true);
+                }
 
                 //modelEmployees = modelEmployees.SelectMany(x => x.ModelEmployeeOrganizations).Where(x => x.Organization.EndingDate != organizationSelected.StartingDate).Select(x => x.ModelEmployee);
                 // && x.Organization.StartingDate > organizationSelected.EndingDate
@@ -185,8 +194,11 @@ namespace KareAjans.Business.Concretes
                 modelEmployees = modelEmployees.Where(x => x.ModelEmployeeOrganizations  Organization.EndingDate < organizationSelected.StartingDate && x.Organization.StartingDate > organizationSelected.EndingDate);
                 */
 
+               
                 var modelEmployeeList = modelEmployees.ToList();
 
+                // TODO: manken görevlendirme için theninclude lu where li sql sorgusu olmalı araştır joinli olmalı 
+                // list ile somutlaştırdık işlem yapmak için, querable lar soyut, yol açıyomuş veri aktarma için, işlem yapılamıyomuş ilginç, güzel 
                 List<ModelEmployee> filteredEmployees = new List<ModelEmployee>();
 
                 foreach (var modelEmployee in modelEmployees)
@@ -199,7 +211,7 @@ namespace KareAjans.Business.Concretes
                     {
                         foreach (var modelOrganization in modelEmployee.ModelEmployeeOrganizations)
                         {
-                            if (modelOrganization.Organization.EndingDate < organizationSelected.StartingDate && modelOrganization.Organization.StartingDate > organizationSelected.EndingDate)
+                            if (modelOrganization.Organization.EndingDate < organizationSelected.StartingDate && modelOrganization.Organization.StartingDate < organizationSelected.EndingDate)
                             {
                                 filteredEmployees.Add(modelEmployee);
                             }
@@ -211,6 +223,23 @@ namespace KareAjans.Business.Concretes
             }
 
             return _mapper.Map<List<ModelEmployeeDTO>>(modelEmployees);
+        }
+
+
+
+        //----------
+        public void AssignModelEmployee(int modelEmployeeId, int organizationId)
+        {
+            ModelEmployeeDTO modelEmployeeDto = GetModelEmployeeById(modelEmployeeId, true);
+            OrganizationDTO organizationDto = _organizationService.GetOrganizationById(organizationId);
+
+            ModelEmployeeOrganizationDTO modelEmployeeOrganizationDto = new ModelEmployeeOrganizationDTO()
+            {
+                ModelEmployeeId = modelEmployeeDto.ModelEmployeeID,
+                OrganizationId = organizationDto.OrganizationID
+            };
+
+            _modelEmployeeOrganizationRepository.Add(_mapper.Map<ModelEmployeeOrganization>(modelEmployeeOrganizationDto));
         }
     }
 }

@@ -2,10 +2,13 @@
 using KareAjans.Model;
 using KareAjans.UI.ExtensionMethods;
 using KareAjans.UI.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace KareAjans.UI.Controllers
@@ -25,24 +28,80 @@ namespace KareAjans.UI.Controllers
         }
 
 
+        //[HttpPost]
+        //public IActionResult Login(LoginViewModel model)
+        //{
+        //    var userDto = _userService.CheckUser(model.Email, model.Password);
+
+        //    if (userDto != null)
+        //    {
+        //        //user ı sessiona koyduk profile a aktarcaz
+        //        HttpContext.Session.SetObject("user", userDto);
+        //    }
+        //    else
+        //    {
+        //        // Sayfaya hata göstert
+        //    }
+       
+        //    return RedirectToAction("Index", "Profile");
+        //}
+
+
+
+
         [HttpPost]
-        public IActionResult Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             var userDto = _userService.CheckUser(model.Email, model.Password);
+
 
             if (userDto != null)
             {
-                //user ı sessiona koyduk profile a aktarcaz
+                List<Claim> claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,userDto.UserID.ToString()),
+                    new Claim(ClaimTypes.Role,userDto.Permission.UserType.ToString())
+                };
+
+                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                identity.AddClaims(claims);
+                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+
+                await HttpContext.SignInAsync(principal);
+
+                userDto.Permission.Users = null;
                 HttpContext.Session.SetObject("user", userDto);
+
+                if (userDto.Permission.UserType == Entity.Enums.UserType.ModelEmployee)
+                {
+                    return RedirectToAction("Index", "Profile");
+                }
+                else 
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+
             }
-            else
-            {
-                // Sayfaya hata göstert
-            }
-       
-            return RedirectToAction("IndexTest", "Profile");
+
+            ModelState.AddModelError("", "Kullanici adi veya sifre yanlistir");
+
+            return View();
         }
 
-     
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            HttpContext.Session.Remove("user");
+
+            return View("Login");
+        }
+
+
     }
 }

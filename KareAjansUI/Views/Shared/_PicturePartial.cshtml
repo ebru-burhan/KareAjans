@@ -1,0 +1,69 @@
+﻿<!--
+    @model List<KareAjans.Model.PictureDTO>
+
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Fotoğraflar</h4>
+
+
+                <hr />
+                <div class="row el-element-overlay">
+                    @if (Model.Count == 0)
+                    {
+                        <p>Fotograf yok</p>
+                    }
+                    else
+                    {
+
+                        @foreach (var picture in Model)
+                        {
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="el-card-item">
+                                        <div class="el-card-avatar el-overlay-1">
+                                            <img src="~/images/@picture.Url" alt="Manken Fotoğrafı" />
+                                            <div class="el-overlay">
+                                                <ul class="list-style-none el-info">
+                                                    <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" href="~/images/@picture.Url"><i class="mdi mdi-magnify-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="el-card-content">
+                                            <a asp-action="DeletePicture" asp-controller="ModelEmployee" asp-route-id="@picture.PictureID" onclick="javascript: return ConfirmDelete()" class="btn btn-danger">Sil</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+                </div>
+                <form class="form-horizontal" asp-action="AddPicture" asp-controller="ModelEmployee" method="post" enctype="multipart/form-data">-->
+                    <!-- resim yükleme -->
+                    <!--<input type="hidden" asp-for="ModelEmployeeID" />
+                    <div class="row" style="margin-top:20px;">
+                        <div class="form-group">
+                            <label asp-for="Picture" class="control-label"></label>
+                            <input asp-for="Picture" type="file" class="form-control" />
+                            <span asp-validation-for="Picture" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="border-top">
+                        <div class="form-group row">
+                            <div class="card-body">
+                                <input type="submit" value="Ekle" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>-->

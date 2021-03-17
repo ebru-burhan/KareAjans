@@ -21,5 +21,7 @@ namespace KareAjans.Business.Abstract
 
         List<ModelEmployeeDTO> GetModelEmployeesSearch(string firstName, string lastName, Gender? gender, ShoeSize? shoeSize, EyeColor? eyeColor, HairColor? hairColor, BodySize? bodySize, int age, byte weight, byte height, int professionalDegreeId, string foreignLanguage, bool? hasDrivingLicence, bool? isWorkingOutsideTheCity, int organizationId);
 
+
+        void AssignModelEmployee(int modelEmployeeId, int organizationId);
     }
 }

@@ -1,75 +1,221 @@
 ﻿@model KareAjans.Model.ModelEmployeeDTO
+@using KareAjans.Entity.Enums
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_TemplateLayout.cshtml";
 }
 
 <div class="card">
-
-    <form class="form-horizontal">
+    <form class="form-horizontal" asp-action="Index" asp-controller="Profile" method="post">
 
         <div class="card-body">
-
-            <h4 class="card-title">Personal Info</h4>
-
+            <h4 class="card-title">Profile Düzenle</h4>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">Ad:</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="fname" placeholder="First NAme here">
-                            </div>
+                <div class="col-md-6">
+
+                    <input type="hidden" asp-for="ModelEmployeeID" />
+                    <input type="hidden" asp-for="ProfessionalDegreeId" />
+                    <input type="hidden" asp-for="UserId" />
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group row">
+                        <label asp-for="FirstName" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="LastName" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Gender" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <select asp-for="Gender" class="select2 form-control custom-select" style="width: 100%; height:36px;" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row m-t-20">
+                        <label asp-for="DateOfBirth" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="DateOfBirth" class="form-control date-inputmask" />
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Address" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="PhoneNo1" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="PhoneNo1" class="form-control phone-inputmask" id="phone-mask" />
+                            <span asp-validation-for="PhoneNo1" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label asp-for="PhoneNo2" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="PhoneNo2" class="form-control phone-inputmask" id="phone-mask" />
+                            <span asp-validation-for="PhoneNo2" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Weight" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="Weight" class="form-control" />
+                            <span asp-validation-for="Weight" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Height" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="Height" class="form-control" />
+                            <span asp-validation-for="Height" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--burda ayrılıyyyoooorrrrr-->
+                <div class="col-md-6">
+
+                    <div class="form-group row">
+                        <label asp-for="ShoeSize" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <select asp-for="ShoeSize" class="select2 form-control custom-select" style="width: 100%; height:36px;" asp-items="Html.GetEnumSelectList<ShoeSize>()">
+                            </select>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Soyad:</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="lname" placeholder="Last Name Here">
-                            </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="EyeColor" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <select asp-for="EyeColor" class="select2 form-control custom-select" style="width: 100%; height:36px;" asp-items="Html.GetEnumSelectList<EyeColor>()">
+                            </select>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>
-                            <div class="col-sm-9">
-                                <input type="password" class="form-control" id="lname" placeholder="Password Here">
-                            </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="HairColor" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <select asp-for="HairColor" class="select2 form-control custom-select" style="width: 100%; height:36px;" asp-items="Html.GetEnumSelectList<HairColor>()">
+                            </select>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Company</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="email1" placeholder="Company Name Here">
-                            </div>
-                        </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Contact No</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="cono1" placeholder="Contact No Here">
-                            </div>
+                    <div class="form-group row">
+                        <label asp-for="BodySize" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <select asp-for="BodySize" class="select2 form-control custom-select" style="width: 100%; height:36px;" asp-items="Html.GetEnumSelectList<BodySize>()">
+                            </select>
                         </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Message</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control"></textarea>
+                    <div class="form-group row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="custom-control custom-checkbox mr-sm-2">
+                                <input type="checkbox" asp-for="DrivingLicence" id="DrivingLicence" class="custom-control-input" />
+                                <label class="custom-control-label" for="DrivingLicence"> @Html.DisplayNameFor(model => model.DrivingLicence)</label>
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">
+                            <div class="custom-control custom-checkbox mr-sm-2">
+                                <input type="checkbox" class="custom-control-input" id="WorkingOutsideTheCity" asp-for="WorkingOutsideTheCity" />
+                                <label class="custom-control-label" for="WorkingOutsideTheCity"> @Html.DisplayNameFor(model => model.WorkingOutsideTheCity)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="ForeignLanguage" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="ForeignLanguage" class="form-control" />
+                            <span asp-validation-for="ForeignLanguage" class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Speciality" class="col-sm-3 text-right control-label col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="Speciality" class="form-control" />
+                            <span asp-validation-for="Speciality" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="border-top">
+            <div class="form-group row">
+                <div class="card-body">
+                    <input type="submit" value="Düzenle" class="btn btn-default" />
                 </div>
 
             </div>
         </div>
 
-        <div class="border-top">
-            <div class="card-body">
-                <button type="button" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
+
+        @*<div class="border-top">
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>*@
+
     </form>
+
+
+    @*<div class="row" style="margin-top:20px;">
+
+            @if (Model.Pictures.Count == 0)
+            {
+                <p>Fotograf yok</p>
+            }
+            else
+            {
+
+                foreach (var picture in Model.Pictures)
+                {
+                    <div class="col col-md-4" style="margin-bottom:20px">
+                        <div class="card">
+                            <img src="@picture.Url" class="card-img-top" style="height:300px;object-fit: cover;" alt="...">
+                            <div class="card-body">
+                                <a asp-action="DeletePicture" asp-controller="Profile" asp-route-id="@picture.PictureID" class="btn btn-xs btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>*@
+
 </div>

@@ -1,0 +1,75 @@
+﻿@model KareAjans.Model.OrganizationDTO
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Model.OrganizationName</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Başlangıç tarihi:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.StartingDate
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Bitiş tarihi:</label>
+                    <div class="col-md-9 col-form-label">
+                        @Model.EndingDate
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 text-right control-label col-form-label">Toplam gelir:</label>
+                    <div class="col-md-9 col-form-label">
+                        @String.Format("{0:C2}", @Model.TotalIncome)
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Görevli Modeller</h4>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>İsim</th>
+                            <th>Soyisim</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ModelEmployeeOrganizations)
+                        {
+                            <tr>
+                                <td>@item.ModelEmployee.FirstName</td>
+                                <td>@item.ModelEmployee.LastName</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

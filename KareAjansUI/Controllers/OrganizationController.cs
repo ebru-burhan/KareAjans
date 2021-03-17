@@ -1,5 +1,7 @@
 ﻿using KareAjans.Business.Abstract;
+using KareAjans.Entity.Enums;
 using KareAjans.Model;
+using KareAjans.UI.Attributes.AuthorizeAttributes;
 using KareAjans.UI.ExtensionMethods;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace KareAjans.UI.Controllers
 {
+    [UserTypeBasedAuthorize(UserType.Administrator)]
+
     public class OrganizationController : Controller
     {
         private readonly IOrganizationService _organizationService;
@@ -64,6 +68,13 @@ namespace KareAjans.UI.Controllers
             _organizationService.DeleteOrganization(dto);
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Detail(int id)
+        {
+            var dto =_organizationService.GetOrganizationWithModelEmployees(id);
+            return View(dto);
         }
     }
 }

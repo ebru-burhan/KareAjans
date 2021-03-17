@@ -11,35 +11,69 @@
 
 <div class="row">
     <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Hakkımızda</h4>
+                @Model.AboutText
+            </div>
+        </div>
 
 
-        @Model.AboutText
-        @Model.ReferencesText
 
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>Date Of Birth</th>
-                    <th>Url</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.ModelEmployees)
-                {
-                    <tr>
-                        <td>@item.FirstName</td>
-                        <td>@item.LastName</td>
-                        <td>@item.DateOfBirth</td>
-                        <td>@item.PictureUrl</td>
-                    </tr>
-                }
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Referanslarımız</h4>
+                @Model.ReferencesText
+            </div>
+        </div>
 
-            </tbody>
-        </table>
+
     </div>
-
-
 </div>
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Modellerimiz</h4>
+
+
+                <hr />
+                <div class="row el-element-overlay">
+                    @if (Model.ModelEmployees.Count == 0)
+                    {
+                        <p>Kayıtlı manken yok</p>
+                    }
+                    else
+                    {
+
+                        @foreach (var modelEmployee in Model.ModelEmployees)
+                        {
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="el-card-item">
+                                        <div class="el-card-avatar el-overlay-1">
+                                            <img src="~/images/@modelEmployee.PictureUrl" alt="Manken Fotoğrafı" />
+                                            <div class="el-overlay">
+                                                <ul class="list-style-none el-info">
+                                                    <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" href="~/images/@modelEmployee.PictureUrl"><i class="mdi mdi-magnify-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="el-card-content">
+                                            @modelEmployee.FirstName @modelEmployee.LastName, @modelEmployee.Age
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

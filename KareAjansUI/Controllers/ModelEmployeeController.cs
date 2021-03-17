@@ -1,6 +1,7 @@
 ﻿using KareAjans.Business.Abstract;
 using KareAjans.Entity.Enums;
 using KareAjans.Model;
+using KareAjans.UI.Attributes.AuthorizeAttributes;
 using KareAjans.UI.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace KareAjans.UI.Controllers
 {
+    [UserTypeBasedAuthorize(UserType.Administrator)]
     public class ModelEmployeeController : Controller
     {
    
@@ -234,6 +236,7 @@ namespace KareAjans.UI.Controllers
 
                 ModelEmployeeDetailViewModel model = new ModelEmployeeDetailViewModel
                 {
+                    ModelEmployeeID = dto.ModelEmployeeID,
                     FirstName = dto.FirstName,
                     LastName = dto.LastName,
                     Gender = dto.Gender.ToString(),
@@ -256,11 +259,21 @@ namespace KareAjans.UI.Controllers
             {
                 SearchResults = modelList,
                 ProfessionalDegrees = _professionalDegreeService.GetProfessionalDegrees(),
-                Organizations = _organizationService.GetOrganizations()
+                Organizations = _organizationService.GetOrganizations(),
+                SelectedOrganizationId = organizationId
             };
 
 
             return View(searchModel);
+        }
+
+
+        [HttpGet]
+        public IActionResult Assign(int id, int organizationId)
+        {
+            _modelEmployeeService.AssignModelEmployee(id, organizationId);
+            return RedirectToAction(nameof(Search));
+
         }
 
     }

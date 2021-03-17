@@ -13,5 +13,8 @@ namespace KareAjans.UI.ViewModels
 
         public List<OrganizationDTO> Organizations { get; set; }
 
+        //modelEmployee yi organizationda görevlendirmek için
+        public int SelectedOrganizationId { get; set; }
+
     }
 }

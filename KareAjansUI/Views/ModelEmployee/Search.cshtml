@@ -204,7 +204,10 @@
                     <td>@item.BodySize</td>
                     <td>@item.ShoeSize</td>
                     <td>
-                        <a asp-action="Assign" asp-controller="ModelEmployee" asp-route-id="@item.ModelEmployeeID" class="btn btn-outline-purple">Görevlendir</a>
+                        @if (Model.SelectedOrganizationId != 0)
+                        {
+                            <a asp-action="Assign" asp-controller="ModelEmployee" asp-route-id="@item.ModelEmployeeID" asp-route-organizationId="@Model.SelectedOrganizationId" class="btn btn-outline-purple">Görevlendir</a>
+                        }
                         <a asp-action="Detail" asp-controller="ModelEmployee" asp-route-id="@item.ModelEmployeeID" class="btn  btn-outline-orange">Detay</a>
                     </td>
                 </tr>

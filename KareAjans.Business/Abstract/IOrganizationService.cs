@@ -15,6 +15,7 @@ namespace KareAjans.Business.Abstract
         OrganizationDTO GetOrganizationById(int id, bool incomeIncluded = false);
 
         List<OrganizationDTO> GetOrganizationsWithIncomes();
+        OrganizationDTO GetOrganizationWithModelEmployees(int id);
 
     }
 }

@@ -47,7 +47,7 @@ namespace KareAjans.Business.Concretes
 
         public UserDTO CheckUser(string email, string password)
         {
-            var user = _userRepository.Get(x => x.Email == email && x.Password == password).FirstOrDefault();
+            var user = _userRepository.Get(x => x.Email == email && x.Password == password, x => x.Permission).FirstOrDefault();
             if (user != null)
             {
                 return _mapper.Map<UserDTO>(user);
