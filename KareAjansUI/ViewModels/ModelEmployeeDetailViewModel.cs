@@ -39,7 +39,6 @@ namespace KareAjans.UI.ViewModels
         public IFormFile Picture { get; set; }
 
 
-
         /*
         //manken adı aratıp hangi organizasyonlarda çalışmış çalışıyo
         //arama da kullanılcak dursun şimdilk

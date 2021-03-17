@@ -32,7 +32,6 @@ namespace KareAjans.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // TODO: diğer config classları silip dataAnnotation kullan ya da buraya ekle diğer mapping classalrı
 
             modelBuilder.ApplyConfiguration(new CommentMapping());
             modelBuilder.ApplyConfiguration(new ExpenseTypeMapping());

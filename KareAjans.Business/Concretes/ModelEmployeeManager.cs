@@ -4,6 +4,7 @@ using KareAjans.DataAccess.Abstracts;
 using KareAjans.Entity;
 using KareAjans.Entity.Enums;
 using KareAjans.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +17,15 @@ namespace KareAjans.Business.Concretes
         private readonly IModelEmployeeRepository _modelEmployeeRepository;
         private readonly IUserService _userService;
         private readonly IPictureService _pictureService;
+        private readonly IOrganizationService _organizationService;
         private readonly IMapper _mapper;
-        public ModelEmployeeManager(IModelEmployeeRepository modelEmployeeRepository , IUserService userService, IPictureService pictureService,
+        public ModelEmployeeManager(IModelEmployeeRepository modelEmployeeRepository , IUserService userService, IPictureService pictureService, IOrganizationService organizationService,
             IMapper mapper)
         {
             _modelEmployeeRepository = modelEmployeeRepository;
             _userService = userService;
             _pictureService = pictureService;
+            _organizationService = organizationService;
             _mapper = mapper;
         }
 
@@ -91,9 +94,9 @@ namespace KareAjans.Business.Concretes
             return _mapper.Map<ModelEmployeeDTO>(modelEmployee);
         }
 
-        public List<ModelEmployeeDTO> GetModelEmployeesSearch(string firstName, string lastName)
+        public List<ModelEmployeeDTO> GetModelEmployeesSearch(string firstName, string lastName, Gender? gender, ShoeSize? shoeSize, EyeColor? eyeColor, HairColor? hairColor, BodySize? bodySize, int age, byte weight, byte height, int professionalDegreeId, string foreignLanguage, bool? hasDrivingLicence, bool? isWorkingOutsideTheCity, int organizationId)
         {
-            var modelEmployees = _modelEmployeeRepository.GetAll();
+            var modelEmployees = _modelEmployeeRepository.GetIncluded(x => x.ProfessionalDegree);
 
             if (!String.IsNullOrEmpty(firstName))
             {
@@ -105,8 +108,109 @@ namespace KareAjans.Business.Concretes
                 modelEmployees = modelEmployees.Where(x => x.LastName.Contains(lastName));
             }
 
-            return _mapper.Map<List<ModelEmployeeDTO>>(modelEmployees);
+            //hasvalue == null check mişş
+            if (gender != null)
+            {
+                //enum ? ile null olabilir hale getrdik 
+                modelEmployees = modelEmployees.Where(x => x.Gender == gender.Value);
+            }
 
+            if (shoeSize.HasValue)
+            {
+                modelEmployees = modelEmployees.Where(x => x.ShoeSize == shoeSize.Value);
+            }
+
+            if (eyeColor.HasValue)
+            {
+                modelEmployees = modelEmployees.Where(x => x.EyeColor == eyeColor.Value);
+            }
+
+            if (hairColor.HasValue)
+            {
+                modelEmployees = modelEmployees.Where(x => x.HairColor == hairColor.Value);
+            }
+
+            if (bodySize.HasValue)
+            {
+                modelEmployees = modelEmployees.Where(x => x.BodySize == bodySize.Value);
+            }
+
+            if (age != 0)
+            {
+                modelEmployees = modelEmployees.Where(x => (DateTime.Now.Year - x.DateOfBirth.Year) == age );
+            }
+
+            if (weight != 0)
+            {
+                modelEmployees = modelEmployees.Where(x => x.Weight == weight);
+            }
+
+            if (height != 0)
+            {
+                modelEmployees = modelEmployees.Where(x => x.Height == height);
+            }
+
+            if (professionalDegreeId != 0)
+            {
+                modelEmployees = modelEmployees.Where(x => x.ProfessionalDegreeId == professionalDegreeId);
+            }
+
+            if (!String.IsNullOrEmpty(foreignLanguage))
+            {
+                modelEmployees = modelEmployees.Where(x => x.ForeignLanguage.Contains(foreignLanguage));
+            }
+
+            if (hasDrivingLicence != null)
+            {
+                modelEmployees = modelEmployees.Where(x => x.DrivingLicence == hasDrivingLicence);
+            }
+
+            if (isWorkingOutsideTheCity != null)
+            {
+                modelEmployees = modelEmployees.Where(x => x.WorkingOutsideTheCity == isWorkingOutsideTheCity);
+            }
+
+            // ThenInclude hemen önceki include edilen tablonun içinde tekrar include etmeyi sağlıyo wooww
+            // TODO: ThenInclude kullanılacak bazı yerler varsanırım zaman kalırsa yapılabilirrr
+            
+            if (organizationId != 0)
+            {
+                var organizationSelected = _organizationService.GetOrganizationById(organizationId);
+
+                modelEmployees = modelEmployees.Include(x => x.ModelEmployeeOrganizations).ThenInclude(x => x.Organization);
+
+                //modelEmployees = modelEmployees.SelectMany(x => x.ModelEmployeeOrganizations).Where(x => x.Organization.EndingDate != organizationSelected.StartingDate).Select(x => x.ModelEmployee);
+                // && x.Organization.StartingDate > organizationSelected.EndingDate
+                /*
+                modelEmployees = modelEmployees.Where(x => x.ModelEmployeeOrganizations  Organization.EndingDate < organizationSelected.StartingDate && x.Organization.StartingDate > organizationSelected.EndingDate);
+                */
+
+                var modelEmployeeList = modelEmployees.ToList();
+
+                List<ModelEmployee> filteredEmployees = new List<ModelEmployee>();
+
+                foreach (var modelEmployee in modelEmployees)
+                {
+                    if (modelEmployee.ModelEmployeeOrganizations.Count == 0)
+                    {
+                        filteredEmployees.Add(modelEmployee);
+                    }
+                    else
+                    {
+                        foreach (var modelOrganization in modelEmployee.ModelEmployeeOrganizations)
+                        {
+                            if (modelOrganization.Organization.EndingDate < organizationSelected.StartingDate && modelOrganization.Organization.StartingDate > organizationSelected.EndingDate)
+                            {
+                                filteredEmployees.Add(modelEmployee);
+                            }
+                        }
+                    }
+                }
+
+                return _mapper.Map<List<ModelEmployeeDTO>>(filteredEmployees);
+            }
+
+            return _mapper.Map<List<ModelEmployeeDTO>>(modelEmployees);
         }
     }
 }

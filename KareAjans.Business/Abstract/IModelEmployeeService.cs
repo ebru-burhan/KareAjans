@@ -1,4 +1,5 @@
-﻿using KareAjans.Model;
+﻿using KareAjans.Entity.Enums;
+using KareAjans.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,7 +19,7 @@ namespace KareAjans.Business.Abstract
         ModelEmployeeDTO GetModelEmployeeByIdWithIncluded(int id);
 
 
-        List<ModelEmployeeDTO> GetModelEmployeesSearch(string firstName, string lastName);
+        List<ModelEmployeeDTO> GetModelEmployeesSearch(string firstName, string lastName, Gender? gender, ShoeSize? shoeSize, EyeColor? eyeColor, HairColor? hairColor, BodySize? bodySize, int age, byte weight, byte height, int professionalDegreeId, string foreignLanguage, bool? hasDrivingLicence, bool? isWorkingOutsideTheCity, int organizationId);
 
     }
 }

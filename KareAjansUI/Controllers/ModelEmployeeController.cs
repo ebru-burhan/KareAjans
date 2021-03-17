@@ -1,4 +1,5 @@
 ﻿using KareAjans.Business.Abstract;
+using KareAjans.Entity.Enums;
 using KareAjans.Model;
 using KareAjans.UI.ViewModels;
 using Microsoft.AspNetCore.Hosting;
@@ -19,18 +20,20 @@ namespace KareAjans.UI.Controllers
         private readonly IProfessionalDegreeService _professionalDegreeService;
         private readonly ICommentService _commentService;
         private readonly IPictureService _pictureService;
+        private readonly IOrganizationService _organizationService;
 
         //resim yükleme
         private readonly IWebHostEnvironment _env;
         private string directory;
 
-        public ModelEmployeeController(IModelEmployeeService modelEmployeeService, IProfessionalDegreeService professionalDegreeService, ICommentService commentService, IPictureService pictureService,
+        public ModelEmployeeController(IModelEmployeeService modelEmployeeService, IProfessionalDegreeService professionalDegreeService, ICommentService commentService, IPictureService pictureService, IOrganizationService organizationService,
             IWebHostEnvironment env)
         {
             _modelEmployeeService = modelEmployeeService;
             _professionalDegreeService = professionalDegreeService;
             _commentService = commentService;
             _pictureService = pictureService;
+            _organizationService = organizationService;
 
             _env = env;
             //nereye kaydolacağı yüklemenin = yoda commenti
@@ -218,12 +221,46 @@ namespace KareAjans.UI.Controllers
 
 
         [HttpGet]
-        public IActionResult Search(string firstName, string lastName)
+        public IActionResult Search(string firstName, string lastName, Gender? gender , ShoeSize? shoeSize, EyeColor? eyeColor, HairColor? hairColor, BodySize? bodySize, int age, byte weight, byte height, int professionalDegreeId, string foreignLanguage, bool? hasDrivingLicence, bool? isWorkingOutsideTheCity, int organizationId)
         {
 
-           var dtolist = _modelEmployeeService.GetModelEmployeesSearch(firstName, lastName);
-           
-            return View(dtolist);
+           var dtolist = _modelEmployeeService.GetModelEmployeesSearch(firstName, lastName, gender, shoeSize, eyeColor, hairColor, bodySize, age, weight, height, professionalDegreeId, foreignLanguage, hasDrivingLicence, isWorkingOutsideTheCity, organizationId);
+
+            List<ModelEmployeeDetailViewModel> modelList = new List<ModelEmployeeDetailViewModel>();
+
+            foreach (var dto in dtolist)
+            {
+                int dtoAge = DateTime.Today.Year - dto.DateOfBirth.Year;
+
+                ModelEmployeeDetailViewModel model = new ModelEmployeeDetailViewModel
+                {
+                    FirstName = dto.FirstName,
+                    LastName = dto.LastName,
+                    Gender = dto.Gender.ToString(),
+                    Title = dto.ProfessionalDegree.Title,
+                    Age = dtoAge,
+                    Weight = dto.Weight,
+                    Height = dto.Height,
+                    ShoeSize = (int)dto.ShoeSize,
+                    EyeColor = dto.EyeColor.ToString(),
+                    HairColor = dto.HairColor.ToString(),
+                    BodySize = dto.BodySize.ToString(),
+                    DrivingLicence = dto.DrivingLicence,
+                    WorkingOutsideTheCity = dto.WorkingOutsideTheCity,
+                    ForeignLanguage = dto.ForeignLanguage
+                };
+                modelList.Add(model);
+            }
+
+            ModelEmployeeSearchViewModel searchModel = new ModelEmployeeSearchViewModel()
+            {
+                SearchResults = modelList,
+                ProfessionalDegrees = _professionalDegreeService.GetProfessionalDegrees(),
+                Organizations = _organizationService.GetOrganizations()
+            };
+
+
+            return View(searchModel);
         }
 
     }
