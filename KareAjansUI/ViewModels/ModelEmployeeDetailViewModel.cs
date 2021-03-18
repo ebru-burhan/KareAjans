@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -35,7 +36,9 @@ namespace KareAjans.UI.ViewModels
         public List<PictureDTO> Pictures { get; set; }
 
         //ekleme işlemi için
+
         public CommentDTO Comment { get; set; }
+        [Required(ErrorMessage = "Resim yükleyiniz.")]
         public IFormFile Picture { get; set; }
 
     }

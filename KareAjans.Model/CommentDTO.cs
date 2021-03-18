@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace KareAjans.Model
@@ -8,6 +9,8 @@ namespace KareAjans.Model
     {
         public int CommentID { get; set; }
         public int ModelEmployeeId { get; set; }
+
+        [Required]
         public string Message { get; set; }
         public DateTime CreatedDate { get; set; }
 

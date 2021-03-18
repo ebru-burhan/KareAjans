@@ -50,7 +50,6 @@ namespace KareAjans.Business.Concretes
         public void DeleteModelEmployee(ModelEmployeeDTO dto)
         {
             _userService.DeleteUser(_userService.GetUserById(dto.UserId));
-            _modelEmployeeRepository.Delete(_mapper.Map<ModelEmployee>(dto));
         }
 
         public void UpdateModelEmployee(ModelEmployeeDTO dto)

@@ -13,17 +13,31 @@ namespace KareAjans.Model
         public int ProfessionalDegreeId { get; set; }
         public int UserId { get; set; }
 
+        [Required]
         public string FirstName { get; set; }
+        
+        [Required]
         public string LastName { get; set; }
+
+        [Required]
         public string Address { get; set; }
+
+        [Required]
         public string PhoneNo1 { get; set; }
+
+        [Required]
         public string PhoneNo2 { get; set; }
+
+        [Required]
         public DateTime DateOfBirth { get; set; }
 
         [Range(0, byte.MaxValue, ErrorMessage = "Lütfen {1}'dan büyük değer giriniz.")]
         public byte Weight { get; set; }
         [Range(0, byte.MaxValue, ErrorMessage = "Lütfen {1}'dan büyük değer giriniz.")]
+
+        [Required]
         public byte Height { get; set; }
+        
         public ShoeSize ShoeSize { get; set; }
         public EyeColor EyeColor { get; set; }
         public HairColor HairColor { get; set; }
