@@ -196,9 +196,9 @@
 
                 <hr />
                 <div class="row el-element-overlay">
-                    @if (Model.Pictures.Count == 0)
+                    @if (Model.Pictures == null || Model.Pictures.Count == 0)
                     {
-                        <p>Fotograf yok</p>
+                       <p>Fotograf yok</p>
                     }
                     else
                     {

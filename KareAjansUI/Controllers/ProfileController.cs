@@ -49,9 +49,8 @@ namespace KareAjans.UI.Controllers
         public IActionResult Index(ModelEmployeeDTO dto)
         {
             _modelEmployeeService.UpdateModelEmployee(dto);
-            return View();
+
+            return View(_modelEmployeeService.GetModelEmployeeByIdWithIncluded(dto.ModelEmployeeID));
         }
-
-
     }
 }
