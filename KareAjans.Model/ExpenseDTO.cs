@@ -10,6 +10,7 @@ namespace KareAjans.Model
         public int ExpenseTypeId { get; set; }
         public decimal Amount { get; set; }
 
+        public DateTime CreatedDate { get; set; }
 
         //relations-------
         public ExpenseTypeDTO ExpenseType { get; set; }

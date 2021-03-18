@@ -5,37 +5,48 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Gelir Ekle</h2>
+
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form class="form-horizontal" asp-action="Add" asp-controller="Income" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-title"><h2>Gelir Ekle</h2></div>
+        <div class="row">
+            <div class="col-md-4">
+                <form class="form-horizontal" asp-action="Add" asp-controller="Income" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 
-            <div class="form-group row">
-                <label class="col-sm-3 text-right control-label col-form-label">Organizasyonlar</label>
+                    <div class="form-group row">
+                        <label class="col-sm-3 control-label col-form-label">Organizasyonlar</label>
 
-                <select asp-for="Income.OrganizationId" class="select2 form-control custom-select" style="width: 100%; height:36px;" asp-items='new SelectList(Model.Organizations, "OrganizationID" , "OrganizationName" )'>
-                </select>
+                        <select asp-for="Income.OrganizationId" class="select2 form-control custom-select" style="width: 100%; height:36px;" asp-items='new SelectList(Model.Organizations, "OrganizationID" , "OrganizationName" )'>
+                        </select>
 
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label asp-for="Income.Amount" class="col-sm-3 control-label col-form-label"></label>
+                        <input asp-for="Income.Amount" class="form-control" />
+                        <span asp-validation-for="Income.Amount" class="text-danger"></span>
+                    </div>
+
+                    <div class="border-top">
+                        <div class="form-group row">
+                            <div class="card-body">
+                                <input type="submit" value="Ekle" onclick="javascript: return ConfirmDelete()" class="btn btn-default" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
             </div>
+        </div>
+</div>
 
-
-            <div class="form-group row">
-                <label asp-for="Income.Amount" class="col-sm-3 text-right control-label col-form-label"></label>
-                <input asp-for="Income.Amount" class="form-control" />
-                <span asp-validation-for="Income.Amount" class="text-danger"></span>
-            </div>
-
-            <div class="border-top">
-                <div class="form-group row">
-                    <input type="submit" value="Ekle" onclick="javascript: return ConfirmDelete()" class="btn btn-default" />
-                </div>
-            </div>
-        </form>
-    </div>
 </div>
 
 

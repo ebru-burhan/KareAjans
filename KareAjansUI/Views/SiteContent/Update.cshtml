@@ -7,35 +7,42 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>İçerik Düzenleme</h2>
 
 
-<div class="row">
-    <div class="col-md-6">
-        <form class="form-horizontal" asp-action="Update" asp-controller="SiteContent" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="card">
+    <div class="card-body">
+        <div class="card-title"><h2>İçerik Düzenle</h2></div>
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-horizontal" asp-action="Update" asp-controller="SiteContent" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group row">
-                <label asp-for="AboutText" class="col-sm-3 text-right control-label col-form-label">Hakkımızda:</label>
-                <textarea asp-for="AboutText" class="form-control"></textarea>
-                <span asp-validation-for="AboutText" class="text-danger"></span>
+                    <div class="form-group row">
+                        <label asp-for="AboutText" class="col-sm-3 control-label col-form-label">Hakkımızda:</label>
+                        <textarea asp-for="AboutText" class="form-control"></textarea>
+                        <span asp-validation-for="AboutText" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="ReferencesText" class="col-sm-3 control-label col-form-label">Referanslarımız:</label>
+                        <textarea asp-for="ReferencesText" class="form-control"></textarea>
+                        <span asp-validation-for="ReferencesText" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <input type="submit" value="Düzenle" class="btn btn-default" />
+                    </div>
+                </form>
             </div>
 
-            <div class="form-group row">
-                <label asp-for="ReferencesText" class="col-sm-3 text-right control-label col-form-label">Referanslarımız:</label>
-                <textarea asp-for="ReferencesText" class="form-control"></textarea>
-                <span asp-validation-for="ReferencesText" class="text-danger"></span>
-            </div>
 
-
-            <div class="form-group row">
-                <input type="submit" value="Düzenle" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
-
-
 </div>
+
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

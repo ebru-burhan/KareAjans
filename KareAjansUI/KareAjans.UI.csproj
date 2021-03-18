@@ -22,7 +22,6 @@
   <ItemGroup>
     <Folder Include="Views\Login\" />
     <Folder Include="Views\SiteContent\" />
-    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

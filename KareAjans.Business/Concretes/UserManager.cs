@@ -13,10 +13,12 @@ namespace KareAjans.Business.Concretes
     public class UserManager : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IModelEmployeeRepository _modelEmployeeRepository;
         private readonly IMapper _mapper;
-        public UserManager(IUserRepository userRepository, IMapper mapper)
+        public UserManager(IUserRepository userRepository, IModelEmployeeRepository modelEmployeeRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _modelEmployeeRepository = modelEmployeeRepository;
             _mapper = mapper;
         }
 
@@ -39,6 +41,14 @@ namespace KareAjans.Business.Concretes
 
         public void UpdateUser(UserDTO dto)
         {
+            var modelEmployee = _modelEmployeeRepository.Get(x => x.UserId == dto.UserID).FirstOrDefault();
+            if (modelEmployee != null)
+            {
+                modelEmployee.FirstName = dto.FirstName;
+                modelEmployee.LastName = dto.LastName;
+                _modelEmployeeRepository.Update(modelEmployee);
+            }
+
             _userRepository.Update(_mapper.Map<User>(dto));
         }
 

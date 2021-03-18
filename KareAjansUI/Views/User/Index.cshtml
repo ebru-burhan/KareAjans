@@ -5,56 +5,65 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Kullanıcı Listesi</h2>
 
-<div class="row">
-    <div class="col-md-8">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>
-                        İsim
-                    </th>
-                    <th>
-                        Soyisim
-                    </th>
-                    <th>
-                        Yetki
-                    </th>
 
-                    <th>
-                        Email
-                    </th>
-                    <th><a asp-action="Add" asp-controller="User" class="btn btn-outline-success">Kullanıcı Ekle</a></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var dto in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => dto.FirstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => dto.LastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => dto.Permission.UserType)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => dto.Email)
-                        </td>
-                        <td>
-                            <a asp-action="Update" asp-controller="User" asp-route-id="@dto.UserID" class="btn  btn-outline-primary">Düzenle</a>
-                            <a asp-action="Delete" asp-controller="User" asp-route-id="@dto.UserID" onclick="javascript: return ConfirmDelete()" class="btn btn-outline-danger">Sil</a>
-                        </td>
+<div class="card">
+    <div class="card-body">
+        
+        <div class="card-title"><h2>Kullanıcı Listesi</h2></div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover" id="userTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                İsim
+                            </th>
+                            <th>
+                                Soyisim
+                            </th>
+                            <th>
+                                Yetki
+                            </th>
 
-                    </tr>
-                }
-            </tbody>
-        </table>
+                            <th>
+                                Email
+                            </th>
+                            <th><a asp-action="Add" asp-controller="User" class="btn btn-outline-success">Kullanıcı Ekle</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var dto in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => dto.FirstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => dto.LastName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => dto.Permission.UserType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => dto.Email)
+                                </td>
+                                <td>
+                                    <a asp-action="Update" asp-controller="User" asp-route-id="@dto.UserID" class="btn  btn-outline-primary">Düzenle</a>
+                                    <a asp-action="Delete" asp-controller="User" asp-route-id="@dto.UserID" onclick="javascript: return ConfirmDelete()" class="btn btn-outline-danger">Sil</a>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 </div>
+
+
 
 
 @section Scripts {

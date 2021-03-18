@@ -33,6 +33,7 @@ namespace KareAjans.Model
         public bool WorkingOutsideTheCity { get; set; }
         public string ForeignLanguage { get; set; }
         public string Speciality { get; set; }
+        public DateTime CreatedDate { get; set; }
 
 
         //relations-------

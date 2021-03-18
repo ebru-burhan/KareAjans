@@ -1,54 +1,20 @@
-﻿@model KareAjans.Model.OrganizationDTO
+﻿
 
 @{
     ViewData["Title"] = "Add";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Organizasyon Ekle</h2>
-
-<hr />
-
-
-<div class="row">
-    <div class="col-md-4">
-        <form class="form-horizontal" asp-action="Add" asp-controller="Organization" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group row">
-                <label asp-for="OrganizationName" class="col-sm-3 text-right control-label col-form-label"></label>
-                <input asp-for="OrganizationName" class="form-control" />
-                <span asp-validation-for="OrganizationName" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <label asp-for="StartingDate" class="col-sm-3 text-right control-label col-form-label"></label>
-                <input asp-for="StartingDate" class="form-control" />
-                <span asp-validation-for="StartingDate" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <label asp-for="EndingDate" class="col-sm-3 text-right control-label col-form-label"></label>
-                <input asp-for="EndingDate" class="form-control" />
-                <span asp-validation-for="EndingDate" class="text-danger"></span>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-3"></div>
-                <div class="col-md-9">
-                    <div class="custom-control custom-checkbox mr-sm-2">
-                        <input type="checkbox" asp-for="IsLocal" id="IsLocal" class="custom-control-input" />
-                        <label class="custom-control-label" for="IsLocal">@Html.DisplayNameFor(model => model.IsLocal)</label>
-                    </div>
-                </div>
-
-            </div>
-            <div class="border-top">
-                <div class="form-group row">
-                    <input type="submit" value="Ekle" onclick="javascript: return ConfirmDelete()" class="btn btn-default" />
-                </div>
-            </div>
-        </form>
+<div class="card">
+    <div class="row">
+        <div class="col-md-4">
+            <form class="form-horizontal" asp-action="Add" asp-controller="Organization" method="post">
+                <partial name="_OrganizationManipulationPartial" />
+            </form>
+        </div>
     </div>
-</div>
 
+</div>
 
 
 

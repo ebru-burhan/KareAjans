@@ -30,6 +30,9 @@ namespace KareAjans.Business.Concretes
 
         public void UpdateSiteContent(SiteContentDTO dto)
         {
+           var siteContent = _siteContentRepository.Get(x => x.SiteContentID == dto.SiteContentID).FirstOrDefault();
+            dto.CreatedDate = siteContent.CreatedDate;  
+
             _siteContentRepository.Update(_mapper.Map<SiteContent>(dto));
         }
 

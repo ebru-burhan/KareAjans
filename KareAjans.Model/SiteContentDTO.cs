@@ -10,5 +10,7 @@ namespace KareAjans.Model
         public int SiteContentID { get; set; }
         public SiteContentType SiteContentType { get; set; }
         public string Text { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }

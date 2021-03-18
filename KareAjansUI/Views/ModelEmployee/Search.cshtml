@@ -12,7 +12,7 @@
     <form class="form-horizontal" asp-action="Search" asp-controller="ModelEmployee" method="get">
 
         <div class="card-body">
-            <h4 class="card-title">Filtreleme</h4>
+            <div class="card-title"><h2>Manken Düzenle</h2></div>
 
             <div class="row">
 
@@ -173,50 +173,58 @@
     </form>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <th>İsim</th>
-                    <th>Soyisim</th>
-                    <th>Profesyonel Derece</th>
-                    <th>Cinsiyet</th>
-                    <th>Yaş</th>
-                    <th>Göz Rengi</th>
-                    <th>Saç Rengi</th>
-                    <th>Beden</th>
-                    <th>Ayakkabı Numarası</th>
-                    <th colspan="2">Operasyonlar</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.SearchResults)
-                {
-                    <tr>
-                        <td>@item.FirstName</td>
-                        <td>@item.LastName</td>
-                        <td>@item.Title</td>
-                        <td>@item.Gender</td>
-                        <td>@item.Age</td>
-                        <td>@item.EyeColor</td>
-                        <td>@item.HairColor</td>
-                        <td>@item.BodySize</td>
-                        <td>@item.ShoeSize</td>
-                        <td>
-                            @if (Model.SelectedOrganizationId != 0)
-                            {
-                                <a asp-action="Assign" asp-controller="ModelEmployee" asp-route-id="@item.ModelEmployeeID" asp-route-organizationId="@Model.SelectedOrganizationId" class="btn btn-outline-purple">Görevlendir</a>
-                            }
-                            <a asp-action="Detail" asp-controller="ModelEmployee" asp-route-id="@item.ModelEmployeeID" class="btn  btn-outline-orange">Detay</a>
-                        </td>
-                    </tr>
-                }
 
-            </tbody>
-        </table>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover" id="searchTable">
+                    <thead>
+                        <tr>
+                            <th>İsim</th>
+                            <th>Soyisim</th>
+                            <th>Profesyonel Derece</th>
+                            <th>Cinsiyet</th>
+                            <th>Yaş</th>
+                            <th>Göz Rengi</th>
+                            <th>Saç Rengi</th>
+                            <th>Beden</th>
+                            <th>Ayakkabı Numarası</th>
+                            <th colspan="2">Operasyonlar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.SearchResults)
+                        {
+                            <tr>
+                                <td>@item.FirstName</td>
+                                <td>@item.LastName</td>
+                                <td>@item.Title</td>
+                                <td>@item.Gender</td>
+                                <td>@item.Age</td>
+                                <td>@item.EyeColor</td>
+                                <td>@item.HairColor</td>
+                                <td>@item.BodySize</td>
+                                <td>@item.ShoeSize</td>
+                                <td>
+                                    @if (Model.SelectedOrganizationId != 0)
+                                    {
+                                        <a asp-action="Assign" asp-controller="ModelEmployee" asp-route-id="@item.ModelEmployeeID" asp-route-organizationId="@Model.SelectedOrganizationId" class="btn btn-outline-purple">Görevlendir</a>
+                                    }
+                                    <a asp-action="Detail" asp-controller="ModelEmployee" asp-route-id="@item.ModelEmployeeID" class="btn  btn-outline-orange">Detay</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
+
+
+
 
 
 @section Scripts {

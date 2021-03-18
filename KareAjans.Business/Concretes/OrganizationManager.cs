@@ -41,6 +41,9 @@ namespace KareAjans.Business.Concretes
 
         public void UpdateOrganization(OrganizationDTO dto)
         {
+            var organization =_organizationRepository.Get(x => x.OrganizationID == dto.OrganizationID).FirstOrDefault();
+            dto.CreatedDate = organization.CreatedDate;
+
             _organizationRepository.Update(_mapper.Map<Organization>(dto));
         }
 

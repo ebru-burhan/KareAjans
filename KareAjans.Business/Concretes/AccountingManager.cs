@@ -14,7 +14,6 @@ namespace KareAjans.Business.Concretes
     public class AccountingManager : IAccountingService
     {
         private readonly IOrganizationService _organizationService;
-        private readonly IExpenseService _expenseService;
         private readonly IExpenseTypeService _expenseTypeService;
         private readonly IModelEmployeeService _modelEmployeeService;
         private readonly IModelEmployeeOrganizationRepository _modelEmployeeOrganizationRepository;
@@ -26,7 +25,6 @@ namespace KareAjans.Business.Concretes
             IMapper mapper)
         {
             _organizationService = organizationService;
-            _expenseService = expenseService;
             _expenseTypeService = expenseTypeService;
             _modelEmployeeService = modelEmployeeService;
 
@@ -53,7 +51,7 @@ namespace KareAjans.Business.Concretes
             var foodDto = _expenseTypeService.GetExpenseTypeByType(ExpenseTypeEnum.Food);
             var accommodationDto = _expenseTypeService.GetExpenseTypeByType(ExpenseTypeEnum.Accommodation);
 
-            //organizasyonda yüzdeli olan modelEmployeelerin sayısı
+            
             int percentageModelEmployeeCount = modelEmployeOrganizations.Where(x => x.ModelEmployee.ProfessionalDegree.DailyWage == 0).Count();
 
             foreach (var modeleEmployeeOrganization in modelEmployeOrganizations)

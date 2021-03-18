@@ -13,5 +13,6 @@ namespace KareAjans.Model
         public decimal SalariesTotal { get; set; }  //2700
         public decimal ExpensesTotal { get; set; } //200 
         public List<AccountingItemDTO> Items { get; set; }
+
     }
 }

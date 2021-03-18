@@ -14,6 +14,8 @@ namespace KareAjans.Model
 
         public decimal TotalIncome { get; set; }
 
+        public DateTime CreatedDate { get; set; }
+
         public List<ModelEmployeeOrganizationDTO> ModelEmployeeOrganizations { get; set; }
         public  List<IncomeDTO> Incomes { get; set; }
     }

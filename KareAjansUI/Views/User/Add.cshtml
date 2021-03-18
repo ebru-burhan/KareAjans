@@ -1,57 +1,24 @@
-﻿@model KareAjans.UI.ViewModels.UserPermissionsViewModel
+﻿
 
 @{
     ViewData["Title"] = "Add";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Kullanıcı Ekle</h2>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form class="form-horizontal" asp-action="Add" asp-controller="User" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-
-            <div class="form-group row">
-                <label asp-for="User.FirstName" class="col-sm-3 text-right control-label col-form-label"></label>
-                <input asp-for="User.FirstName" class="form-control" />
-                <span asp-validation-for="User.FirstName" class="text-danger"></span>
+<div class="card">
+    <div class="row">
+            <div class="col-md-4">
+                <form class="form-horizontal" asp-action="Add" asp-controller="User" method="post">
+                    <partial name="_UserManipulationPartial" />
+                </form>
             </div>
+        </div>
 
-            <div class="form-group row">
-                <label asp-for="User.LastName" class="col-sm-3 text-right control-label col-form-label"></label>
-                <input asp-for="User.LastName" class="form-control" />
-                <span asp-validation-for="User.LastName" class="text-danger"></span>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-sm-3 text-right control-label col-form-label">Yetkiler:</label>
-
-                <select asp-for="User.PermissionId" class="select2 form-control custom-select" style="width: 100%; height:36px;" asp-items='new SelectList(Model.Permissions, "PermissionID" , "UserType" )'>
-                </select>
-
-            </div>
-
-            <div class="form-group row">
-                <label asp-for="User.Email" class="col-sm-3 text-right control-label col-form-label"></label>
-                <input asp-for="User.Email" class="form-control" />
-                <span asp-validation-for="User.Email" class="text-danger"></span>
-            </div>
-
-            <div class="form-group row">
-                <label asp-for="User.Password" class="col-sm-3 text-right control-label col-form-label"></label>
-                <input asp-for="User.Password" class="form-control" />
-                <span asp-validation-for="User.Password" class="text-danger"></span>
-            </div>
-            <div class="border-top">
-                <div class="form-group row">
-                    <input type="submit" value="Ekle" onclick="javascript: return ConfirmDelete()" class="btn btn-default" />
-                </div>
-            </div>
-        </form>
-    </div>
+          
 </div>
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

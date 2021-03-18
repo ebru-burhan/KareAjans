@@ -16,17 +16,18 @@ namespace KareAjans.Business.Concretes
     {
         private readonly IModelEmployeeRepository _modelEmployeeRepository;
         private readonly IModelEmployeeOrganizationRepository _modelEmployeeOrganizationRepository;
-
         private readonly IUserService _userService;
+        private readonly IUserRepository _userRepository;
         private readonly IPictureService _pictureService;
         private readonly IOrganizationService _organizationService;
         private readonly IMapper _mapper;
         public ModelEmployeeManager(IModelEmployeeRepository modelEmployeeRepository , IModelEmployeeOrganizationRepository modelEmployeeOrganizationRepository,
-            IUserService userService, IPictureService pictureService, IOrganizationService organizationService,
+            IUserRepository userRepository, IPictureService pictureService, IOrganizationService organizationService, IUserService userService,
             IMapper mapper)
         {
             _modelEmployeeRepository = modelEmployeeRepository;
             _modelEmployeeOrganizationRepository = modelEmployeeOrganizationRepository;
+            _userRepository = userRepository;
 
             _userService = userService;
             _pictureService = pictureService;
@@ -54,6 +55,13 @@ namespace KareAjans.Business.Concretes
 
         public void UpdateModelEmployee(ModelEmployeeDTO dto)
         {
+            var user = _userRepository.Get(x => x.UserID == dto.UserId).FirstOrDefault();
+            user.FirstName = dto.FirstName;
+            user.LastName = dto.LastName;
+            _userRepository.Update(user);
+
+            var modelEmployee = _modelEmployeeRepository.Get(x => x.ModelEmployeeID == dto.ModelEmployeeID).FirstOrDefault();
+            dto.CreatedDate = modelEmployee.CreatedDate;
             _modelEmployeeRepository.Update(_mapper.Map<ModelEmployee>(dto));
         }
 
