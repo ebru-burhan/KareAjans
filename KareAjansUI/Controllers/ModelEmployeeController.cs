@@ -51,6 +51,7 @@ namespace KareAjans.UI.Controllers
 
             foreach (var item in modelEmployees)
             {
+                // TODO: Kod tekrarı. bi bak
                 int age = DateTime.Today.Year - item.DateOfBirth.Year;
 
                 ModelEmployeeViewModel model = new ModelEmployeeViewModel()
@@ -232,6 +233,7 @@ namespace KareAjans.UI.Controllers
         [HttpGet]
         public IActionResult DeletePicture(int id)
         {
+            // TODO: databaseden siliniyo ama dosyanın kendisi kalıyo bi bak
             var dto = _pictureService.GetPictureById(id);
             _pictureService.DeletePicture(dto);
             return RedirectToAction(nameof(Detail), new { id = dto.ModelEmployeeId });

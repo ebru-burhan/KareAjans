@@ -10,7 +10,7 @@ namespace KareAjans.UI.Controllers
 {
     public class AdminController : Controller
     {
-        [UserTypeBasedAuthorize(UserType.Administrator)]
+        [UserTypeBasedAuthorize(UserType.Accountant)]
         public IActionResult Index()
         {
             return View();

@@ -9,7 +9,6 @@ namespace KareAjans.Entity
     {
         public int ExpenseID { get; set; }
         public int ExpenseTypeId { get; set; }
-        //public int ModelEmployeeOrganizationId { get; set; }
 
         public decimal Amount { get; set; }
         //relations-------

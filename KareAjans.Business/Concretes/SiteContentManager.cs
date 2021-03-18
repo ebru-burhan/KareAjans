@@ -33,18 +33,10 @@ namespace KareAjans.Business.Concretes
             _siteContentRepository.Update(_mapper.Map<SiteContent>(dto));
         }
 
-
         public SiteContentDTO GetSiteContentByType(SiteContentType type)
         {
             var siteContent = _siteContentRepository.Get(x => x.SiteContentType == type).FirstOrDefault();
             return _mapper.Map<SiteContentDTO>(siteContent);
-        }
-
-
-        // TODO :gelen about ve referances i toplu update yapmak fikri hayırlısı araştır
-        public void UpdateSiteContents(List<SiteContentDTO> dtolist)
-        {
-            throw new NotImplementedException();
         }
     }
 }

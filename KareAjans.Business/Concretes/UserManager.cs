@@ -20,8 +20,6 @@ namespace KareAjans.Business.Concretes
             _mapper = mapper;
         }
 
-
-
         public List<UserDTO> GetUsers()
         {
             var users = _userRepository.GetAll();
@@ -44,7 +42,6 @@ namespace KareAjans.Business.Concretes
             _userRepository.Update(_mapper.Map<User>(dto));
         }
 
-
         public UserDTO CheckUser(string email, string password)
         {
             var user = _userRepository.Get(x => x.Email == email && x.Password == password, x => x.Permission).FirstOrDefault();
@@ -55,7 +52,6 @@ namespace KareAjans.Business.Concretes
             return null;
 
         }
-
 
         public List<UserDTO> GetUsersWithPermission()
         {

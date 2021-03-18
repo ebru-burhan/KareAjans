@@ -7,7 +7,7 @@ namespace KareAjans.Entity.Enums
     public enum BodySize
     {
         Xxs,
-        xs,
+        Xs,
         S,
         M,
         L,

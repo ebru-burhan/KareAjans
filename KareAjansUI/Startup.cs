@@ -95,10 +95,10 @@ namespace KareAjans.UI
             services.AddAuthorization(config =>
             {
                 config.AddPolicy(UserType.Administrator.ToString(), policyBuilder =>
-                policyBuilder.RequireClaim(ClaimTypes.Role, new string[] { UserType.Administrator.ToString(), UserType.Accountant.ToString() }));
+                policyBuilder.RequireClaim(ClaimTypes.Role, UserType.Administrator.ToString()));
 
                 config.AddPolicy(UserType.Accountant.ToString(), policyBuilder =>
-                policyBuilder.RequireClaim(ClaimTypes.Role, UserType.Accountant.ToString()));
+                policyBuilder.RequireClaim(ClaimTypes.Role, new string[] { UserType.Administrator.ToString(), UserType.Accountant.ToString() }));
 
                 config.AddPolicy(UserType.ModelEmployee.ToString(), policyBuilder =>
                 policyBuilder.RequireClaim(ClaimTypes.Role, UserType.ModelEmployee.ToString()));

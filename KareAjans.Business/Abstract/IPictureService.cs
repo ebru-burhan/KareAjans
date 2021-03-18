@@ -10,8 +10,6 @@ namespace KareAjans.Business.Abstract
         List<PictureDTO> GetPictures();
         void AddPicture(PictureDTO dto);
         void DeletePicture(PictureDTO dto);
-        void UpdatePicture(PictureDTO dto);
-        List<PictureDTO> GetPicturesByModelEmployeeId(int id);
         PictureDTO GetPictureById(int id);
     }
 }

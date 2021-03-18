@@ -23,8 +23,6 @@ namespace KareAjans.Business.Concretes
             _mapper = mapper;
         }
 
-
-
         public List<OrganizationDTO> GetOrganizations()
         {
             var organizations = _organizationRepository.GetAll();
@@ -56,8 +54,6 @@ namespace KareAjans.Business.Concretes
 
             foreach (var organization in organizations)
             {
-                
-
                 var mappedOrganization = _mapper.Map<OrganizationDTO>(organization);
                 
                 mappedOrganization.TotalIncome = CalculateTotalIncome(organization);
@@ -67,21 +63,6 @@ namespace KareAjans.Business.Concretes
 
             return organizationDtoList;
         }
-        /*
-        public OrganizationDTO GetOrganizationById(int id)
-        {
-            var organization =  _organizationRepository.Get(x => x.OrganizationID == id).FirstOrDefault();
-
-            return _mapper.Map<OrganizationDTO>(organization);
-        }
-
-        public OrganizationDTO GetOrganizationByIdwithIncomes(int id)
-        {
-            var organization = _organizationRepository.Get(x => x.OrganizationID == id , x => x.Incomes).FirstOrDefault();
-
-            return _mapper.Map<OrganizationDTO>(organization);
-        }
-        */
 
         public OrganizationDTO GetOrganizationById(int id, bool incomeIncluded = false)
         {
@@ -118,10 +99,6 @@ namespace KareAjans.Business.Concretes
 
             return mappedOrganization;
         }
-
-
-
-
 
         private decimal CalculateTotalIncome(Organization organization)
         {

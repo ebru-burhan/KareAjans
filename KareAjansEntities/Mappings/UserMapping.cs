@@ -19,7 +19,8 @@ namespace KareAjans.Entity.Mappings
 
             //seed == db oluşurken gerekli olan ilk datalar prodegree,user,expensetype,sitecontent , permission
             builder.HasData(
-                new User { UserID = 1, FirstName = "Ebru", LastName = "Burhan", Email = "ebru@gmail.com", Password = "123",PermissionId = 1, CreatedDate = DateTime.Now }
+                new User { UserID = 1, FirstName = "Ebru", LastName = "Burhan", Email = "yonetici@kareajans.com", Password = "1234", PermissionId = 1, CreatedDate = DateTime.Now },
+                new User { UserID = 2, FirstName = "Muhasebeci", LastName = "Insan", Email = "muhasebe@kareajans.com", Password = "1234", PermissionId = 3, CreatedDate = DateTime.Now }
               );
             // TODO: createdDAte silinebilir
             // TODO: passwordde min lenght koy

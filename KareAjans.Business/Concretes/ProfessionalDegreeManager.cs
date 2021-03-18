@@ -20,8 +20,6 @@ namespace KareAjans.Business.Concretes
             _mapper = mapper;
         }
 
-
-
         public List<ProfessionalDegreeDTO> GetProfessionalDegrees()
         {
             var professionalDegrees = _professionalDegreeRepository.GetAll();

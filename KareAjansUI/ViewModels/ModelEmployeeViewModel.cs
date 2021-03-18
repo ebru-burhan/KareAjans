@@ -21,16 +21,8 @@ namespace KareAjans.UI.ViewModels
         public string Title { get; set; }
         public int Age { get; set; }
 
-
-
-
-
-
-
         //home da bi tane foto göstermek için kullandık
         //belki arama da kullanabilirz arama sonucu resimli gelsin diye??
         public string PictureUrl { get; set; }
-
-
     }
 }

@@ -10,7 +10,6 @@ namespace KareAjans.DataAccess.Abstracts
 {
     public abstract class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
-        // TODO: BaseRepository Abstract yaptık bunun durumuna ilerde bak
 
         private readonly DataContext context;
         public BaseRepository(DataContext _context)
@@ -18,7 +17,7 @@ namespace KareAjans.DataAccess.Abstracts
             context = _context;
         }
 
-        //virtual çünkü     bazılarını add delete update yapmak istemediğimz için
+        //virtual çünkü bazılarını add delete update yapmak istemediğimz için
         public virtual T Add(T entity)
         {
             context.Set<T>().Add(entity);
@@ -34,7 +33,6 @@ namespace KareAjans.DataAccess.Abstracts
         }
         public virtual void Update(T entity)
         {
-            // TODO: attach çalışmasını kontrol et
             context.Set<T>().Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
             context.SaveChanges();

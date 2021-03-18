@@ -11,7 +11,7 @@ namespace KareAjans.Business.Abstract
         UserDTO AddUser(UserDTO dto);
         void DeleteUser(UserDTO dto);
         void UpdateUser(UserDTO dto);
-       UserDTO CheckUser(string email, string password);
+        UserDTO CheckUser(string email, string password);
 
         List<UserDTO> GetUsersWithPermission();
         UserDTO GetUserById(int id);

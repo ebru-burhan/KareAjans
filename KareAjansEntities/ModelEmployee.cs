@@ -38,13 +38,8 @@ namespace KareAjans.Entity
         public ProfessionalDegree ProfessionalDegree { get; set; }
         public ICollection<Picture> Pictures { get; set; }
 
-
-        //authorizeyapılacak adminler görücek yorum yazıcak mankenler görmicek yorum yazmıcak örn
         public ICollection<Comment> Comments { get; set; }
 
-        // TODO: override oncreating yapcaz onconfig yapılan yerde  hasone foregign ilişkisini göstercen
         public ICollection<ModelEmployeeOrganization> ModelEmployeeOrganizations { get; set; }
-
-
     }
 }

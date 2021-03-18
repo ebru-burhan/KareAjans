@@ -11,6 +11,7 @@ namespace KareAjans.Business.Abstract
         List<ExpenseTypeDTO> GetExpenseTypes();
 
         void UpdateExpenseType(ExpenseTypeDTO dto);
+
         ExpenseTypeDTO GetExpenseTypeByType(ExpenseTypeEnum type);
     }
 }

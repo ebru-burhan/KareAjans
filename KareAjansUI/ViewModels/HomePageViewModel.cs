@@ -14,6 +14,5 @@ namespace KareAjans.UI.ViewModels
         //model employee
         public List<ModelEmployeeViewModel> ModelEmployees { get; set; }
 
-        //picturre
     }
 }

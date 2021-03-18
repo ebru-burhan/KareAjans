@@ -20,28 +20,10 @@ namespace KareAjans.Business.Concretes
             _mapper = mapper;
         }
 
-
-
-
         public List<PermissionDTO> GetPermissions()
         {
             var permissions = _permissionRepository.GetAll();
             return _mapper.Map<List<PermissionDTO>>(permissions);
-        }
-
-        public void AddPermission(PermissionDTO dto)
-        {
-            _permissionRepository.Add(_mapper.Map<Permission>(dto));
-        }
-
-        public void DeletePermission(PermissionDTO dto)
-        {
-            _permissionRepository.Delete(_mapper.Map<Permission>(dto));
-        }
-
-        public void UpdatePermission(PermissionDTO dto)
-        {
-            _permissionRepository.Update(_mapper.Map<Permission>(dto));
         }
     }
 }

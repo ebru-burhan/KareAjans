@@ -20,8 +20,6 @@ namespace KareAjans.Business.Concretes
             _mapper = mapper;
         }
 
-
-
         public List<PictureDTO> GetPictures()
         {
             var pictures = _pictureRepository.GetAll();
@@ -36,19 +34,6 @@ namespace KareAjans.Business.Concretes
         public void DeletePicture(PictureDTO dto)
         {
             _pictureRepository.Delete(_mapper.Map<Picture>(dto));
-        }
-
-
-        // TODO: gerekmeyen crudlar
-        public void UpdatePicture(PictureDTO dto)
-        {
-            _pictureRepository.Update(_mapper.Map<Picture>(dto));
-        }
-
-        public List<PictureDTO> GetPicturesByModelEmployeeId(int id)
-        {
-            var pictures = _pictureRepository.GetFilteredIncluded(x => x.ModelEmployeeId == id, x => x.ModelEmployee);
-            return _mapper.Map<List<PictureDTO>>(pictures);
         }
 
         public PictureDTO GetPictureById(int id)

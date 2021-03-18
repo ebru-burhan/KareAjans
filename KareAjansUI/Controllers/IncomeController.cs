@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace KareAjans.UI.Controllers
 {
-    [UserTypeBasedAuthorize(UserType.Administrator)]
     [UserTypeBasedAuthorize(UserType.Accountant)]
     public class IncomeController : Controller
     {
