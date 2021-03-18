@@ -95,7 +95,7 @@ namespace KareAjans.UI
             services.AddAuthorization(config =>
             {
                 config.AddPolicy(UserType.Administrator.ToString(), policyBuilder =>
-                policyBuilder.RequireClaim(ClaimTypes.Role, UserType.Administrator.ToString()));
+                policyBuilder.RequireClaim(ClaimTypes.Role, new string[] { UserType.Administrator.ToString(), UserType.Accountant.ToString() }));
 
                 config.AddPolicy(UserType.Accountant.ToString(), policyBuilder =>
                 policyBuilder.RequireClaim(ClaimTypes.Role, UserType.Accountant.ToString()));
@@ -108,7 +108,7 @@ namespace KareAjans.UI
             {
                 options.LoginPath = "/Login/Login";
                 options.LogoutPath = "/Login/Logout";
-                //options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
                 options.AccessDeniedPath = "/Login/Login";
             });
 

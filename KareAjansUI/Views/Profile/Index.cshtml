@@ -183,39 +183,57 @@
 
             </div>
         </div>
-
-
-        @*<div class="border-top">
-                <div class="card-body">
-                    <button type="button" class="btn btn-primary">Submit</button>
-                </div>
-            </div>*@
-
     </form>
 
+</div>
 
-    @*<div class="row" style="margin-top:20px;">
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
 
-            @if (Model.Pictures.Count == 0)
-            {
-                <p>Fotograf yok</p>
-            }
-            else
-            {
+                <h4 class="card-title">Fotoğraflar</h4>
 
-                foreach (var picture in Model.Pictures)
-                {
-                    <div class="col col-md-4" style="margin-bottom:20px">
-                        <div class="card">
-                            <img src="@picture.Url" class="card-img-top" style="height:300px;object-fit: cover;" alt="...">
-                            <div class="card-body">
-                                <a asp-action="DeletePicture" asp-controller="Profile" asp-route-id="@picture.PictureID" class="btn btn-xs btn-danger">Delete</a>
+                <hr />
+                <div class="row el-element-overlay">
+                    @if (Model.Pictures.Count == 0)
+                    {
+                        <p>Fotograf yok</p>
+                    }
+                    else
+                    {
+
+                        @foreach (var picture in Model.Pictures)
+                        {
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="el-card-item">
+                                        <div class="el-card-avatar el-overlay-1">
+                                            <img src="~/images/@picture.Url" alt="Manken Fotoğrafı" />
+                                            <div class="el-overlay">
+                                                <ul class="list-style-none el-info">
+                                                    <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" href="~/images/@picture.Url"><i class="mdi mdi-magnify-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                }
-            }
+                        }
 
-        </div>*@
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 
 </div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

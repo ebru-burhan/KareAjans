@@ -21,7 +21,7 @@
                     <th>Bitiş Tarihi</th>
                     <th>Şehir İçi Mi?</th>
                     <th>Toplam Gelir</th>
-                    <th > <a class="btn btn-outline-success">##</a></th>
+                    <th> <a class="btn btn-outline-success">##</a></th>
                 </tr>
             </thead>
             <tbody>
@@ -46,3 +46,8 @@
 
 
 </div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

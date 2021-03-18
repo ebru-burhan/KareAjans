@@ -9,7 +9,7 @@
 }
 
 <div class="card">
-    <form class="form-horizontal" asp-action="Search" asp-controller="ModelEmployee" method="get" >
+    <form class="form-horizontal" asp-action="Search" asp-controller="ModelEmployee" method="get">
 
         <div class="card-body">
             <h4 class="card-title">Filtreleme</h4>
@@ -193,27 +193,32 @@
             <tbody>
                 @foreach (var item in Model.SearchResults)
                 {
-                <tr>
-                    <td>@item.FirstName</td>
-                    <td>@item.LastName</td>
-                    <td>@item.Title</td>
-                    <td>@item.Gender</td>
-                    <td>@item.Age</td>
-                    <td>@item.EyeColor</td>
-                    <td>@item.HairColor</td>
-                    <td>@item.BodySize</td>
-                    <td>@item.ShoeSize</td>
-                    <td>
-                        @if (Model.SelectedOrganizationId != 0)
-                        {
-                            <a asp-action="Assign" asp-controller="ModelEmployee" asp-route-id="@item.ModelEmployeeID" asp-route-organizationId="@Model.SelectedOrganizationId" class="btn btn-outline-purple">Görevlendir</a>
-                        }
-                        <a asp-action="Detail" asp-controller="ModelEmployee" asp-route-id="@item.ModelEmployeeID" class="btn  btn-outline-orange">Detay</a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Title</td>
+                        <td>@item.Gender</td>
+                        <td>@item.Age</td>
+                        <td>@item.EyeColor</td>
+                        <td>@item.HairColor</td>
+                        <td>@item.BodySize</td>
+                        <td>@item.ShoeSize</td>
+                        <td>
+                            @if (Model.SelectedOrganizationId != 0)
+                            {
+                                <a asp-action="Assign" asp-controller="ModelEmployee" asp-route-id="@item.ModelEmployeeID" asp-route-organizationId="@Model.SelectedOrganizationId" class="btn btn-outline-purple">Görevlendir</a>
+                            }
+                            <a asp-action="Detail" asp-controller="ModelEmployee" asp-route-id="@item.ModelEmployeeID" class="btn  btn-outline-orange">Detay</a>
+                        </td>
+                    </tr>
                 }
 
             </tbody>
         </table>
     </div>
 </div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

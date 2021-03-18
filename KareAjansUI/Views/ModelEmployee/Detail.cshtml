@@ -189,7 +189,7 @@
             <div class="card-body">
 
                 <h4 class="card-title">Fotoğraflar</h4>
-                
+
 
                 <hr />
                 <div class="row el-element-overlay">
@@ -270,7 +270,7 @@
                     {
                         <div class="d-flex flex-row comment-row m-t-0">
                             <div class="comment-text w-100">
-                                <h6 class="font-medium">James Anderson</h6>
+                                <h6 class="font-medium">Yönetici</h6>
                                 <span class="m-b-15 d-block">@comment.Message </span>
                                 <div class="comment-footer">
                                     <span class="text-muted float-right">@comment.CreatedDate</span>
@@ -305,3 +305,8 @@
 
 
 
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

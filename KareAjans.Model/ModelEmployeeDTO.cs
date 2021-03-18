@@ -2,6 +2,7 @@
 using KareAjans.Entity.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace KareAjans.Model
@@ -18,7 +19,10 @@ namespace KareAjans.Model
         public string PhoneNo1 { get; set; }
         public string PhoneNo2 { get; set; }
         public DateTime DateOfBirth { get; set; }
+
+        [Range(0, byte.MaxValue, ErrorMessage = "Lütfen {1}'dan büyük değer giriniz.")]
         public byte Weight { get; set; }
+        [Range(0, byte.MaxValue, ErrorMessage = "Lütfen {1}'dan büyük değer giriniz.")]
         public byte Height { get; set; }
         public ShoeSize ShoeSize { get; set; }
         public EyeColor EyeColor { get; set; }

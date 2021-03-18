@@ -47,7 +47,11 @@
         </tr>
         <tr>
             <td colspan="6" align="right"><b>Kar</b></td>
-            <td colspan="2" align="center">@String.Format("{0:C2}", @Model.Profit)</td>           
+            <td colspan="2" align="center">@String.Format("{0:C2}", @Model.Profit)</td>
         </tr>
     </tbody>
 </table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

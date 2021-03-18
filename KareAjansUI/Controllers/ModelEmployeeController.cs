@@ -45,6 +45,7 @@ namespace KareAjans.UI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+   
             var modelEmployees = _modelEmployeeService.GetModelEmployeesWithIncludes();
             List<ModelEmployeeViewModel> modelList = new List<ModelEmployeeViewModel>();
 
@@ -69,6 +70,7 @@ namespace KareAjans.UI.Controllers
         [HttpGet]
         public IActionResult Detail(int id)
         {
+
             var dto = _modelEmployeeService.GetModelEmployeeByIdWithIncluded(id);
 
             int age = DateTime.Today.Year - dto.DateOfBirth.Year;
@@ -122,6 +124,20 @@ namespace KareAjans.UI.Controllers
         [HttpPost]
         public IActionResult Add(ModelEmployeeAddViewModel model)
         {
+
+            if (!ModelState.IsValid)
+            {
+                ModelEmployeeAddViewModel ViewModel = new ModelEmployeeAddViewModel()
+                {
+                    ModelEmployee = new ModelEmployeeDTO(),
+                    ProfessionelDegrees = _professionalDegreeService.GetProfessionalDegrees()
+                };
+                ModelState.AddModelError("", "Formdaki alanları doldurunuz.");
+                return View(ViewModel);
+
+            }
+
+
             var picturePath = "image_" + Guid.NewGuid().ToString() + ".png";
 
             using (var fileStream = new FileStream(Path.Combine(directory, picturePath), FileMode.Create, FileAccess.Write))

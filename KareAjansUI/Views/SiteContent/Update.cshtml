@@ -23,7 +23,7 @@
 
             <div class="form-group row">
                 <label asp-for="ReferencesText" class="col-sm-3 text-right control-label col-form-label">Referanslarımız:</label>
-                <textarea asp-for="ReferencesText" class="form-control" ></textarea>
+                <textarea asp-for="ReferencesText" class="form-control"></textarea>
                 <span asp-validation-for="ReferencesText" class="text-danger"></span>
             </div>
 
@@ -36,3 +36,7 @@
 
 
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

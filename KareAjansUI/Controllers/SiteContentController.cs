@@ -21,13 +21,6 @@ namespace KareAjans.UI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
-        {
-            var dtoList = _siteContentService.GetSiteContents();
-            return View(dtoList);
-        }
-
-        [HttpGet]
         public IActionResult Update()
         {
             SiteContentViewModel model = new SiteContentViewModel()

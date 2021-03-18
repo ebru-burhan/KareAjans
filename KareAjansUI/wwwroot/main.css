@@ -3,3 +3,7 @@
 label{
     font-weight: bold;
 }
+
+.auth-wrapper {
+    min-height: 91vh;
+}

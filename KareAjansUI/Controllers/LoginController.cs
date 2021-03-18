@@ -1,9 +1,11 @@
 ﻿using KareAjans.Business.Abstract;
+using KareAjans.Entity.Enums;
 using KareAjans.Model;
 using KareAjans.UI.ExtensionMethods;
 using KareAjans.UI.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -68,6 +70,11 @@ namespace KareAjans.UI.Controllers
                     new Claim(ClaimTypes.Role,userDto.Permission.UserType.ToString())
                 };
 
+                if (userDto.Permission.UserType == UserType.Administrator)
+                {//muhasebeci haklarını da verdik admine 
+                    claims.Add(new Claim(ClaimTypes.Role, UserType.Accountant.ToString()));
+                }
+
                 var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
                 identity.AddClaims(claims);
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
@@ -76,6 +83,9 @@ namespace KareAjans.UI.Controllers
 
                 userDto.Permission.Users = null;
                 HttpContext.Session.SetObject("user", userDto);
+
+                // SetString using ile geldi, kullanma sebebimiz Razordan GetStringe erişiliyo
+                HttpContext.Session.SetString("userType", userDto.Permission.UserType.ToString());
 
                 if (userDto.Permission.UserType == Entity.Enums.UserType.ModelEmployee)
                 {
