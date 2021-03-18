@@ -35,7 +35,7 @@ namespace KareAjans.UI.Controllers
             List<ModelEmployeeViewModel> modelList = new List<ModelEmployeeViewModel>();
             foreach (var item in modelEmployeeDTOList)
             {
-                var picture = item.Pictures.FirstOrDefault() == null ? "missing-person-silhouette.jpg" : item.Pictures.FirstOrDefault().Url;
+                var picture = item.Pictures.FirstOrDefault() == null ? "" : item.Pictures.FirstOrDefault().Url;
 
                 int age = DateTime.Today.Year - item.DateOfBirth.Year;
 
